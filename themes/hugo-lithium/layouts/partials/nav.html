@@ -1,29 +1,21 @@
-<nav class="nav">
-  <a href="{{ "/" | relURL }}" class="nav-logo">
-
-  <img src="{{ .Site.Params.logo.url | absURL }}"
-         width="{{ .Site.Params.logo.width }}"
-         height="{{ .Site.Params.logo.height }}"
-         alt="{{ .Site.Params.logo.alt }}">
-  </a>
+<nav id="topNav">
+    <a href="{{ "/" | relURL }}" class="nav-logo">
   
-  <h1 class="banner">Cytoverse</h1>
-
-  <ul class="nav-links" id="topNav">
-    {{ range .Site.Menus.main }}
-    <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-    {{ end }}
-  </ul>
-  <span class="navbar-toggle" id="js-navbar-toggle">
-    <i class="fas fa-bars"></i>
-  </span>
-</nav>
-<script type="text/javascript" charset="utf-8">
-  var topNav = document.getElementById('topNav');
-  var navBarToggle = document.getElementById('js-navbar-toggle');
-  
-  navBarToggle.addEventListener('click', function () {
+    <img src="{{ .Site.Params.logo.url | absURL }}"
+           width="{{ .Site.Params.logo.width }}"
+           height="{{ .Site.Params.logo.height }}"
+           alt="{{ .Site.Params.logo.alt }}">
+    </a>
     
-    topNav.classList.toggle('active');
-  });
-</script>
+    <h1 class="banner">Cytoverse</h1>
+  
+    <ul class="nav-links" id="topNav-links">
+      {{ range .Site.Menus.main }}
+      <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+      {{ end }}
+    </ul>
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fas fa-bars"></i>
+    </span>
+</nav>
+

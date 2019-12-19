@@ -44,16 +44,23 @@ code {
   background-color: rgba(0, 0, 0, 0.02);
 }
 
-.wrapper {
-  overflow: hidden;
-  position: relative;
-}
-
-.nav {
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
   margin: 0 auto;
-  padding: 0 15px;
+  width: 100%;
+  padding: 15px 15px;
   display: flex;
   align-items: center;
+  z-index: 5;
+  background-color: white;
+  box-shadow: 5px 0px 8px;
+
+}
+
+main {
+	padding-top: 10rem;
 }
 
 .banner {
@@ -107,7 +114,7 @@ code {
 }
 
 .info {
-	text-align: center;
+	text-align: left;
 }
 
 .info li {
@@ -126,6 +133,12 @@ code {
 .demo img {
 	width: 95%;
 /*	opacity: 0.95; */
+}
+
+.demo-code {
+	background: var(--charcoal);
+	color: white;
+	padding: 1rem;
 }
 
 
@@ -147,6 +160,14 @@ code {
   border-bottom: 1px solid var(--charcoal);
   width: 100%;
   align-items: center;
+}
+
+.blurb h1 {
+	font-size: 1.5rem;
+}
+
+.blurb {
+	font-size: 1rem;
 }
 
 .blurb-row {
@@ -195,6 +216,8 @@ code {
 	color: black;
 	overflow: auto;
 	text-align: center;
+	font-size: 2rem;
+	border: none;
 }
 
 #flowWorkspace_blurb {
@@ -263,28 +286,11 @@ code {
 	#openCyto_blurb .blurb-row {
 		flex-flow: row-reverse nowrap;
 	}
-}
-
-/* stack on small screens */
-@media all and (max-width: 600px){
-	.blurb {
-	  display: flex;
-	  flex-flow: column nowrap;
-	justify-content: space-around;
-	}
-  
- 	.blurb-row {
-  		display: flex;
-  		flex-flow: column nowrap;
-  		align-items: center;
+	
+	/* collapse navbar */
+	nav {
+    	text-align: center;
   	}
-  	.demo {
-		max-width: 90%;
-	}
-  
-  .nav {
-    text-align: center;
-  }
   
   .navbar-toggle {
     display: block;
@@ -305,6 +311,24 @@ code {
     padding-top: 2rem;
     display: block;
   }
+}
+
+/* stack on small screens */
+@media all and (max-width: 600px){
+	.blurb {
+	  display: flex;
+	  flex-flow: column nowrap;
+	justify-content: space-around;
+	}
+  
+ 	.blurb-row {
+  		display: flex;
+  		flex-flow: column nowrap;
+  		align-items: center;
+  	}
+  	.demo {
+		max-width: 90%;
+	}
   
 	#ggcyto_blurb {
 		flex-flow: column nowrap;

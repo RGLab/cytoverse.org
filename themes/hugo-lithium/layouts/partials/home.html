@@ -1,9 +1,11 @@
 <div class="blurbstack">
 	<div class="blurb" id="main_blurb">
-		<p>
-			The cytoverse is a tightly coordinated collection of R packages striving to 
-			make cytometry data analysis easier and more computationally efficient.
-		</p>	
+		<div class="blurb-row">
+			<p>
+				The cytoverse is a tightly coordinated collection of R packages striving to 
+				make cytometry data analysis easier and more computationally efficient.
+			</p>	
+		</div>
 	</div>
 	
 	<div class="blurb" id="flowWorkspace_blurb">
@@ -71,8 +73,13 @@
 			</div>
 		</div>
 		<div class="blurb-row blurb-bottomrow">
-			<div class="demo">
-				<img src="img/ggcyto/stats1_transparent.svg" alt="" />
+			<div class="demo demo-code">
+				<code>
+					> ws <- open_diva_xml(ws_file)<br/>
+					> gs <- diva_to_gatingset(ws)<br/>
+					...<br/>
+					> gatingset_to_flowjo(gs, flowjo_filename)
+				</code>
 			</div>
 		</div>
 	</div>
@@ -127,3 +134,29 @@
 	</div>
 	
 </div>
+
+<script type="text/javascript" charset="utf-8">
+  var topNav = document.getElementById('topNav-links');
+  var navBarToggle = document.getElementById('js-navbar-toggle');
+  
+  navBarToggle.addEventListener('click', function () {
+    
+    topNav.classList.toggle('active');
+  });
+</script>
+<!--
+<script type="text/javascript" charset="utf-8">
+window.onscroll = function() {stickyNav()};
+
+var navbar = document.getElementById("topNav");
+var sticky = navbar.offsetTop;
+
+function stickyNav() {
+  if (window.pageYOffset > sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+-->
