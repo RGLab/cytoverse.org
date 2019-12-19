@@ -1,7 +1,12 @@
 {{ partial "header.html" . }}
 
+{{ if .IsHome }}
+<main class="showcase">
+{{ partial "home.html"}}  
+</main>
+{{ else }}
 <main class="content" role="main">
-
+  
   {{ if .Content }}
   <article class="article">
     {{ if .Title }}
@@ -12,6 +17,7 @@
     </div>
   </article>
   {{ end }}
+
   <div class="archive">
     {{ $pages := .Pages }}
     {{ if .IsHome }}
@@ -31,5 +37,6 @@
   </div>
 
 </main>
+{{ end }}
 
 {{ partial "footer.html" . }}

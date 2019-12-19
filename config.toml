@@ -15,23 +15,23 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     weight = -10
 [[menu.main]]
     name = "Learn"
-    url = ""
+    url = "/about"
     weight = -9
 [[menu.main]]
     name = "Blog"
-    url = ""
+    url = "/about"
     weight = -8
 [[menu.main]]
     name = "Help"
-    url = ""
+    url = "/about"
     weight = -7
 [[menu.main]]
     name = "Users"
-    url = ""
+    url = "/post"
     weight = -6
 [[menu.main]]
     name = "Licensing"
-    url = ""
+    url = "/about"
     weight = -5
 [[menu.main]]
     name = "Github"
@@ -54,8 +54,8 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     favicon = "favicon.ico"
 
     [params.logo]
-    url = "logo.png"
-    width = 50
-    height = 50
+    url = "img/cytoverse_logo.png"
+    width = "100rem"
+    height = "100rem"
     alt = "Logo"
 

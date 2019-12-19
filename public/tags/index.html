@@ -26,6 +26,7 @@
 
 <link rel="stylesheet" href="/css/fonts.css" media="all">
 <link rel="stylesheet" href="/css/main.css" media="all">
+<script src="https://kit.fontawesome.com/4513ebb750.js" crossorigin="anonymous"></script>
 
 
 
@@ -35,35 +36,53 @@
       <header class="header">
         <nav class="nav">
   <a href="/" class="nav-logo">
-    <h1>Cytoverse</h1>
 
+  <img src="/img/cytoverse_logo.png"
+         width="100rem"
+         height="100rem"
+         alt="Logo">
+  </a>
+  
+  <h1 class="banner">Cytoverse</h1>
 
-
-  <ul class="nav-links">
+  <ul class="nav-links" id="topNav">
     
     <li><a href="/about/">Packages</a></li>
     
-    <li><a href="">Learn</a></li>
+    <li><a href="/about">Learn</a></li>
     
-    <li><a href="">Blog</a></li>
+    <li><a href="/about">Blog</a></li>
     
-    <li><a href="">Help</a></li>
+    <li><a href="/about">Help</a></li>
     
-    <li><a href="">Users</a></li>
+    <li><a href="/post">Users</a></li>
     
-    <li><a href="">Licensing</a></li>
+    <li><a href="/about">Licensing</a></li>
     
     <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
     
   </ul>
+  <span class="navbar-toggle" id="js-navbar-toggle">
+    <i class="fas fa-bars"></i>
+  </span>
 </nav>
-
+<script type="text/javascript" charset="utf-8">
+  var topNav = document.getElementById('topNav');
+  var navBarToggle = document.getElementById('js-navbar-toggle');
+  
+  navBarToggle.addEventListener('click', function () {
+    
+    topNav.classList.toggle('active');
+  });
+</script>
       </header>
 
 
-<main class="content" role="main">
 
+<main class="content" role="main">
   
+  
+
   <div class="archive">
     
     
@@ -95,6 +114,7 @@
   </div>
 
 </main>
+
 
       <footer class="footer">
         <ul class="footer-links">
