@@ -1,13 +1,31 @@
-      <footer class="footer">
-        <ul class="footer-links">
-          <li>
-            <a href="{{ .Site.RSSLink | relURL }}" type="application/rss+xml" target="_blank">RSS feed</a>
-          </li>
-          <li>
-            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="{{ "images/hugo-logo.png" | relURL }}" alt="Img link to Hugo website" width="22" height="22"></a>
-          </li>
-        </ul>
-      </footer>
+  	<div class="blurb footer-blurb" id="RGLab_blurb">
+  		<div class="blurb-row blurb-toprow">
+  			<div class="info">
+  				The cytoverse is developed by members of Raphael Gottardo's Lab
+  				at Fred Hutchinson Cancer Research Center.
+  			</div>
+  		</div>
+  		<div class="blurb-row blurb-bottomrow">
+  			<ul class="blurb-sublist">
+  				<li>
+  				  <a href="http://www.rglab.org/">
+  				    <img src="{{ .Site.Params.icons.fh.url | absURL }}"
+                 max-width="{{ .Site.Params.icons.fh.maxwidth }}"
+                 max-height="{{ .Site.Params.icons.fh.maxheight }}"
+                 alt="{{ .Site.Params.icons.fh.alt }}">
+  				  </a>
+  				</li>
+  				<li>
+  				  <a href="https://github.com/RGLab/">
+  				    <img src="{{ .Site.Params.icons.github.url | absURL }}"
+                 max-width="{{ .Site.Params.icons.github.maxwidth }}"
+                 max-height="{{ .Site.Params.icons.github.maxheight }}"
+                 alt="{{ .Site.Params.icons.github.alt }}">
+  				  </a>
+  				</li>
+  			</ul>
+  		</div>
+  	</div>
 
     </div>
     {{ partial "footer_highlightjs" . }}

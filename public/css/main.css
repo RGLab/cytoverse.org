@@ -59,12 +59,14 @@ nav {
   align-items: center;
   z-index: 5;
   background-color: var(--eggshell);
-  box-shadow: 5px 0px 8px;
+  box-shadow: 0px 0px 8px;
 
 }
 
 main {
 	padding-top: 10rem;
+	padding-bottom: 5rem;
+	flex: 1 0 auto;
 }
 
 .banner {
@@ -175,6 +177,23 @@ main {
 	font-size: 1rem;
 }
 
+.footer-blurb {
+	background-color: var(--eggshell);
+  	box-shadow: 0px 0px 8px;
+  	border: none;
+}
+
+.footer-blurb .blurb-row {
+	margin-top: 0;
+	margin-bottom: 0;
+	border: none;
+}
+
+.footer-blurb li {
+	float: left;
+	padding: 1rem 3rem;
+}
+
 .blurb-row {
 	display: flex;
 	flex-flow: row nowrap;
@@ -205,11 +224,6 @@ main {
 .blurb-sublist img {
 	max-height: 5rem;
 	max-width: 5rem;
-}
-
-#RGLab_blurb li {
-	float: left;
-	padding: 3rem;
 }
 
 /* Some cytoverse-specific colors and things */
@@ -283,7 +297,14 @@ main {
 
 
 /* GUARD PRE */
-
+	.wrapper {
+	  overflow: hidden;
+	  position: relative;
+	  display: flex;
+	  flex-direction: column; /* creates rows out of the elements main and footer */
+	  min-height: 100vh; 
+	  margin:0;
+	}
   .content {
     font-size: 19px;
     line-height: 1.8;

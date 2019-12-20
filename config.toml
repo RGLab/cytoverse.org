@@ -19,7 +19,7 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     weight = -9
 [[menu.main]]
     name = "Blog"
-    url = "/about"
+    url = "/post"
     weight = -8
 [[menu.main]]
     name = "Help"
@@ -54,4 +54,17 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     width = "100rem"
     height = "100rem"
     alt = "Logo"
+    
+    [params.icons]
+        [params.icons.fh]
+        url = "img/FH_logo.png"
+        maxheight = "5rem"
+        maxwidth = "5rem"
+        alt = "RGLab Website"
+        [params.icons.github]
+        url = "img/github_logo.png"
+        maxheight = "5rem"
+        maxwidth = "5rem"
+        alt = "RGLab GitHub"
+    
 
