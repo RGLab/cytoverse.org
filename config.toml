@@ -58,13 +58,9 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     [params.icons]
         [params.icons.fh]
         url = "img/FH_logo.png"
-        maxheight = "5rem"
-        maxwidth = "5rem"
         alt = "RGLab Website"
         [params.icons.github]
         url = "img/github_logo.png"
-        maxheight = "5rem"
-        maxwidth = "5rem"
         alt = "RGLab GitHub"
     
 

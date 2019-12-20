@@ -127,7 +127,8 @@ main {
 .info li {
 	display: inline-block;
 	text-align: center;
-	margin-top: 2rem;
+	margin: 0.5rem 0.5rem;
+	float: left;
 }
 
 .info a {
@@ -138,7 +139,7 @@ main {
 	width: 30rem;
 }
 .demo img {
-	width: 95%;
+	width: 99%;
 /*	opacity: 0.95; */
 }
 
@@ -178,7 +179,7 @@ main {
 }
 
 .footer-blurb {
-	background-color: var(--eggshell);
+	background-color: white;
   	box-shadow: 0px 0px 8px;
   	border: none;
 }
@@ -192,6 +193,10 @@ main {
 .footer-blurb li {
 	float: left;
 	padding: 1rem 3rem;
+}
+
+#fh_logo {
+	padding-top: 1.4rem;
 }
 
 .blurb-row {
@@ -376,10 +381,13 @@ main {
 }
 
 .archive {
-  margin: 0;
+	display: flex;
+	flex-flow: column nowrap;
+  margin: 0 2rem;
   padding: 0;
   list-style: none;
   line-height: 1.3em;
+  align-items: left;
   text-align: left;
   color: #111;
 }
@@ -554,7 +562,6 @@ main {
   font-size: 14px;
  }
   .archive {
-    text-align: center;
   }
 
   .archive-title {
