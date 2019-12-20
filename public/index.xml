@@ -50,5 +50,58 @@ summary(cars) ## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
       <description>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</description>
     </item>
     
+    <item>
+      <title>Citing the Cytoverse</title>
+      <link>/citation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/citation/</guid>
+      <description>If you find the Cytoverse software packages to be useful in your research leading to a publication, develop tools that depend on these packages, or reproduce code from these packages in your own software, please appropriately cite the paper corresponding to initial development of the corresponding package(s).
+Citations are incorporated in to each of the packages, so these can be easily obtained from within R by (using flowWorkspace as an example):</description>
+    </item>
+    
+    <item>
+      <title>Getting Help</title>
+      <link>/help/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/help/</guid>
+      <description>Bug Reports and Feature Requests The Cytoverse team greatly appreciates users bringing any unexpected behavior to our attention as well as requesting additional functionality or documentation that they would be helpful. For any of these purposes please open an issue on the GitHub page for the relevant package repository, all of which can be found from the RGLab GitHub homepage.
+Whenever possible, but particularly if you are reporting a bug, please try to generate a reproducible example (or &amp;ldquo;reprex&amp;rdquo;) for generating the unexpected behavior.</description>
+    </item>
+    
+    <item>
+      <title>Getting started with the cytoverse</title>
+      <link>/start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/start/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/install/</guid>
+      <description>Bundled Installation The most recent stable release of the packages can be installed from Bioconductor in R by running:
+BiocManager::install(&amp;quot;cytoverse&amp;quot;)
+The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
+Individual Packages A number of packages are very useful in coordination with the core cytoverse packages but are not included in the bundled installation above. Some examples include flowStats and flowClust.
+These can be installed in a similar way to the bundled installation above, either from Bioconductor</description>
+    </item>
+    
+    <item>
+      <title>Learning the Cytoverse</title>
+      <link>/learn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/learn/</guid>
+      <description>Getting Started The Cytoverse team continually works to make the packages more approachable to new users, even as new tools are added. To that end, the best place to start is with the package vignettes. All of the Cytoverse packages have a number of vignettes intended to provide a brief introduction to the role they serve. After installation, these can be accessed from within R by running
+browseVignettes(&amp;quot;package_name&amp;quot;)
+where &amp;ldquo;package_name&amp;rdquo; would be &amp;ldquo;flowWorkspace&amp;rdquo;, &amp;ldquo;openCyto&amp;rdquo;, or whichever package you needed to learn about.</description>
+    </item>
+    
   </channel>
 </rss>

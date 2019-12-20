@@ -10,12 +10,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     post = "/:year/:month/:day/:slug/"
 
 [[menu.main]]
-    name = "Packages"
-    url = "/about/"
+    name = "Installation"
+    url = "/install"
     weight = -10
 [[menu.main]]
     name = "Learn"
-    url = "/about"
+    url = "/learn"
     weight = -9
 [[menu.main]]
     name = "Blog"
@@ -23,16 +23,12 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
     weight = -8
 [[menu.main]]
     name = "Help"
-    url = "/about"
+    url = "/help"
     weight = -7
 [[menu.main]]
-    name = "Users"
-    url = "/post"
+    name = "Citation"
+    url = "/citation"
     weight = -6
-[[menu.main]]
-    name = "Licensing"
-    url = "/about"
-    weight = -5
 [[menu.main]]
     name = "Github"
     url = "https://github.com/RGLab/cytoverse"
