@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.59.1" />
+
+
+<title>Cytoverse</title>
+<meta property="og:title" content="Cytoverse">
+<meta property="og:type" content="website">
+
+
+  <link href='./favicon.ico' rel='icon' type='image/x-icon'/>
+
+
+
+<meta property="description" content="A collection of tools for analysis of cytometry data">
+
+
+
+
+
+<link href="./index.xml" rel="alternate" type="application/rss+xml" title="Cytoverse" />
+
+
+
+<link rel="stylesheet" href="./css/fonts.css" media="all">
+<link rel="stylesheet" href="./css/main.css" media="all">
+<script src="https://kit.fontawesome.com/4513ebb750.js" crossorigin="anonymous"></script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="topNav">
+    <a href="./" class="nav-logo">
+  
+    <img src="./img/cytoverse_logo.png"
+           width="100rem"
+           height="100rem"
+           alt="Logo">
+    </a>
+    
+    <h1 class="banner">Cytoverse</h1>
+  
+    <ul class="nav-links" id="topNav-links">
+      
+      <li><a href="./install/index.html">Installation</a></li>
+      
+      <li><a href="./learn/index.html">Learn</a></li>
+      
+      <li><a href="./post/index.html">Blog</a></li>
+      
+      <li><a href="./help/index.html">Help</a></li>
+      
+      <li><a href="./citation/index.html">Citation</a></li>
+      
+      <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
+      
+    </ul>
+    <span class="navbar-toggle" id="js-navbar-toggle">
+      <i class="fas fa-bars"></i>
+    </span>
+</nav>
+
+
+
+
+
+<main class="content" role="main">
+
+<div class="blurbstack">
+	<div class="blurb" id="main_blurb">
+		<div class="blurb-row">
+			<p>
+				The cytoverse is a tightly coordinated collection of R packages striving to 
+				make cytometry data analysis easier and more computationally efficient.
+			</p>
+		</div>
+	</div>
+	
+	<div class="blurb" id="flowWorkspace_blurb">
+		<div class="blurb-row blurb-toprow">
+			<div class="logo">
+				<img src="img/flowworkspace_logo.png"/>
+			</div>
+			<div class="info">
+				<h1><a href="https://rglab.github.io/flowWorkspace/">flowWorkspace</a></h1>
+				<p>
+					flowWorkspace provides core data structures and methods for use in cytometry data analysis,
+					including compensation, transformation, and gating.
+				</p>
+				<ul>
+					<li><a class="link-btn" href="https://github.com/RGLab/flowWorkspace">GitHub</a></li>
+					<li><a class="link-btn" href="https://www.bioconductor.org/packages/release/bioc/html/flowWorkspace.html">Bioconductor</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="blurb-row blurb-bottomrow">
+			<div class="demo">
+				<img src="img/flowWorkspace/tree1_transparent.svg" alt="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="blurb" id="ggcyto_blurb">
+		<div class="blurb-row blurb-toprow">
+			<div class="logo">
+				<img src="img/ggcyto_logo.png"/>
+			</div>
+			<div class="info">
+				<h1><a href="https://rglab.github.io/ggcyto/">ggcyto</a></h1>
+				<p>
+					ggcyto provides cytometry-specific plotting functionality mirroring ggplot2 semantics.
+				</p>
+				<ul>
+					<li><a class="link-btn" href="https://github.com/RGLab/ggcyto">GitHub</a></li>
+					<li><a class="link-btn" href="https://www.bioconductor.org/packages/release/bioc/html/ggcyto.html">Bioconductor</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="blurb-row blurb-bottomrow">
+			<div class="demo">
+				<img src="img/ggcyto/stats1_transparent_highdpi.png" alt="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="blurb" id="CytoML_blurb">
+		<div class="blurb-row blurb-toprow">
+			<div class="logo">
+				<img src="img/cytoml_logo.png"/>
+			</div>
+			<div class="info">
+				<h1><a href="https://rglab.github.io/CytoML/">CytoML</a></h1>
+				<p>
+					CytoML allows for import and export of gating analyses of cytometry data to or from FlowJo,
+					BD FACSDIVA, or Cytobank workspace formats.
+				</p>
+				<ul>
+					<li><a class="link-btn" href="https://github.com/RGLab/CytoML">GitHub</a></li>
+					<li><a class="link-btn" href="https://www.bioconductor.org/packages/release/bioc/html/CytoML.html">Bioconductor</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="blurb-row blurb-bottomrow">
+			<div class="demo demo-code">
+				<code>
+					> ws &lt;- open_diva_xml(ws_file)<br/>
+					> gs &lt;- diva_to_gatingset(ws)<br/>
+					...<br/>
+					> gatingset_to_flowjo(gs, flowjo_filename)
+				</code>
+			</div>
+		</div>
+	</div>
+	
+	<div class="blurb" id="openCyto_blurb">
+		<div class="blurb-row blurb-toprow">
+			<div class="logo">
+				<img src="img/opencyto_logo.png"/>
+			</div>
+			<div class="info">
+				<h1><a href="https://rglab.github.io/openCyto/">openCyto</a></h1>
+				<p>
+					openCyto enables the development of reproducible automated analysis pipelines.
+				</p>
+				<ul>
+					<li><a class="link-btn" href="https://github.com/RGLab/openCyto">GitHub</a></li>
+					<li><a class="link-btn" href="https://www.bioconductor.org/packages/release/bioc/html/openCyto.html">Bioconductor</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="blurb-row blurb-bottomrow">
+			<div class="demo">
+				<img src="img/openCyto/tree.svg" alt="" />
+			</div>
+		</div>
+	</div>
+	
+	<div class="blurb" id="otherpkgs_blurb">
+		<div class="blurb-row blurb-toprow">
+			<div class="info">
+				A number of packages either directly support or extend the core cytoverse packages.
+			</div>
+		</div>
+		<div class="blurb-row blurb-bottomrow">
+			<div class="blurb-sublist">
+				<ul>
+					<lh>Foundational Dependencies</lh>
+					<li><a href="https://github.com/RGLab/RProtoBufLib">RProtoBufLib</a></li>
+					<li><a href="https://github.com/RGLab/cytolib">cytolib</a></li>
+					<li><a href="https://github.com/RGLab/flowCore">flowCore</a></li>
+				</ul>
+			</div>
+			<div>
+				<ul class="blurb-sublist">
+					<lh>Statistical Methods</lh>
+					<li><a href="https://github.com/RGLab/flowStats">flowStats</a></li>
+					<li><a href="https://github.com/RGLab/flowClust">flowClust</a></li>
+					<li><a href="https://github.com/RGLab/flowCore">flowCore</a></li>
+				</ul>
+			</div>
+		</div>
+</div>
+
+
+
+  
+
+</main>
+
+<script type="text/javascript" charset="utf-8">
+  var topNav = document.getElementById('topNav-links');
+  var navBarToggle = document.getElementById('js-navbar-toggle');
+  
+  navBarToggle.addEventListener('click', function () {
+    
+    topNav.classList.toggle('active');
+  });
+</script>
+
+  	<div class="blurb footer-blurb" id="RGLab_blurb">
+  		<div class="blurb-row blurb-toprow">
+  			<div class="info">
+  				The cytoverse is developed by members of Raphael Gottardo's Lab
+  				at Fred Hutchinson Cancer Research Center.
+  			</div>
+  		</div>
+  		<div class="blurb-row blurb-bottomrow">
+  			<ul class="blurb-sublist">
+  				<li id="fh_logo">
+  				  <a href="http://www.rglab.org/">
+  				    <img src="./img/FH_logo.png"
+                 alt="RGLab Website">
+  				  </a>
+  				</li>
+  				<li id=github_logo>
+  				  <a href="https://github.com/RGLab/">
+  				    <img src="./img/github_logo.png"
+                 alt="RGLab GitHub">
+  				  </a>
+  				</li>
+  			</ul>
+  		</div>
+  	</div>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

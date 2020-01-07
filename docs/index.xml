@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cytoverse</title>
+    <link>/</link>
+    <description>Recent content on Cytoverse</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>First Cytoverse Post</title>
+      <link>/2019/12/20/first-cytoverse-post/</link>
+      <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/12/20/first-cytoverse-post/</guid>
+      <description> This is just testing out how the blog is working. Here’s some code and stuff
+library(flowWorkspace) ## As part of improvements to flowWorkspace, some behavior of ## GatingSet objects has changed. For details, please read the section ## titled &amp;quot;The cytoframe and cytoset classes&amp;quot; in the package vignette: ## ## vignette(&amp;quot;flowWorkspace-Introduction&amp;quot;, &amp;quot;flowWorkspace&amp;quot;) </description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
+      
+      <guid>/about/</guid>
+      <description>This is a &amp;ldquo;hello world&amp;rdquo; example website for the blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.</description>
+    </item>
+    
+    <item>
+      <title>Citing the Cytoverse</title>
+      <link>/citation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/citation/</guid>
+      <description>If you find the Cytoverse software packages to be useful in your research leading to a publication, develop tools that depend on these packages, or reproduce code from these packages in your own software, please appropriately cite the paper corresponding to initial development of the corresponding package(s).
+Citations are incorporated in to each of the packages, so these can be easily obtained from within R by (using flowWorkspace as an example):</description>
+    </item>
+    
+    <item>
+      <title>Getting Help</title>
+      <link>/help/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/help/</guid>
+      <description>Bug Reports and Feature Requests The Cytoverse team greatly appreciates users bringing any unexpected behavior to our attention as well as requesting additional functionality or documentation that they would be helpful. For any of these purposes please open an issue on the GitHub page for the relevant package repository, all of which can be found from the RGLab GitHub homepage.
+Whenever possible, but particularly if you are reporting a bug, please try to generate a reproducible example (or &amp;ldquo;reprex&amp;rdquo;) for generating the unexpected behavior.</description>
+    </item>
+    
+    <item>
+      <title>Getting started with the cytoverse</title>
+      <link>/start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/start/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/install/</guid>
+      <description>Bundled Installation The most recent stable release of the packages can be installed from Bioconductor in R by running:
+BiocManager::install(&amp;quot;cytoverse&amp;quot;)
+The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
+Individual Packages A number of packages are very useful in coordination with the core cytoverse packages but are not included in the bundled installation above. Some examples include flowStats and flowClust.
+These can be installed in a similar way to the bundled installation above, either from Bioconductor</description>
+    </item>
+    
+    <item>
+      <title>Learning the Cytoverse</title>
+      <link>/learn/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/learn/</guid>
+      <description>Getting Started The Cytoverse team continually works to make the packages more approachable to new users, even as new tools are added. To that end, the best place to start is with the package vignettes. All of the Cytoverse packages have a number of vignettes intended to provide a brief introduction to the role they serve. After installation, these can be accessed from within R by running
+browseVignettes(&amp;quot;package_name&amp;quot;)
+where &amp;ldquo;package_name&amp;rdquo; would be &amp;ldquo;flowWorkspace&amp;rdquo;, &amp;ldquo;openCyto&amp;rdquo;, or whichever package you needed to learn about.</description>
+    </item>
+    
+  </channel>
+</rss>
