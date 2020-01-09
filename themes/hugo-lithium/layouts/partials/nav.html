@@ -1,21 +1,31 @@
 <nav id="topNav">
-    <a href="{{ "/" | relURL }}" class="nav-logo">
-  
-    <img src="{{ .Site.Params.logo.url | absURL }}"
-           width="{{ .Site.Params.logo.width }}"
-           height="{{ .Site.Params.logo.height }}"
-           alt="{{ .Site.Params.logo.alt }}">
-    </a>
+    <div id = "topNav-align">
+      <div id = "brand">
+          <a href="{{ "/" | relURL }}" class="nav-logo">
+            <img src="{{ .Site.Params.logo.url | absURL }}"
+                 width="{{ .Site.Params.logo.width }}"
+                 height="{{ .Site.Params.logo.height }}"
+                 alt="{{ .Site.Params.logo.alt }}">
+          </a>
+          <h1 class="banner">Cytoverse</h1>
+      </div>
+      <div class="navbar-toggle" id="js-navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+          {{ range .Site.Menus.main }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+      </ul>
+    </div>
     
-    <h1 class="banner">Cytoverse</h1>
-  
-    <ul class="nav-links" id="topNav-links">
+    <div id = "topNav-linkband">
+      <ul class="nav-links" id="topNav-links">
       {{ range .Site.Menus.main }}
       <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
-    </ul>
-    <span class="navbar-toggle" id="js-navbar-toggle">
-      <i class="fas fa-bars"></i>
-    </span>
+      </ul>
+    </div>
+
 </nav>
 

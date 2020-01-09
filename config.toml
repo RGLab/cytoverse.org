@@ -12,23 +12,23 @@ ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 
 [[menu.main]]
     name = "Installation"
-    url = "/install"
+    url = "/install/index.html"
     weight = -10
 [[menu.main]]
     name = "Learn"
-    url = "/learn"
+    url = "/learn/index.html"
     weight = -9
 [[menu.main]]
     name = "Blog"
-    url = "/post"
+    url = "/post/index.html"
     weight = -8
 [[menu.main]]
     name = "Help"
-    url = "/help"
+    url = "/help/index.html"
     weight = -7
 [[menu.main]]
     name = "Citation"
-    url = "/citation"
+    url = "/citation/index.html"
     weight = -6
 [[menu.main]]
     name = "Github"
