@@ -34,34 +34,54 @@
   <body>
     <div class="wrapper">
       <nav id="topNav">
-    <a href="../" class="nav-logo">
-  
-    <img src="../img/cytoverse_logo.png"
-           width="100rem"
-           height="100rem"
-           alt="Logo">
-    </a>
+    <div id = "topNav-align">
+      <div id = "brand">
+          <a href="../" class="nav-logo">
+            <img src="../img/cytoverse_logo.png"
+                 width="100rem"
+                 height="100rem"
+                 alt="Logo">
+          </a>
+          <h1 class="banner">Cytoverse</h1>
+      </div>
+      <div class="navbar-toggle" id="js-navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+          
+          <li><a href="../install/index.html">Installation</a></li>
+          
+          <li><a href="../learn/index.html">Learn</a></li>
+          
+          <li><a href="../post/index.html">Blog</a></li>
+          
+          <li><a href="../help/index.html">Help</a></li>
+          
+          <li><a href="../citation/index.html">Citation</a></li>
+          
+          <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
+          
+      </ul>
+    </div>
     
-    <h1 class="banner">Cytoverse</h1>
-  
-    <ul class="nav-links" id="topNav-links">
+    <div id = "topNav-linkband">
+      <ul class="nav-links" id="topNav-links">
       
-      <li><a href="../install">Installation</a></li>
+      <li><a href="../install/index.html">Installation</a></li>
       
-      <li><a href="../learn">Learn</a></li>
+      <li><a href="../learn/index.html">Learn</a></li>
       
-      <li><a href="../post">Blog</a></li>
+      <li><a href="../post/index.html">Blog</a></li>
       
-      <li><a href="../help">Help</a></li>
+      <li><a href="../help/index.html">Help</a></li>
       
-      <li><a href="../citation">Citation</a></li>
+      <li><a href="../citation/index.html">Citation</a></li>
       
       <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
       
-    </ul>
-    <span class="navbar-toggle" id="js-navbar-toggle">
-      <i class="fas fa-bars"></i>
-    </span>
+      </ul>
+    </div>
+
 </nav>
 
 
@@ -81,7 +101,7 @@
 </main>
 
 <script type="text/javascript" charset="utf-8">
-  var topNav = document.getElementById('topNav-links');
+  var topNav = document.getElementById('topNav-linkband');
   var navBarToggle = document.getElementById('js-navbar-toggle');
   
   navBarToggle.addEventListener('click', function () {
