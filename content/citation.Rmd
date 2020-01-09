@@ -8,5 +8,6 @@ appropriately cite the paper corresponding to initial development of the corresp
 
 Citations are incorporated in to each of the packages, so these can be easily obtained from within R by 
 (using flowWorkspace as an example):   
-`citation("flowWorkspace")`   
+`citation("flowWorkspace")`
+
 The citations are also available from the [Bioconductor page for each package](https://www.bioconductor.org/packages/release/bioc/html/flowWorkspace.html).

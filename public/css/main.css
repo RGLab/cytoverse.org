@@ -46,6 +46,7 @@ ul {
 
 code {
   background-color: rgba(0, 0, 0, 0.02);
+  font-size: 1.5rem;
 }
 
 nav {
@@ -328,7 +329,7 @@ main {
 	  margin:0;
 	}
   .content {
-    font-size: 19px;
+    font-size: 1.5rem;
     line-height: 1.8;
   }
 
@@ -338,7 +339,7 @@ main {
 }
 
 .article-title {
-  font-size: 42px;
+  font-size: 2.5rem;
   color: #222;
   margin: 0;
   line-height: 1.3;
@@ -583,9 +584,35 @@ main {
 	}
 	
 	/* At small sizes, make fonts and logos relative to screen width */
+	#main_blurb p {
+		font-size: 5vw;
+	}
+	
+	.blurb  {
+		font-size: 3vw;
+	}
+	
+	.blurb h1 {
+		font-size: 4vw;
+	}
+	
+	.blurb .link-btn {
+		font-size: 3.2vw;
+	}
+	
+	.blurb-sublist img {
+		max-height: 20vw;
+		max-width: 20vw;
+	}
+	
 	.nav-links li {
 		font-size: 5vw;
 		margin: 1vw;
+	}
+	
+	.logo img {
+  		height: 30vw;
+  		width: 30vw;
 	}
 	
 	.banner {
@@ -607,6 +634,14 @@ main {
 	.active {
 		padding-top: 2vw;
 		float: bottom;
+	}
+	
+	code {
+		font-size: 3vw;
+	}
+	
+	.content {
+		font-size: 3vw;
 	}
 	
 	/* GUARD PRE */
@@ -633,7 +668,7 @@ main {
   }
 
   .article-title {
-    font-size: 2.5rem;
+    font-size: 7vw;
   }
 
   .article-duration {

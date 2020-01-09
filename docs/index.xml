@@ -47,7 +47,7 @@ Citations are incorporated in to each of the packages, so these can be easily ob
       
       <guid>/help/</guid>
       <description>Bug Reports and Feature Requests The Cytoverse team greatly appreciates users bringing any unexpected behavior to our attention as well as requesting additional functionality or documentation that they would be helpful. For any of these purposes please open an issue on the GitHub page for the relevant package repository, all of which can be found from the RGLab GitHub homepage.
-Whenever possible, but particularly if you are reporting a bug, please try to generate a reproducible example (or &amp;ldquo;reprex&amp;rdquo;) for generating the unexpected behavior.</description>
+If you are reporting a bug, please try to generate a reproducible example (or &amp;ldquo;reprex&amp;rdquo;) for generating the unexpected behavior.</description>
     </item>
     
     <item>
@@ -78,9 +78,7 @@ These can be installed in a similar way to the bundled installation above, eithe
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/learn/</guid>
-      <description>Getting Started The Cytoverse team continually works to make the packages more approachable to new users, even as new tools are added. To that end, the best place to start is with the package vignettes. All of the Cytoverse packages have a number of vignettes intended to provide a brief introduction to the role they serve. After installation, these can be accessed from within R by running
-browseVignettes(&amp;quot;package_name&amp;quot;)
-where &amp;ldquo;package_name&amp;rdquo; would be &amp;ldquo;flowWorkspace&amp;rdquo;, &amp;ldquo;openCyto&amp;rdquo;, or whichever package you needed to learn about.</description>
+      <description>Getting Started The Cytoverse team continually works to make the packages more approachable to new users, even as new tools are added. To that end, the best place to start is with the package vignettes. All of the Cytoverse packages have a number of vignettes intended to provide a brief introduction to the role they serve. After installation, these can be accessed from within R by running browseVignettes(&amp;quot;package_name&amp;quot;) where &amp;ldquo;package_name&amp;rdquo; would be &amp;ldquo;flowWorkspace&amp;rdquo;, &amp;ldquo;openCyto&amp;rdquo;, or whichever package you needed to learn about.</description>
     </item>
     
   </channel>
