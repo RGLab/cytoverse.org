@@ -5,7 +5,7 @@ title: "Getting Help"
 ## Bug Reports and Feature Requests
 
 The Cytoverse team greatly appreciates users bringing any unexpected behavior to our attention 
-as well as requesting additional functionality or documentation that they would be helpful. For any of these 
+as well as requesting additional functionality or documentation that they would find helpful. For any of these 
 purposes please open an issue on the GitHub page for the relevant package repository, all of which can be found
 from the [RGLab GitHub homepage](https://github.com/RGLab/).
 

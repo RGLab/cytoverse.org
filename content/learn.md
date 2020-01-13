@@ -17,10 +17,10 @@ be incorporated in to this website.
 
 ## Further questions
 
-Despite the resources above, there may be times when you have further questions about how to accomplish
+Even after reading the resources mentioned above, there may be times when you have further questions about how to accomplish
 some part of your analysis using the Cytoverse tools. [Bioconductor support](https://support.bioconductor.org/) 
 is an excellent resource for finding answers to your questions. Please search to see if your question has already
-been answered, but if not please do not hesitate to ask it there. Just be sure to tag your post with the appropriate
+been answered, but otherwise please do not hesitate to ask it there. Just be sure to tag your post with the appropriate
 package name or the "cytoverse" tag to ensure we see it.
 
 You can also open issues on the GitHub repository pages, but that is best left for bug reports or feature requests.

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.62.2" />
+<meta name="generator" content="Hugo 0.59.1" />
 
 
 <title>Installation - Cytoverse</title>
@@ -95,26 +95,35 @@
     
 
     <div class="article-content">
-      <h2 id="bundled-installation">Bundled Installation</h2>
-<p>The most recent stable release of the packages can be installed from <a href="http://bioconductor.org/">Bioconductor</a> in R by running:<br>
-<code>BiocManager::install(&quot;cytoverse&quot;)</code>  <br>
+      
+
+<h2 id="bundled-installation">Bundled Installation</h2>
+
+<p>The most recent stable release of the packages can be installed from <a href="http://bioconductor.org/">Bioconductor</a> in R by running:<br />
+<code>BiocManager::install(&quot;cytoverse&quot;)</code><br />
 The most current development versions can obtained from <a href="https://github.com/RGLab">Github</a> by running:    <code>devtools::install_github(&quot;RGLab/cytoverse&quot;)</code></p>
+
 <h2 id="individual-packages">Individual Packages</h2>
+
 <p>A number of packages are very useful in coordination with the core cytoverse packages but are not included
 in the bundled installation above. Some examples include
 <a href="https://github.com/RGLab/flowStats">flowStats</a> and <a href="https://github.com/RGLab/flowClust">flowClust</a>.</p>
-<p>These can be installed in a similar way to the bundled installation above, either from Bioconductor<br>
-<code>BiocManager::install(&quot;flowStats&quot;)</code><br>
-or from GitHub:<br>
+
+<p>These can be installed in a similar way to the bundled installation above, either from Bioconductor<br />
+<code>BiocManager::install(&quot;flowStats&quot;)</code><br />
+or from GitHub:<br />
 <code>devtools::install_github(&quot;RGLab/flowStats&quot;)</code></p>
-<h2 id="cytoverse---flowjo">Cytoverse -&gt; FlowJo</h2>
+
+<h2 id="cytoverse-flowjo">Cytoverse -&gt; FlowJo</h2>
+
 <p>The entire Cytoverse collection of packages is open-source and available from the repositiories listed above, with the
 sole exception of the functionality to convert Cytoverse <code>GatingSet</code> objects in to FlowJo workspaces. This functionality
 is provided in the form of a Docker image so it will work on any user operating system so long as Docker is installed.</p>
+
 <p>This is not required for using any other parts of the Cytoverse, but if it is functionality you require, please follow
-<a href="https://www.docker.com/get-started">Docker's installation instructions</a> and then pull the image from
-<a href="https://hub.docker.com/">Docker Hub</a> by running this command in a terminal:<br>
-<code>docker pull wjiang2/gs-to-flowjo</code><br>
+<a href="https://www.docker.com/get-started">Docker&rsquo;s installation instructions</a> and then pull the image from
+<a href="https://hub.docker.com/">Docker Hub</a> by running this command in a terminal:<br />
+<code>docker pull wjiang2/gs-to-flowjo</code><br />
 While you can use this tool directly from the command line following the usage instructions
 <a href="https://hub.docker.com/r/wjiang2/gs-to-flowjo">here</a>, you can also simply use the <code>gatingset_to_flowjo</code> method from
 the <code>CytoML</code> package after you have obtained the Docker image using the above <code>docker pull</code> command.</p>
