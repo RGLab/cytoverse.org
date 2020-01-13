@@ -66,8 +66,7 @@ If you are reporting a bug, please try to generate a reproducible example (or &a
       
       <guid>/install/</guid>
       <description>Bundled Installation The most recent stable release of the packages can be installed from Bioconductor in R by running:
-BiocManager::install(&amp;quot;cytoverse&amp;quot;)
-The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
+BiocManager::install(&amp;quot;cytoverse&amp;quot;) The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
 Individual Packages A number of packages are very useful in coordination with the core cytoverse packages but are not included in the bundled installation above. Some examples include flowStats and flowClust.
 These can be installed in a similar way to the bundled installation above, either from Bioconductor</description>
     </item>
