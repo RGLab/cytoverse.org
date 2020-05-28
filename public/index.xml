@@ -17,7 +17,7 @@
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/2019/12/20/first-cytoverse-post/</guid>
-      <description> This is just testing out how the blog is working. Here’s some code and stuff
+      <description>  This is just testing out how the blog is working. Here’s some code and stuff
 library(flowWorkspace) ## As part of improvements to flowWorkspace, some behavior of ## GatingSet objects has changed. For details, please read the section ## titled &amp;quot;The cytoframe and cytoset classes&amp;quot; in the package vignette: ## ## vignette(&amp;quot;flowWorkspace-Introduction&amp;quot;, &amp;quot;flowWorkspace&amp;quot;) </description>
     </item>
     
@@ -48,10 +48,9 @@ If you are reporting a bug, please try to generate a reproducible example (or &a
       
       <guid>/install/</guid>
       <description>Bundled Installation The most recent stable release of the packages can be installed from Bioconductor in R by running:
-BiocManager::install(&amp;quot;cytoverse&amp;quot;)
-The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
+BiocManager::install(&amp;quot;cytoverse&amp;quot;) The most current development versions can obtained from Github by running: devtools::install_github(&amp;quot;RGLab/cytoverse&amp;quot;)
 Individual Packages A number of packages are very useful in coordination with the core cytoverse packages but are not included in the bundled installation above. Some examples include flowStats and flowClust.
-These can be installed in a similar way to the bundled installation above, either from Bioconductor</description>
+These can be installed in a similar way to the bundled installation above, either from Bioconductor:</description>
     </item>
     
     <item>
