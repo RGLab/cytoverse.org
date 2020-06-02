@@ -3,8 +3,8 @@
 
 <main class="content" role="main">
 {{ if .IsHome }}
-{{ partial "home.html"}}  
-{{ else }}
+{{ partial "home.html"}}
+{{ else if eq .Section "post" }}
   {{ if .Content }}
   <article class="article">
     {{ if .Title }}
@@ -33,9 +33,26 @@
     {{ end }}
     {{ end }}
   </div>
+{{ else if eq .Section "examples" }}
+  <div id="example-sidenav" class="sidenav">
+  {{ range .Sections }}
+    <span onclick="toggleCollapse(this)">{{ .Title }}
+        <i class="fas fa-angle-right"></i>
+    </span>
+    <ul>
+    {{ range .Pages }}
+      <li onclick=openExample({{ .RelPermalink }})>{{ .Title }}</li>
+    {{end}}
+    </ul>
+  {{ end }}
+  </div>
+  <div id="example-display" class="nested-window">
+    <iframe id="example-display-window" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+  </div>
 {{ end }}
 </main>
 
+{{ partial "examples_js.html" }}
 {{ partial "navbar_js.html" }}
 
 {{ partial "footer.html" . }}

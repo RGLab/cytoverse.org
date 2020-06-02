@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.71.1" />
+
+
+<title>ggcyto - Cytoverse</title>
+<meta property="og:title" content="ggcyto - Cytoverse">
+
+
+  <link rel="icon" href="../../img/favicon/favicon.ico" type="image/x-icon">
+
+
+
+  
+
+
+
+
+
+<link href="../../examples/ggcyto/index.xml" rel="alternate" type="application/rss+xml" title="Cytoverse" />
+
+
+
+<link rel="stylesheet" href="../../css/fonts.css" media="all">
+<link rel="stylesheet" href="../../css/main.css" media="all">
+<script src="https://kit.fontawesome.com/4513ebb750.js" crossorigin="anonymous"></script>
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav id="topNav">
+    <div id = "topNav-align">
+      <div id = "brand">
+          <a href="../../" class="nav-logo">
+            <img src="../../img/cytoverse_logo.png"
+                 width="100rem"
+                 height="100rem"
+                 alt="Logo">
+          </a>
+          <h1 class="banner">Cytoverse</h1>
+      </div>
+      <div class="navbar-toggle" id="js-navbar-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links">
+          
+          <li><a href="../../install/index.html">Installation</a></li>
+          
+          <li><a href="../../learn/index.html">Learn</a></li>
+          
+          <li><a href="../../examples/index.html">Examples</a></li>
+          
+          <li><a href="../../post/index.html">Blog</a></li>
+          
+          <li><a href="../../help/index.html">Help</a></li>
+          
+          <li><a href="../../citation/index.html">Citation</a></li>
+          
+          <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
+          
+      </ul>
+    </div>
+    
+    <div id = "topNav-linkband">
+      <ul class="nav-links" id="topNav-links">
+      
+      <li><a href="../../install/index.html">Installation</a></li>
+      
+      <li><a href="../../learn/index.html">Learn</a></li>
+      
+      <li><a href="../../examples/index.html">Examples</a></li>
+      
+      <li><a href="../../post/index.html">Blog</a></li>
+      
+      <li><a href="../../help/index.html">Help</a></li>
+      
+      <li><a href="../../citation/index.html">Citation</a></li>
+      
+      <li><a href="https://github.com/RGLab/cytoverse">Github</a></li>
+      
+      </ul>
+    </div>
+
+</nav>
+
+
+
+
+
+<main class="content" role="main">
+
+  <div id="example-sidenav" class="sidenav">
+  
+  </div>
+  <div id="example-display" class="nested-window">
+    <iframe id="example-display-window" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+  </div>
+
+</main>
+
+<script>
+function openExample(doc) {
+	document.getElementById("example-display-window").src = doc;
+}
+
+function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+}
+
+function toggleCollapse(obj) {
+    var content = obj.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+    var icon = content.getElementsByTagName("I");
+    if(icon.className === "fas fa-angle-right") {
+    	icon.className = "fas fa-angle-down";
+    } else {
+    	icon.className = "fas fa-angle-right";
+    }
+}
+</script>
+<script type="text/javascript" charset="utf-8">
+  var topNav = document.getElementById('topNav-linkband');
+  var navBarToggle = document.getElementById('js-navbar-toggle');
+  
+  navBarToggle.addEventListener('click', function () {
+    
+    topNav.classList.toggle('active');
+  });
+</script>
+
+  	<div class="blurb footer-blurb" id="RGLab_blurb">
+  		<div class="blurb-row blurb-toprow">
+  			<div class="info">
+  				The cytoverse is developed by members of Greg Finak's Lab
+  				at Fred Hutchinson Cancer Research Center.
+  			</div>
+  		</div>
+  		<div class="blurb-row blurb-bottomrow">
+  			<ul class="blurb-sublist">
+  				<li id="fh_logo">
+  				  <a href="http://www.rglab.org/">
+  				    <img src="../../img/FH_logo.png"
+                 alt="RGLab Website">
+  				  </a>
+  				</li>
+  				<li id=github_logo>
+  				  <a href="https://github.com/RGLab/">
+  				    <img src="../../img/github_logo.png"
+                 alt="RGLab GitHub">
+  				  </a>
+  				</li>
+  			</ul>
+  		</div>
+  	</div>
+
+    </div>
+    
+
+    
+
+    
+  </body>
+</html>
+

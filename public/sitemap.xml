@@ -26,7 +26,35 @@
   </url>
   
   <url>
+    <loc>/examples/cytoml/cytobankexperiment/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/cytoml/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/cytoqc/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/flowcore/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/flowworkspace/</loc>
+  </url>
+  
+  <url>
     <loc>/help/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/ggcyto/</loc>
   </url>
   
   <url>
@@ -35,6 +63,14 @@
   
   <url>
     <loc>/learn/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/opencyto/neg_control/</loc>
+  </url>
+  
+  <url>
+    <loc>/examples/opencyto/</loc>
   </url>
   
   <url>

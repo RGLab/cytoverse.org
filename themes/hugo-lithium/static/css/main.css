@@ -132,6 +132,74 @@ main {
   color: var(--turquoise-light);
 }
 
+.sidenav {
+  height: 100%;
+  width: 16rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+  background-color: var(--charcoal);
+}
+
+.sidenav span {
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav span:hover {
+	color: var(--green-light)
+}
+
+.sidenav ul {
+	display: none;
+	list-style: none;
+}
+
+.sidenav li {
+  padding: 0.5rem 1rem 0.5rem 2rem;
+  text-decoration: none;
+  font-size: 1rem;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav li::before {
+	color: white;
+	content: "\2022";
+	display: inline-block;
+	margin-right: 0.3rem;
+}
+
+.sidenav li:hover {
+  color: var(--green-light);
+}
+
+.nested-window {
+	margin: 0rem 16rem 0rem;
+	width: 80%;
+	height: 100%;
+	padding: 0 0.3rem;
+}
+
+.nested-window iframe {
+	width: 100%;
+    /* height is just a default. It will get updated when file is loaded */
+	height: 100%;
+}
+
+
+
 .blurb div {
   margin: 2rem;
   position: relative;
@@ -200,6 +268,7 @@ main {
 	background-color: white;
   	box-shadow: 0px 0px 8px;
   	border: none;
+  	z-index: 5;
 }
 
 .footer-blurb .blurb-row {

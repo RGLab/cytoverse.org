@@ -1,0 +1,55 @@
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">library</span>(flowCore)
+<span style="color:#a6e22e">library</span>(flowWorkspace)
+<span style="color:#a6e22e">library</span>(openCyto)
+
+<span style="color:#a6e22e">data</span>(GvHD)
+gs <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">GatingSet</span>(GvHD)
+<span style="color:#75715e">#select subset for demo</span>
+gs <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">subset</span>(gs, Patient <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>) <span style="color:#f92672">&amp;</span> Visit <span style="color:#f92672">%in%</span> <span style="color:#a6e22e">c</span>(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>))
+<span style="color:#75715e">#append the stim col for demo purpose</span>
+<span style="color:#a6e22e">pData</span>(gs)[[<span style="color:#e6db74">&#34;stim&#34;</span>]] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;neg&#34;</span>, <span style="color:#e6db74">&#34;antigen&#34;</span>, <span style="color:#e6db74">&#34;antigen&#34;</span>, <span style="color:#e6db74">&#34;neg&#34;</span>, <span style="color:#e6db74">&#34;antigen&#34;</span>, <span style="color:#e6db74">&#34;antigen&#34;</span>)
+<span style="color:#a6e22e">pData</span>(gs)
+</code></pre></div><pre><code>##       Days Visit    stim Grade Patient  name
+## s5a01   -6     1     neg     3       5 s5a01
+## s5a02    0     2 antigen     3       5 s5a02
+## s5a03    6     3 antigen     3       5 s5a03
+## s6a01   -8     1     neg     3       6 s6a01
+## s6a02    0     2 antigen     3       6 s6a02
+## s6a03    5     3 antigen     3       6 s6a03
+</code></pre><h2 id="convetional-gating-independently-for-each-sample">convetional gating independently for each sample</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">gs_add_gating_method</span>(gs, alias <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;A&#34;</span>, pop <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>, parent <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;root&#34;</span>, dims <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;FSC-H&#34;</span>, gating_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;mindensity&#34;</span>)
+<span style="color:#a6e22e">library</span>(ggcyto)
+<span style="color:#a6e22e">autoplot</span>(gs, <span style="color:#e6db74">&#34;A&#34;</span> , y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SSC-H&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">facet_grid</span>(Patient <span style="color:#f92672">~</span> stim)
+</code></pre></div><p><!-- raw HTML omitted --></p>
+<h2 id="negative-control-based-gating">negative control based gating</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># preprocessing function does actual gating on the neg sample</span>
+<span style="color:#75715e"># fs contains the samples that belong to the same group</span>
+.ppnegGate <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(fs, gs, gm, channels, groupBy, isCollapse, <span style="color:#66d9ef">...</span>) {
+  <span style="color:#75715e">#select the target sample</span>
+  sn <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rownames</span>(<span style="color:#a6e22e">subset</span>(<span style="color:#a6e22e">pData</span>(fs), stim <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;neg&#34;</span>))
+  g <span style="color:#f92672">&lt;-</span> openCyto<span style="color:#f92672">::</span><span style="color:#a6e22e">gate_mindensity</span>(fs[[sn]], channels, <span style="color:#66d9ef">...</span>) 
+  <span style="color:#75715e">#replicate that gate across samples for this group and return them as pp results</span>
+  <span style="color:#a6e22e">sapply</span>(<span style="color:#a6e22e">sampleNames</span>(fs), <span style="color:#a6e22e">function</span>(i)g)
+}
+<span style="color:#a6e22e">registerPlugins</span>(fun<span style="color:#f92672">=</span>.ppnegGate, methodName<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;ppnegGate&#39;</span>, type <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;preprocessing&#34;</span>)
+</code></pre></div><pre><code>## [1] TRUE
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#75715e"># the customized gating function simply receive the gate from preprocessing through pp_res argument</span>
+<span style="color:#75715e"># and return it as it is</span>
+.negGate <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">function</span>(fr, pp_res, channels, <span style="color:#66d9ef">...</span>){ 
+  g <span style="color:#f92672">&lt;-</span> pp_res
+  
+  <span style="color:#a6e22e">return</span>(g)
+}
+<span style="color:#a6e22e">registerPlugins</span>(fun<span style="color:#f92672">=</span>.negGate,methodName<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;negGate&#39;</span>)
+</code></pre></div><pre><code>## [1] TRUE
+</code></pre><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-r" data-lang="r"><span style="color:#a6e22e">gs_add_gating_method</span>(gs, alias <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;B&#34;</span>, pop <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>, parent <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;root&#34;</span>, dims <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;FSC-H&#34;</span>
+        , gating_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;negGate&#34;</span>
+        , groupBy <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Patient&#34;</span> <span style="color:#75715e">#this will split data into groups and pass each individual group to preprocessing</span>
+        , preprocessing_method <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ppnegGate&#34;</span>
+        )
+
+<span style="color:#a6e22e">autoplot</span>(gs, <span style="color:#e6db74">&#34;B&#34;</span> , y <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SSC-H&#34;</span>) <span style="color:#f92672">+</span> <span style="color:#a6e22e">facet_grid</span>(Patient <span style="color:#f92672">~</span> stim)
+</code></pre></div><p><!-- raw HTML omitted --></p>
+
+

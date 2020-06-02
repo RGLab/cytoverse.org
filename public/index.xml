@@ -32,6 +32,15 @@ Citations are incorporated in to each of the packages, so these can be easily ob
     </item>
     
     <item>
+      <title>cytobank experiment to gatingset</title>
+      <link>/examples/cytoml/cytobankexperiment/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/examples/cytoml/cytobankexperiment/</guid>
+      <description>library(CytoML) acsfile &amp;lt;- system.file(&amp;quot;extdata/cytobank_experiment.acs&amp;quot;, package = &amp;quot;CytoML&amp;quot;) #constrct ce object ce &amp;lt;- open_cytobank_experiment(acsfile) ce ## cytobank Experiment: tcell ## gatingML File: /tmp/Rtmp7P7bae/file2ca7f2923e7/experiments/3637/cytobank_gate_ml2_v41.xml ## panel samples ## 1 Panel 1 1 #ce accessors ce_get_compensations(ce)[[1]] ## B710-A R660-A R780-A V450-A V545-A G560-A ## B710-A 1.00000e+00 3.14389e-02 0.190966000 0.003057570 0.00204723 3.44241e-04 ## R660-A 5.53798e-03 1.00000e+00 0.176812000 0.000000000 0.00000000 0.00000e+00 ## R780-A 9.95863e-05 9.84766e-03 1.000000000 0.000000000 0.00000000 0.00000e+00 ## V450-A 0.00000e+00 8.90985e-05 0.</description>
+    </item>
+    
+    <item>
       <title>Getting Help</title>
       <link>/help/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -60,6 +69,15 @@ These can be installed in a similar way to the bundled installation above, eithe
       
       <guid>/learn/</guid>
       <description>Getting Started The Cytoverse team continually works to make the packages more approachable to new users, even as new tools are added. To that end, the best place to start is with the package vignettes. All of the Cytoverse packages have a number of vignettes intended to provide a brief introduction to the role they serve. After installation, these can be accessed from within R by running browseVignettes(&amp;quot;package_name&amp;quot;) where &amp;ldquo;package_name&amp;rdquo; would be &amp;ldquo;flowWorkspace&amp;rdquo;, &amp;ldquo;openCyto&amp;rdquo;, or whichever package you needed to learn about.</description>
+    </item>
+    
+    <item>
+      <title>negative control based gating</title>
+      <link>/examples/opencyto/neg_control/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/examples/opencyto/neg_control/</guid>
+      <description>library(flowCore) library(flowWorkspace) library(openCyto) data(GvHD) gs &amp;lt;- GatingSet(GvHD) #select subset for demo gs &amp;lt;- subset(gs, Patient %in% c(5, 6) &amp;amp; Visit %in% c(1,2,3)) #append the stim col for demo purpose pData(gs)[[&amp;quot;stim&amp;quot;]] &amp;lt;- c(&amp;quot;neg&amp;quot;, &amp;quot;antigen&amp;quot;, &amp;quot;antigen&amp;quot;, &amp;quot;neg&amp;quot;, &amp;quot;antigen&amp;quot;, &amp;quot;antigen&amp;quot;) pData(gs) ## Days Visit stim Grade Patient name ## s5a01 -6 1 neg 3 5 s5a01 ## s5a02 0 2 antigen 3 5 s5a02 ## s5a03 6 3 antigen 3 5 s5a03 ## s6a01 -8 1 neg 3 6 s6a01 ## s6a02 0 2 antigen 3 6 s6a02 ## s6a03 5 3 antigen 3 6 s6a03 convetional gating independently for each sample gs_add_gating_method(gs, alias = &amp;quot;A&amp;quot;, pop = &amp;quot;+&amp;quot;, parent = &amp;quot;root&amp;quot;, dims = &amp;quot;FSC-H&amp;quot;, gating_method = &amp;quot;mindensity&amp;quot;) library(ggcyto) autoplot(gs, &amp;quot;A&amp;quot; , y = &amp;quot;SSC-H&amp;quot;) + facet_grid(Patient ~ stim)  negative control based gating # preprocessing function does actual gating on the neg sample # fs contains the samples that belong to the same group .</description>
     </item>
     
   </channel>

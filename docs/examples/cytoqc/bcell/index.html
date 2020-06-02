@@ -1,0 +1,1040 @@
+
+
+<script src="../../../rmarkdown-libs/kePrint/kePrint.js"></script>
+<script src="../../../rmarkdown-libs/htmlwidgets/htmlwidgets.js"></script>
+<script src="../../../rmarkdown-libs/jquery/jquery.min.js"></script>
+<link href="../../../rmarkdown-libs/datatables-css/datatables-crosstalk.css" rel="stylesheet" />
+<script src="../../../rmarkdown-libs/datatables-binding/datatables.js"></script>
+<link href="../../../rmarkdown-libs/dt-core/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="../../../rmarkdown-libs/dt-core/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="../../../rmarkdown-libs/dt-core/js/jquery.dataTables.min.js"></script>
+<link href="../../../rmarkdown-libs/crosstalk/css/crosstalk.css" rel="stylesheet" />
+<script src="../../../rmarkdown-libs/crosstalk/js/crosstalk.min.js"></script>
+
+
+<pre class="r"><code>library(flowCore)
+library(flowWorkspace)
+library(cytoqc)</code></pre>
+<pre class="r"><code>path &lt;- &quot;~/remote/fh/fast/gottardo_r/mike_working/lyoplate_out/parsed&quot;
+centers &lt;- c(&#39;BIIR&#39;,&#39;CIMR&#39;,&#39;Miami&#39;,&#39;NHLBI&#39;,&#39;Stanford&#39;,&#39;UCLA&#39;,&#39;Yale&#39;)</code></pre>
+<div id="load-gs" class="section level2">
+<h2>Load gs</h2>
+<pre class="r"><code>panel &lt;- &quot;bcell&quot;
+gslist &lt;- sapply(centers, function(center) {
+  message(&quot;Center: &quot;, center)
+  gs &lt;- load_gs(file.path(path, center, panel))
+})</code></pre>
+</div>
+<div id="qc-check-gates" class="section level2">
+<h2>QC Check gates</h2>
+<pre class="r"><code>cqc_data &lt;- cqc_gs_list(gslist)
+
+#group by gates
+groups &lt;- cqc_check(cqc_data, &quot;gate&quot;)
+groups</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+gate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+24hi 38hi, 27- IgD-, 27- IgD+, 27+ IgD-, 27+ IgD+, 27hi 38hi, CD19, CD19 AND CD20, CD19 AND NOT CD20, CD20, CD3, LYM, not dead, root, singlets
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+24hi 38hi, 27- IgD-, 27- IgD+, 27+ IgD-, 27+ IgD+, 27hi 38hi, CD19, CD19 AND CD20, CD19 AND NOT CD20, CD20, CD3, LYM, not dead, root
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>#vis the difference
+plot_diff(groups)</code></pre>
+<p><img src="../../../en/gallery/cytoqc/bcell_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="../../../en/gallery/cytoqc/bcell_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<pre class="r"><code># match reference
+match_result &lt;- cqc_match(groups, ref = 1, select = c(2))
+match_result</code></pre>
+<div id="htmlwidget-1" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","16"],["","","","","","","","","","","","","","","To Delete"],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root",""],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root","singlets"],["white","white","white","white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n      <th>Var.4<\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[4,5,6],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[4]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[5]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[6]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<pre class="r"><code>cqc_fix(match_result)
+
+cqc_check(cqc_data, &quot;gate&quot;)</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+gate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+24hi 38hi, 27- IgD-, 27- IgD+, 27+ IgD-, 27+ IgD+, 27hi 38hi, CD19, CD19 AND CD20, CD19 AND NOT CD20, CD20, CD3, LYM, not dead, root
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="qc-check-for-channel" class="section level2">
+<h2>QC check for channel</h2>
+<pre class="r"><code>groups &lt;- cqc_check(cqc_data, &quot;channel&quot;)
+groups</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+channel
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;Am Cyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;FITC-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;FITC-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE Cy7 YG-A&gt;, &lt;PE-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-W, SSC-A, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, SSC-A, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;BD Horizon V450-A&gt;, &lt;BD Horizon V500-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, FSC-H, SSC-A, SSC-H, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;B515-A&gt;, &lt;B710-A&gt;, &lt;G560-A&gt;, &lt;G780-A&gt;, &lt;R660-A&gt;, &lt;R780-A&gt;, &lt;V450-A&gt;, &lt;V545-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="channels-are-very-different-across-centers-so-move-on-to-check-marker" class="section level2">
+<h2>Channels are very different across centers so move on to check marker</h2>
+<pre class="r"><code>groups &lt;- cqc_check(cqc_data, &quot;marker&quot;)
+groups</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+marker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IgD, Live Green
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CD19 PerCP-Cy55, CD20 APC-H7, CD24 PE, CD27 PE-Cy7, CD3 V450, CD38 APC, IgD V500, Live Dead FITC
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IgD, LIVE
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IgD, LIVE DEAD
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IGD, LIVE_GREEN
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IgD, Live/Dead
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="markers-are-more-standardized-and-go-ahead-to-further-clean-it" class="section level2">
+<h2>Markers are more standardized and go ahead to further clean it</h2>
+<pre class="r"><code>res &lt;- cqc_match(groups, ref = 2) 
+res</code></pre>
+<div id="htmlwidget-2" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["","","","","","","",""],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE"],["CD19 PerCP-Cy55","CD20 APC-H7","CD24 PE","CD27 PE-Cy7","CD3 V450","CD38 APC","IgD V500","Live Dead FITC"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE DEAD"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live Green"],["CD19","CD20","CD24","CD27","CD3","CD38","IGD","LIVE_GREEN"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live/Dead"],["white","white","white","white","white","white","white","white"],["black","black","black","black","black","black","black","black"],["green","green","green","green","green","green","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n      <th>Var.8<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[8,9,10,11,12,13,14],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[8]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[9]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[10]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[11]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[12]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[13]; $(this.api().cell(row, 6).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[14]; $(this.api().cell(row, 7).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+</div>
+<div id="apply-the-fix-and-update-checks" class="section level2">
+<h2>Apply the fix and update checks</h2>
+<pre class="r"><code>cqc_fix(res)
+cqc_check(cqc_data, &quot;marker&quot;)</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+marker
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:left;">
+CD19, CD20, CD24, CD27, CD3, CD38, IgD, LIVE
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="use-the-marker-as-reference-to-standardize-the-channels-across-centers" class="section level2">
+<h2>Use the marker as reference to standardize the channels across centers</h2>
+<pre class="r"><code>res &lt;- cqc_check(cqc_data, &quot;panel&quot;, by = &quot;marker&quot;)
+res</code></pre>
+<table class="table table-bordered table-condensed" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+marker
+</th>
+<th style="text-align:left;">
+group 1(n=1)
+</th>
+<th style="text-align:left;">
+group 2(n=1)
+</th>
+<th style="text-align:left;">
+group 3(n=1)
+</th>
+<th style="text-align:left;">
+group 4(n=1)
+</th>
+<th style="text-align:left;">
+group 5(n=1)
+</th>
+<th style="text-align:left;">
+group 6(n=1)
+</th>
+<th style="text-align:left;">
+group 7(n=1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CD19
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;B710-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD20
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-H7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-H7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;R780-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD24
+</td>
+<td style="text-align:left;">
+&lt;PE YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;G560-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD27
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7 YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE Cy7 YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;G780-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD3
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;BD Horizon V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD38
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;R660-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IgD
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Am Cyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;BD Horizon V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V545-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LIVE
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;B515-A&gt;
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>res &lt;- cqc_match(res, ref = 1)
+res</code></pre>
+<table class="table table-bordered table-condensed" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+marker
+</th>
+<th style="text-align:left;">
+Ref group
+</th>
+<th style="text-align:left;">
+group 2(n=1)
+</th>
+<th style="text-align:left;">
+group 3(n=1)
+</th>
+<th style="text-align:left;">
+group 4(n=1)
+</th>
+<th style="text-align:left;">
+group 5(n=1)
+</th>
+<th style="text-align:left;">
+group 6(n=1)
+</th>
+<th style="text-align:left;">
+group 7(n=1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD19
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;B710-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD20
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-H7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-H7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;R780-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD24
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;PE YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;G560-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD27
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;PE-Cy7 YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE Cy7 YG-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;G780-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD3
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;BD Horizon V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V450-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+CD38
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;R660-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+IgD
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Am Cyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;BD Horizon V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V545-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;color: green !important;">
+LIVE
+</td>
+<td style="text-align:left;color: green !important;">
+&lt;Alexa Fluor 488-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;B515-A&gt;
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>cqc_fix(res)
+cqc_check(cqc_data, &quot;panel&quot;, by = &quot;marker&quot;)</code></pre>
+<table class="table table-bordered table-condensed" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:left;">
+marker
+</th>
+<th style="text-align:left;">
+group 1(n=7)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+CD19
+</td>
+<td style="text-align:left;">
+&lt;PerCP-Cy5-5-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD20
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD24
+</td>
+<td style="text-align:left;">
+&lt;PE YG-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD27
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7 YG-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD3
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+CD38
+</td>
+<td style="text-align:left;">
+&lt;APC-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+IgD
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+LIVE
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="check-channel-again" class="section level2">
+<h2>check channel again</h2>
+<pre class="r"><code>groups &lt;- cqc_check(cqc_data, &quot;channel&quot;)
+groups</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+channel
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, SSC-A, SSC-H, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-W, SSC-A, SSC-W, Time
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, SSC-A, Time
+</td>
+</tr>
+</tbody>
+</table>
+<pre class="r"><code>diff(groups)</code></pre>
+<table class="table table-bordered" style="font-size: 12px; width: auto !important; ">
+<thead>
+<tr>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+group_id
+</th>
+<th style="text-align:right;color: black !important;background-color: #e5f5e0 !important;">
+nGatingSet
+</th>
+<th style="text-align:left;color: black !important;background-color: #e5f5e0 !important;">
+channel
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:left;">
+FSC-H, FSC-W, SSC-H, SSC-W
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+FSC-H, SSC-H
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:left;">
+FSC-W, SSC-W
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="remove-hw-channels" class="section level2">
+<h2>Remove <code>H/W</code> channels</h2>
+<pre class="r"><code>res &lt;- cqc_match(groups, ref = 4) 
+res</code></pre>
+<div id="htmlwidget-3" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","13"],["","","","","","","","","","","","To Delete"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time",""],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-H,FSC-W,SSC-H,SSC-W"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-H,SSC-H"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-W,SSC-W"],["white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n      <th>Var.6<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[6,7,8,9,10],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[6]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[7]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[8]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[9]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[10]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<pre class="r"><code>cqc_fix(res)</code></pre>
+</div>
+<div id="coerce-it-directly-into-single-gatingset-zero-copying" class="section level2">
+<h2>Coerce it directly into single <code>GatingSet</code> (zero-copying)</h2>
+<pre class="r"><code>gs &lt;- merge_list_to_gs(cqc_data)
+gs</code></pre>
+<pre><code>## A GatingSet with 63 samples</code></pre>
+</div>
+
+

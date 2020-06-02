@@ -1,3 +1,6 @@
+{{ if eq .Section "examples" }}
+{{ .Content }}
+{{ else }}
 {{ partial "header.html" . }}
 
 <main class="content" role="main">
@@ -25,3 +28,5 @@
 {{ partial "navbar_js.html" }}
 
 {{ partial "footer.html" . }}
+
+{{ end }}
