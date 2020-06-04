@@ -1,4 +1,5 @@
 ---
 title: "openCyto"
-docs: ["neg_control"]
+docs:
+    - 'Negative control based gating': 'neg_control.html'
 ---

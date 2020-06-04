@@ -42,7 +42,9 @@
     </span>
     <ul>
     {{ range .Params.docs }}
-      <li onclick='openExample( {{ $section_path }} + {{ . }} + ".html" )'>{{ . }}</li>
+      {{ range $k, $v := . }}
+      <li onclick='openExample( {{ $section_path }} + {{ $v }} )'>{{ $k }}</li>
+      {{ end }}
     {{end}}
     </ul>
   {{ end }}
