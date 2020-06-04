@@ -41,7 +41,7 @@
     </span>
     <ul>
     {{ range .Pages }}
-      <li onclick=openExample({{ .RelPermalink }})>{{ .Title }}</li>
+      <li onclick='openExample( {{ substr .RelPermalink 0 -1 }} + ".html" )'>{{ .Title }}</li>
     {{end}}
     </ul>
   {{ end }}

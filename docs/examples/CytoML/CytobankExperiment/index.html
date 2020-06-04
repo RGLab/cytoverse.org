@@ -1,8 +1,6 @@
----
-title: cytobank experiment to gatingset
----
 
-<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+<script src="../../../rmarkdown-libs/header-attrs/header-attrs.js"></script>
 
 
 <pre class="r"><code>library(CytoML)
@@ -80,3 +78,5 @@ dt_merged &lt;- gs_compare_cytobank_counts(gs, statsfile, id.vars = &quot;popula
 
 all.equal(dt_merged[, count.x], dt_merged[, count.y], tol = 5e-4)</code></pre>
 <pre><code>## [1] TRUE</code></pre>
+
+

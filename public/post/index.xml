@@ -13,10 +13,10 @@
     
     <item>
       <title>First Cytoverse Post</title>
-      <link>/2019/12/20/first-cytoverse-post/</link>
+      <link>/2019/12/20/First-Cytoverse-Post/</link>
       <pubDate>Fri, 20 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/2019/12/20/first-cytoverse-post/</guid>
+      <guid>/2019/12/20/First-Cytoverse-Post/</guid>
       <description>  This is just testing out how the blog is working. Here’s some code and stuff
 library(flowWorkspace) ## As part of improvements to flowWorkspace, some behavior of ## GatingSet objects has changed. For details, please read the section ## titled &amp;quot;The cytoframe and cytoset classes&amp;quot; in the package vignette: ## ## vignette(&amp;quot;flowWorkspace-Introduction&amp;quot;, &amp;quot;flowWorkspace&amp;quot;) </description>
     </item>
