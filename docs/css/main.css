@@ -644,14 +644,16 @@ main {
   }
   
   .sidenav li {
-  	font-size: 0.7rem;
+  	font-size: 0.85rem;
   }
-  
+
+/*  
   .nested-window iframe {
 	zoom: 0.85;
 	transform: scale(0.85);
 	transform-origin: 0 0;
   }
+*/
   
 }
 
@@ -824,6 +826,11 @@ main {
   #sidenav-banner {
   	font-weight: bold;
   	display: inline-block;
+  }
+  
+  .nested-window {
+  	margin: 0%;
+  	width: 100%;
   }
   
   /* GUARD POST *?
