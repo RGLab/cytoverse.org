@@ -255,6 +255,11 @@ function toggleCollapse(obj) {
     	icon.className = "fas fa-angle-right";
     }
 }
+
+function expandSidenav(obj) {
+  var pkgSections = document.getElementById('sidenav-packages');
+  pkgSections.classList.toggle('sidenav-active');
+}
 </script>
 <script type="text/javascript" charset="utf-8">
   var topNav = document.getElementById('topNav-linkband');

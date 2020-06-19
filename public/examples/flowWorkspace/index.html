@@ -95,7 +95,15 @@
 <main class="content" role="main">
 
   <div id="example-sidenav" class="sidenav">
-  
+  <span id="sidenav-banner">
+    Examples by Package
+  </span>
+  <div id="sidenav-packages">
+    
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="expandSidenav()">
+    <i class="fa fa-bars"></i>
+  </a>
   </div>
   <div id="example-display" class="nested-window">
     <iframe id="example-display-window" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
@@ -125,6 +133,11 @@ function toggleCollapse(obj) {
     } else {
     	icon.className = "fas fa-angle-right";
     }
+}
+
+function expandSidenav(obj) {
+  var pkgSections = document.getElementById('sidenav-packages');
+  pkgSections.classList.toggle('sidenav-active');
 }
 </script>
 <script type="text/javascript" charset="utf-8">
