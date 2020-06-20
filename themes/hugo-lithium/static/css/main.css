@@ -269,11 +269,11 @@ main {
 }
 
 .blurb h1 {
-	font-size: 1.5rem;
+	font-size: 1.6rem;
 }
 
 .blurb {
-	font-size: 1rem;
+	font-size: 1.2rem;
 }
 
 .footer-blurb {
@@ -698,15 +698,15 @@ main {
 	}
 	
 	.blurb  {
-		font-size: 3vw;
+		font-size: 4.5vw;
 	}
 	
 	.blurb h1 {
-		font-size: 4vw;
+		font-size: 6vw;
 	}
 	
 	.blurb .link-btn {
-		font-size: 3.2vw;
+		font-size: 4.5vw;
 	}
 	
 	.blurb-sublist img {
@@ -746,15 +746,15 @@ main {
 	}
 	
 	code {
-		font-size: 3vw;
+		font-size: 4.5vw;
 	}
 	
 	pre code {
-		font-size: 2vw;
+		font-size: 3.5vw;
 	}
 	
 	.content {
-		font-size: 3vw;
+		font-size: 4.5vw;
 	}
 	
 	/* GUARD PRE */
@@ -780,7 +780,7 @@ main {
   }
 
   .archive-item-link {
-	font-size: 4vw;
+	font-size: 4.5vw;
   }
 
   .article {
