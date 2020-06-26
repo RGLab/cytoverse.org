@@ -1,0 +1,78 @@
+---
+title: "clustering gating by kmeans"
+author: "mike"
+date: "6/26/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+This document demonstrates how to use `openCyto` plugin mechanism to incorporate the clustering-based gating algorithm into `openCyto` auto-gating framework. 
+
+## Prepare the data
+```{r}
+library(flowCore)
+library(flowWorkspace)
+dataDir <- system.file("extdata",package="flowWorkspaceData")
+gs <- load_gs(list.files(dataDir, pattern = "gs_manual",full = TRUE))
+#simplify gating tree
+gs_pop_remove(gs, "CD4")
+gs_pop_remove(gs, "CD8")
+plot(gs)
+```
+
+## Write a custom gating function that runs kmeans and wrap the result as a `multipleFilterResult`
+```{r}
+kmeans_gating <- function(fr, pp_res = NULL, channels, ...){
+	kmeans_results <- kmeans(exprs(fr)[,channels], ...)
+	res <- as.factor(kmeans_results$cluster) 
+	#name the sub pops properly
+	levels(res) <- paste("tsub", levels(res))
+	#return it as multipleFilterResult object
+	as(res, "filterResult")
+	
+}
+```
+
+## test it to ensure it returns the expected result
+```{r}
+gh <- gs[[1]]
+fr <- gh_pop_get_data(gh, "CD3+")
+markers <- c("CD4", "CD8", "CD3")
+channels <- sapply(markers, function(marker){
+  getChannelMarker(fr, marker)$name
+})
+
+kmeans_gating(fr, channels = channels, centers = 3)
+```
+Note that the `levels` of the `factor` will be used to tag the clustering population names.
+
+## Register it as plugin
+```{r}
+library(openCyto)
+register_plugins(fun = kmeans_gating, methodName = "tsub_gating")
+```
+
+## Use it in openCyto gating
+```{r}
+gs_add_gating_method(gs
+					 , alias = "*" #* means the pop names are parsed from gating results
+					 , pop = "*"
+					 , parent = "CD3+"
+					 , dims = "CD4,CD8,CD3" #channels to be passed to gating function
+					 , gating_method = "tsub_gating"
+					 , gating_args = "centers=3" #arguments passed on to gating function
+					 )
+
+```
+
+## Visualize the result
+```{r}
+plot(gs)
+library(ggcyto)
+gs_pop_get_stats(gs, node = c("CD3+", "tsub 1", "tsub 2", "tsub 3"))
+ggcyto(gs, aes(cd4, cd8), subset = "CD3+") + geom_gate("tsub 1", color = "red") + geom_gate("tsub 2", color = "blue") + geom_gate("tsub 3", color = "black")
+```
+
