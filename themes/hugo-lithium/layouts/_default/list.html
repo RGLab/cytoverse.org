@@ -35,16 +35,27 @@
   </div>
 {{ else if eq .Section "examples" }}
   <div id="example-sidenav" class="sidenav">
-  {{ range .Sections }}
-    <span onclick="toggleCollapse(this)">{{ .Title }}
-        <i class="fas fa-angle-right"></i>
-    </span>
-    <ul>
-    {{ range .Pages }}
-      <li onclick='openExample( {{ substr .RelPermalink 0 -1 }} + ".html" )'>{{ .Title }}</li>
-    {{end}}
-    </ul>
-  {{ end }}
+  <span id="sidenav-banner">
+    Examples by Package
+  </span>
+  <div id="sidenav-packages">
+    {{ range .Sections }}
+      {{ $section_path := .RelPermalink }}
+      <span onclick="toggleCollapse(this)">{{ .Title }}
+          <i class="fas fa-angle-right"></i>
+      </span>
+      <ul>
+      {{ range .Params.docs }}
+        {{ range $k, $v := . }}
+        <li onclick='openExample( {{ $section_path }} + {{ $v }} )'>{{ $k }}</li>
+        {{ end }}
+      {{end}}
+      </ul>
+    {{ end }}
+  </div>
+  <a href="javascript:void(0);" class="icon" onclick="expandSidenav()">
+    <i class="fa fa-bars"></i>
+  </a>
   </div>
   <div id="example-display" class="nested-window">
     <iframe id="example-display-window" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>

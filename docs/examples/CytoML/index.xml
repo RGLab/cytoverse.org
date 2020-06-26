@@ -10,14 +10,5 @@
 	<atom:link href="/examples/CytoML/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>cytobank experiment to gatingset</title>
-      <link>/examples/CytoML/CytobankExperiment/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/examples/CytoML/CytobankExperiment/</guid>
-      <description>library(CytoML) acsfile &amp;lt;- system.file(&amp;quot;extdata/cytobank_experiment.acs&amp;quot;, package = &amp;quot;CytoML&amp;quot;) #constrct ce object ce &amp;lt;- open_cytobank_experiment(acsfile) ce ## cytobank Experiment: tcell ## gatingML File: /tmp/Rtmp7LqBgy/file286a14c5dde1/experiments/3637/cytobank_gate_ml2_v41.xml ## panel samples ## 1 Panel 1 1 #ce accessors ce_get_compensations(ce)[[1]] ## B710-A R660-A R780-A V450-A V545-A G560-A ## B710-A 1.00000e+00 3.14389e-02 0.190966000 0.003057570 0.00204723 3.44241e-04 ## R660-A 5.53798e-03 1.00000e+00 0.176812000 0.000000000 0.00000000 0.00000e+00 ## R780-A 9.95863e-05 9.84766e-03 1.000000000 0.000000000 0.00000000 0.00000e+00 ## V450-A 0.00000e+00 8.90985e-05 0.</description>
-    </item>
-    
   </channel>
 </rss>

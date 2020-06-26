@@ -26,10 +26,6 @@
   </url>
   
   <url>
-    <loc>/examples/CytoML/CytobankExperiment/</loc>
-  </url>
-  
-  <url>
     <loc>/examples/CytoML/</loc>
   </url>
   
@@ -63,10 +59,6 @@
   
   <url>
     <loc>/learn/</loc>
-  </url>
-  
-  <url>
-    <loc>/examples/openCyto/neg_control/</loc>
   </url>
   
   <url>
