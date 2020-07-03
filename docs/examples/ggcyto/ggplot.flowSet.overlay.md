@@ -1,7 +1,6 @@
 ---
 title: "Add overlay plot with ggplot2"
 author: "Mike Jiang"
-date: "04/13/2015"
 output:
   html_document:
     keep_md: yes
