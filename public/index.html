@@ -92,7 +92,35 @@
 
 
 
+<script>
+function openExample(doc) {
+	document.getElementById("example-display-window").src = doc;
+}
 
+function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+}
+
+function toggleCollapse(obj) {
+    var content = obj.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+    var icon = content.getElementsByTagName("I");
+    if(icon.className === "fas fa-angle-right") {
+    	icon.className = "fas fa-angle-down";
+    } else {
+    	icon.className = "fas fa-angle-right";
+    }
+}
+
+function expandSidenav(obj) {
+  var pkgSections = document.getElementById('sidenav-packages');
+  pkgSections.classList.toggle('sidenav-active');
+}
+</script>
 <main class="content" role="main">
 
 <div class="blurbstack">
@@ -228,35 +256,6 @@
 
 </main>
 
-<script>
-function openExample(doc) {
-	document.getElementById("example-display-window").src = doc;
-}
-
-function resizeIframe(obj) {
-    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-}
-
-function toggleCollapse(obj) {
-    var content = obj.nextElementSibling;
-    if (content.style.display === "block") {
-      content.style.display = "none";
-    } else {
-      content.style.display = "block";
-    }
-    var icon = content.getElementsByTagName("I");
-    if(icon.className === "fas fa-angle-right") {
-    	icon.className = "fas fa-angle-down";
-    } else {
-    	icon.className = "fas fa-angle-right";
-    }
-}
-
-function expandSidenav(obj) {
-  var pkgSections = document.getElementById('sidenav-packages');
-  pkgSections.classList.toggle('sidenav-active');
-}
-</script>
 <script type="text/javascript" charset="utf-8">
   var topNav = document.getElementById('topNav-linkband');
   var navBarToggle = document.getElementById('js-navbar-toggle');

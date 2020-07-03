@@ -11,7 +11,7 @@
 
 <meta name="author" content="Mike Jiang" />
 
-<meta name="date" content="2020-06-04" />
+<meta name="date" content="2020-07-03" />
 
 <title>Import FlowJo workspace to R</title>
 
@@ -1525,7 +1525,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Import FlowJo workspace to R</h1>
 <h4 class="author">Mike Jiang</h4>
-<h4 class="date">2020-06-04</h4>
+<h4 class="date">2020-07-03</h4>
 
 </div>
 
@@ -1535,8 +1535,10 @@ div.tocify {
 <p><code>CytoML</code> provides <code>flowjo_to_gatingset</code> function to parse <code>FlowJo</code> workspace (<code>xml</code> or <code>wsp</code> file) and FCS files into a self-contained <code>GatingSet</code> object, which captures the entire analysis recorded in flowJo, include <code>compensation</code>, <code>transformation</code> and <code>gating</code>.</p>
 <div id="open-the-workspace" class="section level2" number="1.1">
 <h2 number="1.1"><span class="header-section-number">1.1</span> open the workspace</h2>
-<pre class="r"><code>library(CytoML)
-dataDir &lt;- system.file(&quot;extdata&quot;,package=&quot;flowWorkspaceData&quot;)
+<pre class="r"><code>library(CytoML)</code></pre>
+<pre><code>## Warning: replacing previous import &#39;data.table:::=&#39; by &#39;ggplot2:::=&#39; when
+## loading &#39;ggcyto&#39;</code></pre>
+<pre class="r"><code>dataDir &lt;- system.file(&quot;extdata&quot;,package=&quot;flowWorkspaceData&quot;)
 wsfile &lt;- list.files(dataDir, pattern=&quot;manual.xml&quot;,full=TRUE)
 ws &lt;- open_flowjo_xml(wsfile)
 ws</code></pre>
@@ -1664,26 +1666,25 @@ plot(gs)</code></pre>
 ## V545-A 0.002749 0.0000000  0.000000  0.0000000 0.0006963 0.035000 1.000000</code></pre>
 <p>transformations</p>
 <pre class="r"><code>gh_get_transformations(gs[[1]], channel = &quot;B710-A&quot;)</code></pre>
-<pre><code>## function (x, deriv = 0)
-##   {
+<pre><code>## function (x, deriv = 0) 
+## {
 ##     deriv &lt;- as.integer(deriv)
-##     if (deriv &lt; 0 || deriv &gt; 3)
-##       stop(&quot;&#39;deriv&#39; must be between 0 and 3&quot;)
+##     if (deriv &lt; 0 || deriv &gt; 3) 
+##         stop(&quot;&#39;deriv&#39; must be between 0 and 3&quot;)
 ##     if (deriv &gt; 0) {
-##       z0 &lt;- double(z$n)
-##       z[c(&quot;y&quot;, &quot;b&quot;, &quot;c&quot;)] &lt;- switch(deriv, list(y = z$b, b = 2 *
-##                   z$c, c = 3 * z$d), list(y = 2 * z$c, b = 6 * z$d,
-##               c = z0), list(y = 6 * z$d, b = z0, c = z0))
-##       z[[&quot;d&quot;]] &lt;- z0
+##         z0 &lt;- double(z$n)
+##         z[c(&quot;y&quot;, &quot;b&quot;, &quot;c&quot;)] &lt;- switch(deriv, list(y = z$b, b = 2 * 
+##             z$c, c = 3 * z$d), list(y = 2 * z$c, b = 6 * z$d, 
+##             c = z0), list(y = 6 * z$d, b = z0, c = z0))
+##         z[[&quot;d&quot;]] &lt;- z0
 ##     }
-## 
-##     res &lt;- stats::: .splinefun(x,z)
-##     if (deriv &gt; 0 &amp;&amp; z$method == 2 &amp;&amp; any(ind &lt;- x &lt;= z$x[1L]))
-##       res[ind] &lt;- ifelse(deriv == 1, z$y[1L], 0)
+##     res &lt;- stats:::.splinefun(x, z)
+##     if (deriv &gt; 0 &amp;&amp; z$method == 2 &amp;&amp; any(ind &lt;- x &lt;= z$x[1L])) 
+##         res[ind] &lt;- ifelse(deriv == 1, z$y[1L], 0)
 ##     res
-##   }
-## &lt;bytecode: 0x5645a1a821f0&gt;
-## &lt;environment: 0x5645a1a41bb0&gt;
+## }
+## &lt;bytecode: 0x55ae59495080&gt;
+## &lt;environment: 0x55ae594a59b0&gt;
 ## attr(,&quot;type&quot;)
 ## [1] &quot;biexp&quot;
 ## attr(,&quot;parameters&quot;)
@@ -1862,7 +1863,7 @@ gs_pop_get_stats(gs)</code></pre>
 <div id="skip-faulty-gates" class="section level2" number="2.7">
 <h2 number="2.7"><span class="header-section-number">2.7</span> Skip faulty gates</h2>
 <pre class="r"><code>gs &lt;- flowjo_to_gatingset(ws, name = 4, path = dataDir, subset = 1)</code></pre>
-<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, h5_dir, : colname not found: &lt;wrong-A&gt;</code></pre>
+<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, backend_dir, : colname not found: &lt;wrong-A&gt;</code></pre>
 <p>This parsing error is due to the incorrect channel name is used by <code>CD4</code> gate that is defined in flowJo and FCS files don’t have that channel</p>
 <pre class="r"><code>gs &lt;- flowjo_to_gatingset(ws, name = 4, path = dataDir, execute = FALSE)
 plot(gs)</code></pre>
@@ -1886,7 +1887,7 @@ plot(gs)</code></pre>
 <div id="import-the-empty-gating-tree" class="section level2" number="2.8">
 <h2 number="2.8"><span class="header-section-number">2.8</span> Import the empty gating tree</h2>
 <pre class="r"><code>gs &lt;- flowjo_to_gatingset(ws, name = 1, path = dataDir)</code></pre>
-<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, h5_dir, : No samples in this workspace to parse!</code></pre>
+<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, backend_dir, : No samples in this workspace to parse!</code></pre>
 <p>This parsing error is actually due to the fact that the flowJo workspace doesn’t have any gates defined. We can see that through</p>
 <pre class="r"><code>fj_ws_get_samples(ws)</code></pre>
 <pre><code>##   sampleID                    name  count pop.counts
@@ -1906,7 +1907,7 @@ range(gs_cyto_data(gs)[[1]])</code></pre>
 <h2 number="2.9"><span class="header-section-number">2.9</span> Customized fc file extension</h2>
 <pre class="r"><code>gs &lt;- flowjo_to_gatingset(ws, name = 1, path = dataDir, additional.keys = NULL)</code></pre>
 <pre><code>## FCS not found for sample 0877408774.B08 from searching the file extension: .fcs</code></pre>
-<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, h5_dir, : No samples in this workspace to parse!</code></pre>
+<pre><code>## Error in (function (ws, group_id, subset, execute, path, cytoset, backend_dir, : No samples in this workspace to parse!</code></pre>
 <p>As the error message indicates, FCS file has the non-conventional extention <code>.B08</code> other than <code>.fcs</code>. Parser can be configured to search for the customized fcs files.</p>
 <pre class="r"><code>gs &lt;- flowjo_to_gatingset(ws, name = 1, path = dataDir, additional.keys = NULL, fcs_file_extension = &quot;.B08&quot;)
 sampleNames(gs)</code></pre>

@@ -1,6 +1,6 @@
 {{ partial "header.html" . }}
 
-
+{{ partial "examples_js.html" }}
 <main class="content" role="main">
 {{ if .IsHome }}
 {{ partial "home.html"}}
@@ -58,12 +58,11 @@
   </a>
   </div>
   <div id="example-display" class="nested-window">
-    <iframe id="example-display-window" frameborder="0" scrolling="no" onload="resizeIframe(this)"></iframe>
+    <iframe id="example-display-window" frameborder="0" scrolling="yes"></iframe>
   </div>
 {{ end }}
 </main>
 
-{{ partial "examples_js.html" }}
 {{ partial "navbar_js.html" }}
 
 {{ partial "footer.html" . }}
