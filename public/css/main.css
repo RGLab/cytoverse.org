@@ -200,7 +200,7 @@ main {
 	display: inline-block;
 	margin: 0% 0% 0% 20%;
 	width: 80%;
-	height: 80vh;
+	height: 90vh;
 	padding: 0 0.3rem;
 }
 
@@ -276,7 +276,9 @@ main {
 	font-size: 1.2rem;
 }
 
-.footer-blurb {
+.footer {
+	display: flex;
+	flex-flow: row nowrap;
 	background-color: white;
   	box-shadow: 0px 0px 8px;
   	border: none;
@@ -284,22 +286,40 @@ main {
   	position: fixed;
   	left: 0;
   	bottom: 0;
-}
-
-.footer-blurb .blurb-row {
-	margin-top: 0;
+  	margin-top: 0;
 	margin-bottom: 0;
 	border: none;
+	height: 7vh;
+	width: 100%;
 }
 
-.footer-blurb li {
+.footer .footer-info {
+	display: flex;
 	float: left;
-	padding: 1rem 3rem;
+	font-size: 1.2rem;
+	margin: auto;
+	padding: 1vh 3vw;
+}
+
+.footer-logos {
+	display: flex;
+	padding: 1vh 3vw;
+}
+
+.footer-logos div {
+	display: flex;
+	padding: 0vh 3vw;
+}
+
+.footer-logos img {
+	height: 3vh;
 }
 
 #fh_logo {
-	padding-top: 1.4rem;
+	margin-top: 0.2vh;
 }
+
+
 
 .blurb-row {
 	display: flex;
@@ -536,51 +556,6 @@ main {
   border-bottom-color: #222;
 }
 
-.footer {
-  padding: 25px 0;
-  text-align: center;
-}
-
-.footer-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  color: #ccc;
-  font-size: inherit;
-}
-
-.footer-links li {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-}
-
-.footer-links a {
-  color: #888;
-  text-decoration: none;
-  transition: color 150ms ease;
-  margin: 0 15px;
-}
-
-.footer-links a:hover,
-.footer-links a:focus {
-  color: #222;
-}
-
-.footer-links li::before {
-  content: '/';
-  position: relative;
-  left: -2px;
-}
-
-.footer-links li:first-child::before {
-  display: none;
-}
-.footer-links-kudos img {
-  position: relative;
-  top: 6px;
-  margin-left: 2px;
-}
 
 /* GUARD POST */
 
@@ -659,7 +634,7 @@ main {
 */
 
    .nested-window {
-   	 height: 60vh;
+   	 height: 75vh;
    }
   
 }
@@ -801,10 +776,6 @@ main {
   .article-duration {
     font-size: 10px;
   }
-
-  .footer-links {
-    font-size: 14px;
-  }
   
   .sidenav {
 	  width: 100%;
@@ -838,8 +809,12 @@ main {
   .nested-window {
   	margin: 0%;
   	width: 100%;
-  	height: 50vh;
+  	height: 60vh;
   }
+  
+  .footer .footer-info {
+	font-size: 3vw;
+   }
   
   /* GUARD POST *?
   
