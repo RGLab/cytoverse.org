@@ -13,71 +13,37 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 
 The most up-to-date development versions can also be built from sources available from [Github](https://github.com/RGLab). If you are building from source on Windows, you will need to install [Rtools](https://cran.r-project.org/bin/windows/Rtools/) and will need to follow some additional instructions for installing [RProtoBufLib](https://github.com/RGLab/RProtoBufLib/blob/master/INSTALL).
 
-## Core Packages
+## Bundled Installation
 
-There are a number of packages that manage the core data structures used by all other Cytoverse packages. The different versions of these can be installed in the following ways.
+The easiest way to install the `cytoverse` packages is by using the [cytoverse](https://github.com/RGLab/cytoverse) installer package. It will show you all of the packages that will be installed before proceeding. This package can be used to later update `cytoverse` packages from either Bioconductor or GitHub.
 
-Latest stable releases from Bioconductor:
-```
-core_packages <- c("RProtoBufLib", "cytolib", "flowCore", "ncdfFlow", "flowWorkspace")
-BiocManager::install(core_packages)
-```
+To install from the stable Bioconductor releases:
 
-Development branches from Bioconductor:
 ```
-core_packages <- c("RProtoBufLib", "cytolib", "flowCore", "ncdfFlow", "flowWorkspace")
-BiocManager::install(version='devel')
-BiocManager::install(core_packages)
+remotes::install_github("RGLab/cytoverse")
+cytoverse::cytoverse_update()
 ```
 
-Build from GitHub source:
+To install from the development branches from GitHub:
 ```
-core_packages <- c("RProtoBufLib", "cytolib", "flowCore", "ncdfFlow", "flowWorkspace")
-devtools::install_github(paste0("RGLab/", core_packages))
-```
-
-## Main Extensions
-
-These are packages used for visualization (ggcyto), reading/writing workspace files from other software (CytoML), and constructing automated gating pipelines (openCyto). They are the most commonly used additional components.
-
-Latest stable releases from Bioconductor:
-```
-extensions <- c("openCyto", "CytoML", "ggcyto")
-BiocManager::install(extensions)
+remotes::install_github("RGLab/cytoverse")
+cytoverse::cytoverse_update(repo = "github")
 ```
 
-Development branches from Bioconductor:
-```
-extensions <- c("openCyto", "CytoML", "ggcyto")
-BiocManager::install(version='devel')
-BiocManager::install(extensions)
-```
 
-Build from GitHub source:
+## Individual Packages
+
+Installing or updating additional RGLab packages can be done in a similar manner, either by utilizing the `cytoverse` installer package:
+
 ```
-extensions <- c("openCyto", "CytoML", "ggcyto")
-devtools::install_github(paste0("RGLab/", extensions))
+cytoverse::cytoverse_update(pkgs = "flowStats")
 ```
+or manually from Bioconductor:
 
-## Additional Individual Packages
-
-A number of other packages are very useful in coordination with the core cytoverse packages, primarily providing additional
-statistical methods. Some examples include
-[flowStats](https://github.com/RGLab/flowStats) and [flowClust](https://github.com/RGLab/flowClust).
-These can be installed in a similar way to the groups of packages above. Using `flowStats` as an example:
-
-Latest stable releases from Bioconductor:
 ```
 BiocManager::install("flowStats")
-```
-
-Development branch from Bioconductor:
-```
-BiocManager::install(version='devel')
-BiocManager::install("flowStats")
-```
-
-Build from GitHub source:
+```   
+or manually from GitHub:  
 ```
 devtools::install_github("RGLab/flowStats")
 ```
