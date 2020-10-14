@@ -210,6 +210,9 @@ main {
 	height: 100%;
 }
 
+.nested-window p {
+	margin: 2rem;
+}
 
 
 .blurb div {

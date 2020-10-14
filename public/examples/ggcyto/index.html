@@ -93,6 +93,9 @@
 
 <script>
 function openExample(doc) {
+  var a = document.getElementById("example-link");
+  a.setAttribute('href', doc);
+  a.innerHTML = "Direct link to this example";
 	document.getElementById("example-display-window").src = doc;
 }
 
@@ -134,6 +137,7 @@ function expandSidenav(obj) {
   </a>
   </div>
   <div id="example-display" class="nested-window">
+    <p><a id="example-link"></a></p>
     <iframe id="example-display-window" frameborder="0" scrolling="yes"></iframe>
   </div>
 

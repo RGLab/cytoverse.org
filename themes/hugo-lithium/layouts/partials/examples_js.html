@@ -1,5 +1,8 @@
 <script>
 function openExample(doc) {
+  var a = document.getElementById("example-link");
+  a.setAttribute('href', doc);
+  a.innerHTML = "Direct link to this example";
 	document.getElementById("example-display-window").src = doc;
 }
 
