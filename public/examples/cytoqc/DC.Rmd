@@ -50,7 +50,7 @@ match_res
 
 ## Manually update the match
 ```{r}
-match_res <- cqc_update_match(match_res, map = c("Lineage APC-H7" = "CD3CD19CD20"))
+match_res <- cqc_match_update(match_res, map = c("Lineage APC-H7" = "CD3CD19CD20"))
 match_res
 ```
 
