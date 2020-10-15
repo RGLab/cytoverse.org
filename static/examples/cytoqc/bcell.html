@@ -229,6 +229,192 @@ color: #d14;
     }
 });
 </script>
+<style type="text/css">
+.lightable-minimal {
+border-collapse: separate;
+border-spacing: 16px 1px;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-minimal td {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal th {
+margin-left: 5px;
+margin-right: 5px;
+}
+.lightable-minimal thead tr:last-child th {
+border-bottom: 2px solid #00000050;
+empty-cells: hide;
+}
+.lightable-minimal tbody tr:first-child td {
+padding-top: 0.5em;
+}
+.lightable-minimal.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-minimal.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic {
+border-top: 0.16em solid #111111;
+width: 100%;
+margin-bottom: 10px;
+margin: 10px 5px;
+}
+.lightable-classic caption {
+color: #222222;
+}
+.lightable-classic td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic thead tr:last-child th {
+border-bottom: 0.10em solid #111111;
+}
+.lightable-classic tbody tr:last-child td {
+border-bottom: 0.14em solid #111111;
+}
+.lightable-classic.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-classic-2 {
+border-top: 3px double #111111;
+width: 100%;
+margin-bottom: 10px;
+}
+.lightable-classic-2 caption {
+color: #222222;
+}
+.lightable-classic-2 td {
+padding-left: 5px;
+padding-right: 5px;
+color: #222222;
+}
+.lightable-classic-2 th {
+padding-left: 5px;
+padding-right: 5px;
+font-weight: normal;
+color: #222222;
+}
+.lightable-classic-2 tbody tr:last-child td {
+border-bottom: 3px double #111111;
+}
+.lightable-classic-2 thead tr:last-child th {
+border-bottom: 1px solid #111111;
+}
+.lightable-classic-2.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-classic-2.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #EEE;
+border-collapse: collapse;
+margin-bottom: 10px;
+}
+.lightable-material th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+}
+.lightable-material td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+border-top: 1px solid #eeeeee;
+}
+.lightable-material.lightable-hover tbody tr:hover {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody tr:nth-child(even) {
+background-color: #f5f5f5;
+}
+.lightable-material.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #ddd;
+}
+.lightable-material-dark {
+min-width: 100%;
+white-space: nowrap;
+table-layout: fixed;
+font-family: Roboto, sans-serif;
+border: 1px solid #FFFFFF12;
+border-collapse: collapse;
+margin-bottom: 10px;
+background-color: #363640;
+}
+.lightable-material-dark th {
+height: 56px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF60;
+}
+.lightable-material-dark td {
+height: 52px;
+padding-left: 16px;
+padding-right: 16px;
+color: #FFFFFF;
+border-top: 1px solid #FFFFFF12;
+}
+.lightable-material-dark.lightable-hover tbody tr:hover {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody tr:nth-child(even) {
+background-color: #FFFFFF12;
+}
+.lightable-material-dark.lightable-striped tbody td {
+border: 0;
+}
+.lightable-material-dark.lightable-striped thead tr:last-child th {
+border-bottom: 1px solid #FFFFFF12;
+}
+.lightable-paper {
+width: 100%;
+margin-bottom: 10px;
+color: #444;
+}
+.lightable-paper thead tr:last-child th {
+color: #666;
+vertical-align: bottom;
+border-bottom: 1px solid #00000020;
+line-height: 1.15em;
+padding: 10px 5px;
+}
+.lightable-paper td {
+vertical-align: middle;
+border-bottom: 1px solid #00000010;
+line-height: 1.15em;
+padding: 7px 5px;
+}
+.lightable-paper.lightable-hover tbody tr:hover {
+background-color: #F9EEC1;
+}
+.lightable-paper.lightable-striped tbody tr:nth-child(even) {
+background-color: #00000008;
+}
+.lightable-paper.lightable-striped tbody td {
+border: 0;
+}
+</style>
 <script>(function() {
   // If window.HTMLWidgets is already defined, then use it; otherwise create a
   // new object. This allows preceding code to set options that affect the
@@ -1312,7 +1498,7 @@ HTMLWidgets.widget({
     if (data.caption) $table.prepend(data.caption);
 
     if (!data.selection) data.selection = {
-      mode: 'none', selected: null, target: 'row'
+      mode: 'none', selected: null, target: 'row', selectable: null
     };
     if (HTMLWidgets.shinyMode && data.selection.mode !== 'none' &&
         data.selection.target === 'row+column') {
@@ -1640,6 +1826,12 @@ HTMLWidgets.widget({
             // to avoid problems like 3.423/100 -> 0.034230000000000003
             return (x / scale).toFixed(d);
           };
+          var slider_min = function() {
+            return filter.noUiSlider('options').range.min;
+          };
+          var slider_max = function() {
+            return filter.noUiSlider('options').range.max;
+          };
           $input.on({
             focus: function() {
               $x0.show().trigger('show');
@@ -1662,7 +1854,7 @@ HTMLWidgets.widget({
               $x0.hide().trigger('hide');
             },
             input: function() {
-              if ($input.val() === '') filter.val([r1, r2]);
+              if ($input.val() === '') filter.val([slider_min(), slider_max()]);
             },
             change: function() {
               var v = $input.val().replace(/\s/g, '');
@@ -1672,8 +1864,8 @@ HTMLWidgets.widget({
                 $input.parent().addClass('has-error');
                 return;
               }
-              if (v[0] === '') v[0] = r1;
-              if (v[1] === '') v[1] = r2;
+              if (v[0] === '') v[0] = slider_min();
+              if (v[1] === '') v[1] = slider_max();
               $input.parent().removeClass('has-error');
               // treat date as UTC time at midnight
               var strTime = function(x) {
@@ -1689,8 +1881,8 @@ HTMLWidgets.widget({
                 v[0] = strTime(v[0]);
                 v[1] = strTime(v[1]);
               }
-              if (v[0] != r1) v[0] *= scale;
-              if (v[1] != r2) v[1] *= scale;
+              if (v[0] != slider_min()) v[0] *= scale;
+              if (v[1] != slider_max()) v[1] *= scale;
               filter.val(v);
             }
           });
@@ -1744,7 +1936,7 @@ HTMLWidgets.widget({
           var updateSlider = function(e) {
             var val = filter.val();
             // turn off filter if in full range
-            $td.data('filter', val[0] > r1 || val[1] < r2);
+            $td.data('filter', val[0] > slider_min() || val[1] < slider_max());
             var v1 = formatDate(val[0]), v2 = formatDate(val[1]), ival;
             if ($td.data('filter')) {
               ival = v1 + ' ... ' + v2;
@@ -1982,7 +2174,7 @@ HTMLWidgets.widget({
       id = el.id + '_' + id;
       if (type) id = id + ':' + type;
       // do not update if the new value is the same as old value
-      if (event !== 'cell_edit' && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
+      if (event !== 'cell_edit' && !/_clicked$/.test(event) && shinyData.hasOwnProperty(id) && shinyData[id] === JSON.stringify(value))
         return;
       shinyData[id] = JSON.stringify(value);
       if (HTMLWidgets.shinyMode && Shiny.setInputValue) {
@@ -2039,6 +2231,14 @@ HTMLWidgets.widget({
       return {row: info.row, col: info.column};
     }
 
+    var cleanSelectedValues = function() {
+      changeInput('rows_selected', []);
+      changeInput('columns_selected', []);
+      changeInput('cells_selected', transposeArray2D([]), 'shiny.matrix');
+    }
+    // #828 we should clean the selection on the server-side when the table reloads
+    cleanSelectedValues();
+
     // a flag to indicates if select extension is initialized or not
     var flagSelectExt = table.settings()[0]._select !== undefined;
     // the Select extension should only be used in the client mode and
@@ -2074,20 +2274,29 @@ HTMLWidgets.widget({
     }
 
     var selMode = data.selection.mode, selTarget = data.selection.target;
+    var selDisable = data.selection.selectable === false;
     if (inArray(selMode, ['single', 'multiple'])) {
       var selClass = inArray(data.style, ['bootstrap', 'bootstrap4']) ? 'active' : 'selected';
-      var selected = data.selection.selected, selected1, selected2;
       // selected1: row indices; selected2: column indices
-      if (selected === null) {
-        selected1 = selected2 = [];
-      } else if (selTarget === 'row') {
-        selected1 = $.makeArray(selected);
-      } else if (selTarget === 'column') {
-        selected2 = $.makeArray(selected);
-      } else if (selTarget === 'row+column') {
-        selected1 = $.makeArray(selected.rows);
-        selected2 = $.makeArray(selected.cols);
+      var initSel = function(x) {
+        if (x === null || typeof x === 'boolean' || selTarget === 'cell') {
+          return {rows: [], cols: []};
+        } else if (selTarget === 'row') {
+          return {rows: $.makeArray(x), cols: []};
+        } else if (selTarget === 'column') {
+          return {rows: [], cols: $.makeArray(x)};
+        } else if (selTarget === 'row+column') {
+          return {rows: $.makeArray(x.rows), cols: $.makeArray(x.cols)};
+        }
       }
+      var selected = data.selection.selected;
+      var selected1 = initSel(selected).rows, selected2 = initSel(selected).cols;
+      // selectable should contain either all positive or all non-positive values, not both
+      // positive values indicate "selectable" while non-positive values means "nonselectable"
+      // the assertion is performed on R side. (only column indicides could be zero which indicates
+      // the row name)
+      var selectable = data.selection.selectable;
+      var selectable1 = initSel(selectable).rows, selectable2 = initSel(selectable).cols;
 
       // After users reorder the rows or filter the table, we cannot use the table index
       // directly. Instead, we need this function to find out the rows between the two clicks.
@@ -2110,15 +2319,56 @@ HTMLWidgets.widget({
       // row, column, or cell selection
       var lastClickedRow;
       if (inArray(selTarget, ['row', 'row+column'])) {
+        // Get the current selected rows. It will also
+        // update the selected1's value based on the current row selection state
+        // Note we can't put this function inside selectRows() directly,
+        // the reason is method.selectRows() will override selected1's value but this
+        // function will add rows to selected1 (keep the existing selection), which is
+        // inconsistent with column and cell selection.
         var selectedRows = function() {
           var rows = table.rows('.' + selClass);
           var idx = rows.indexes().toArray();
-          if (!server) return addOne(idx);
+          if (!server) {
+            selected1 = addOne(idx);
+            return selected1;
+          }
           idx = idx.map(function(i) {
             return DT_rows_current[i];
           });
           selected1 = selMode === 'multiple' ? unique(selected1.concat(idx)) : idx;
           return selected1;
+        }
+        // Change selected1's value based on selectable1, then refresh the row state
+        var onlyKeepSelectableRows = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected1 = [];
+            return;
+          }
+          if (selectable1.length === 0) return;
+          var nonselectable = selectable1[0] <= 0;
+          if (nonselectable) {
+            // should make selectable1 positive
+            selected1 = $(selected1).not(selectable1.map(function(i) { return -i; })).get();
+          } else {
+            selected1 = $(selected1).filter(selectable1).get();
+          }
+        }
+        // Change selected1's value based on selectable1, then
+        // refresh the row selection state according to values in selected1
+        var selectRows = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableRows();
+          table.$('tr.' + selClass).removeClass(selClass);
+          if (selected1.length === 0) return;
+          if (server) {
+            table.rows({page: 'current'}).every(function() {
+              if (inArray(DT_rows_current[this.index()], selected1)) {
+                $(this.node()).addClass(selClass);
+              }
+            });
+          } else {
+            var selected0 = selected1.map(function(i) { return i - 1; });
+            $(table.rows(selected0).nodes()).addClass(selClass);
+          }
         }
         table.on('mousedown.dt', 'tbody tr', function(e) {
           var $this = $(this), thisRow = table.row(this);
@@ -2171,33 +2421,21 @@ HTMLWidgets.widget({
             // remove id from selected1 since its class .selected has been removed
             if (inArray(id, selected1)) selected1.splice($.inArray(id, selected1), 1);
           }
-          changeInput('rows_selected', selectedRows());
-          changeInput('row_last_clicked', serverRowIndex(thisRow.index()));
+          selectedRows(); // update selected1's value based on selClass
+          selectRows(false); // only keep the selectable rows
+          changeInput('rows_selected', selected1);
+          changeInput('row_last_clicked', serverRowIndex(thisRow.index()), null, null, {priority: 'event'});
           lastClickedRow = serverRowIndex(thisRow.index());
         });
-        changeInput('rows_selected', selected1);
-        var selectRows = function() {
-          table.$('tr.' + selClass).removeClass(selClass);
-          if (selected1.length === 0) return;
-          if (server) {
-            table.rows({page: 'current'}).every(function() {
-              if (inArray(DT_rows_current[this.index()], selected1)) {
-                $(this.node()).addClass(selClass);
-              }
-            });
-          } else {
-            var selected0 = selected1.map(function(i) { return i - 1; });
-            $(table.rows(selected0).nodes()).addClass(selClass);
-          }
-        }
-        selectRows();  // in case users have specified pre-selected rows
+        selectRows(false);  // in case users have specified pre-selected rows
         // restore selected rows after the table is redrawn (e.g. sort/search/page);
         // client-side tables will preserve the selections automatically; for
         // server-side tables, we have to *real* row indices are in `selected1`
-        if (server) table.on('draw.dt', selectRows);
-        methods.selectRows = function(selected) {
+        changeInput('rows_selected', selected1);
+        if (server) table.on('draw.dt', function(e) { selectRows(false); });
+        methods.selectRows = function(selected, ignoreSelectable) {
           selected1 = $.makeArray(selected);
-          selectRows();
+          selectRows(ignoreSelectable);
           changeInput('rows_selected', selected1);
         }
       }
@@ -2205,6 +2443,34 @@ HTMLWidgets.widget({
       if (inArray(selTarget, ['column', 'row+column'])) {
         if (selTarget === 'row+column') {
           $(table.columns().footer()).css('cursor', 'pointer');
+        }
+        // update selected2's value based on selectable2
+        var onlyKeepSelectableCols = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected2 = [];
+            return;
+          }
+          if (selectable2.length === 0) return;
+          var nonselectable = selectable2[0] <= 0;
+          if (nonselectable) {
+            // need to make selectable2 positive
+            selected2 = $(selected2).not(selectable2.map(function(i) { return -i; })).get();
+          } else {
+            selected2 = $(selected2).filter(selectable2).get();
+          }
+        }
+        // update selected2 and then
+        // refresh the col selection state according to values in selected2
+        var selectCols = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCols();
+          // if selected2 is not a valide index (e.g., larger than the column number)
+          // table.columns(selected2) will fail and result in a blank table
+          // this is different from the table.rows(), where the out-of-range indexes
+          // doesn't affect at all
+          selected2 = $(selected2).filter(table.columns().indexes()).get();
+          table.columns().nodes().flatten().to$().removeClass(selClass);
+          if (selected2.length > 0)
+            table.columns(selected2).nodes().flatten().to$().addClass(selClass);
         }
         var callback = function() {
           var colIdx = selTarget === 'column' ? table.cell(this).index().column :
@@ -2219,6 +2485,7 @@ HTMLWidgets.widget({
             thisCol.addClass(selClass);
             selected2 = selMode === 'single' ? [colIdx] : unique(selected2.concat([colIdx]));
           }
+          selectCols(false); // update selected2 based on selectable
           changeInput('columns_selected', selected2);
         }
         if (selTarget === 'column') {
@@ -2226,49 +2493,51 @@ HTMLWidgets.widget({
         } else {
           $(table.table().footer()).on('click.dt', 'tr th', callback);
         }
+        selectCols(false);  // in case users have specified pre-selected columns
         changeInput('columns_selected', selected2);
-        var selectCols = function() {
-          table.columns().nodes().flatten().to$().removeClass(selClass);
-          if (selected2.length > 0)
-            table.columns(selected2).nodes().flatten().to$().addClass(selClass);
-        }
-        selectCols();  // in case users have specified pre-selected columns
-        if (server) table.on('draw.dt', selectCols);
-        methods.selectColumns = function(selected) {
+        if (server) table.on('draw.dt', function(e) { selectCols(false); });
+        methods.selectColumns = function(selected, ignoreSelectable) {
           selected2 = $.makeArray(selected);
-          selectCols();
+          selectCols(ignoreSelectable);
           changeInput('columns_selected', selected2);
         }
       }
 
       if (selTarget === 'cell') {
-        var selected3;
-        if (selected === null) {
-          selected3 = [];
-        } else {
-          selected3 = selected;
-        }
-        var findIndex = function(ij) {
-          for (var i = 0; i < selected3.length; i++) {
-            if (ij[0] === selected3[i][0] && ij[1] === selected3[i][1]) return i;
+        var selected3 = [], selectable3 = [];
+        if (selected !== null) selected3 = selected;
+        if (selectable !== null && typeof selectable !== 'boolean') selectable3 = selectable;
+        var findIndex = function(ij, sel) {
+          for (var i = 0; i < sel.length; i++) {
+            if (ij[0] === sel[i][0] && ij[1] === sel[i][1]) return i;
           }
           return -1;
         }
-        table.on('click.dt', 'tbody td', function() {
-          var $this = $(this), info = tweakCellIndex(table.cell(this));
-          if ($this.hasClass(selClass)) {
-            $this.removeClass(selClass);
-            selected3.splice(findIndex([info.row, info.col]), 1);
-          } else {
-            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
-            $this.addClass(selClass);
-            selected3 = selMode === 'single' ? [[info.row, info.col]] :
-              unique(selected3.concat([[info.row, info.col]]));
+         // Change selected3's value based on selectable3, then refresh the cell state
+        var onlyKeepSelectableCells = function() {
+          if (selDisable) { // users can't select; useful when only want backend select
+            selected3 = [];
+            return;
           }
-          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
-        });
-        changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
-        var selectCells = function() {
+          if (selectable3.length === 0) return;
+          var nonselectable = selectable3[0][0] <= 0;
+          var out = [];
+          if (nonselectable) {
+            selected3.map(function(ij) {
+              // should make selectable3 positive
+              if (findIndex([-ij[0], -ij[1]], selectable3) === -1) { out.push(ij); }
+            });
+          } else {
+            selected3.map(function(ij) {
+              if (findIndex(ij, selectable3) > -1) { out.push(ij); }
+            });
+          }
+          selected3 = out;
+        }
+        // Change selected3's value based on selectable3, then
+        // refresh the cell selection state according to values in selected3
+        var selectCells = function(ignoreSelectable) {
+          if (!ignoreSelectable) onlyKeepSelectableCells();
           table.$('td.' + selClass).removeClass(selClass);
           if (selected3.length === 0) return;
           if (server) {
@@ -2283,11 +2552,27 @@ HTMLWidgets.widget({
             });
           }
         };
-        selectCells();  // in case users have specified pre-selected columns
-        if (server) table.on('draw.dt', selectCells);
-        methods.selectCells = function(selected) {
+        table.on('click.dt', 'tbody td', function() {
+          var $this = $(this), info = tweakCellIndex(table.cell(this));
+          if ($this.hasClass(selClass)) {
+            $this.removeClass(selClass);
+            selected3.splice(findIndex([info.row, info.col], selected3), 1);
+          } else {
+            if (selMode === 'single') $(table.cells().nodes()).removeClass(selClass);
+            $this.addClass(selClass);
+            selected3 = selMode === 'single' ? [[info.row, info.col]] :
+              unique(selected3.concat([[info.row, info.col]]));
+          }
+          selectCells(false); // must call this to update selected3 based on selectable3
+          changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+        });
+        selectCells(false);  // in case users have specified pre-selected columns
+        changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
+
+        if (server) table.on('draw.dt', function(e) { selectCells(false); });
+        methods.selectCells = function(selected, ignoreSelectable) {
           selected3 = selected ? selected : [];
-          selectCells();
+          selectCells(ignoreSelectable);
           changeInput('cells_selected', transposeArray2D(selected3), 'shiny.matrix');
         }
       }
@@ -2339,7 +2624,7 @@ HTMLWidgets.widget({
     }
     // the current cell clicked on
     table.on('click.dt', 'tbody td', function() {
-      changeInput('cell_clicked', cellInfo(this));
+      changeInput('cell_clicked', cellInfo(this), null, null, {priority: 'event'});
     })
     changeInput('cell_clicked', {});
 
@@ -2687,6 +2972,15 @@ padding-right: inherit;
 <script>!function o(u,a,l){function s(n,e){if(!a[n]){if(!u[n]){var t="function"==typeof require&&require;if(!e&&t)return t(n,!0);if(f)return f(n,!0);var r=new Error("Cannot find module '"+n+"'");throw r.code="MODULE_NOT_FOUND",r}var i=a[n]={exports:{}};u[n][0].call(i.exports,function(e){var t=u[n][1][e];return s(t||e)},i,i.exports,o,u,a,l)}return a[n].exports}for(var f="function"==typeof require&&require,e=0;e<l.length;e++)s(l[e]);return s}({1:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}();var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this._types={},this._seq=0}return r(e,[{key:"on",value:function(e,t){var n=this._types[e];n||(n=this._types[e]={});var r="sub"+this._seq++;return n[r]=t,r}},{key:"off",value:function(e,t){var n=this._types[e];if("function"==typeof t){for(var r in n)if(n.hasOwnProperty(r)&&n[r]===t)return delete n[r],r;return!1}if("string"==typeof t)return!(!n||!n[t])&&(delete n[t],t);throw new Error("Unexpected type for listener")}},{key:"trigger",value:function(e,t,n){var r=this._types[e];for(var i in r)r.hasOwnProperty(i)&&r[i].call(n,t)}}]),e}();n.default=i},{}],2:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.FilterHandle=void 0;var r=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),i=l(e("./events")),o=l(e("./filterset")),u=l(e("./group")),a=function(e){{if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}}(e("./util"));function l(e){return e&&e.__esModule?e:{default:e}}var s=1;n.FilterHandle=function(){function n(e,t){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),this._eventRelay=new i.default,this._emitter=new a.SubscriptionTracker(this._eventRelay),this._group=null,this._filterSet=null,this._filterVar=null,this._varOnChangeSub=null,this._extraInfo=a.extend({sender:this},t),this._id="filter"+s++,this.setGroup(e)}return r(n,[{key:"setGroup",value:function(e){var t,n,r=this;if(this._group!==e&&((this._group||e)&&(this._filterVar&&(this._filterVar.off("change",this._varOnChangeSub),this.clear(),this._varOnChangeSub=null,this._filterVar=null,this._filterSet=null),this._group=e))){e=(0,u.default)(e),this._filterSet=(t=e.var("filterset"),(n=t.get())||(n=new o.default,t.set(n)),n),this._filterVar=(0,u.default)(e).var("filter");var i=this._filterVar.on("change",function(e){r._eventRelay.trigger("change",e,r)});this._varOnChangeSub=i}}},{key:"_mergeExtraInfo",value:function(e){return a.extend({},this._extraInfo?this._extraInfo:null,e||null)}},{key:"close",value:function(){this._emitter.removeAllListeners(),this.clear(),this.setGroup(null)}},{key:"clear",value:function(e){this._filterSet&&(this._filterSet.clear(this._id),this._onChange(e))}},{key:"set",value:function(e,t){this._filterSet&&(this._filterSet.update(this._id,e),this._onChange(t))}},{key:"on",value:function(e,t){return this._emitter.on(e,t)}},{key:"off",value:function(e,t){return this._emitter.off(e,t)}},{key:"_onChange",value:function(e){this._filterSet&&this._filterVar.set(this._filterSet.value,this._mergeExtraInfo(e))}},{key:"filteredKeys",get:function(){return this._filterSet?this._filterSet.value:null}}]),n}()},{"./events":1,"./filterset":3,"./group":4,"./util":11}],3:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),a=e("./util");function l(e,t){return e===t?0:e<t?-1:t<e?1:void 0}var i=function(){function e(){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,e),this.reset()}return r(e,[{key:"reset",value:function(){this._handles={},this._keys={},this._value=null,this._activeHandles=0}},{key:"update",value:function(e,t){null!==t&&(t=t.slice(0)).sort(l);var n=(0,a.diffSortedLists)(this._handles[e],t),r=n.added,i=n.removed;this._handles[e]=t;for(var o=0;o<r.length;o++)this._keys[r[o]]=(this._keys[r[o]]||0)+1;for(var u=0;u<i.length;u++)this._keys[i[u]]--;this._updateValue(t)}},{key:"_updateValue",value:function(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:this._allKeys,t=Object.keys(this._handles).length;if(0===t)this._value=null;else{this._value=[];for(var n=0;n<e.length;n++){this._keys[e[n]]===t&&this._value.push(e[n])}}}},{key:"clear",value:function(e){if(void 0!==this._handles[e]){var t=this._handles[e];t||(t=[]);for(var n=0;n<t.length;n++)this._keys[t[n]]--;delete this._handles[e],this._updateValue()}}},{key:"value",get:function(){return this._value}},{key:"_allKeys",get:function(){var e=Object.keys(this._keys);return e.sort(l),e}}]),e}();n.default=i},{"./util":11}],4:[function(l,e,s){(function(e){"use strict";Object.defineProperty(s,"__esModule",{value:!0});var n=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};s.default=function e(t){{if(t&&"string"==typeof t)return u.hasOwnProperty(t)||(u[t]=new a(t)),u[t];if("object"===(void 0===t?"undefined":r(t))&&t._vars&&t.var)return t;if(Array.isArray(t)&&1==t.length&&"string"==typeof t[0])return e(t[0]);throw new Error("Invalid groupName argument")}};var t,i=l("./var"),o=(t=i)&&t.__esModule?t:{default:t};e.__crosstalk_groups=e.__crosstalk_groups||{};var u=e.__crosstalk_groups;var a=function(){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this.name=e,this._vars={}}return n(t,[{key:"var",value:function(e){if(!e||"string"!=typeof e)throw new Error("Invalid var name");return this._vars.hasOwnProperty(e)||(this._vars[e]=new o.default(this,e)),this._vars[e]}},{key:"has",value:function(e){if(!e||"string"!=typeof e)throw new Error("Invalid var name");return this._vars.hasOwnProperty(e)}}]),t}()}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./var":12}],5:[function(f,e,c){(function(e){"use strict";Object.defineProperty(c,"__esModule",{value:!0});var t,n=f("./group"),r=(t=n)&&t.__esModule?t:{default:t},i=f("./selection"),o=f("./filter"),u=f("./input");f("./input_selectize"),f("./input_checkboxgroup"),f("./input_slider");var a=(0,r.default)("default");function l(e){return a.var(e)}e.Shiny&&e.Shiny.addCustomMessageHandler("update-client-value",function(e){"string"==typeof e.group?(0,r.default)(e.group).var(e.name).set(e.value):l(e.name).set(e.value)});var s={group:r.default,var:l,has:function(e){return a.has(e)},SelectionHandle:i.SelectionHandle,FilterHandle:o.FilterHandle,bind:u.bind};c.default=s,e.crosstalk=s}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./filter":2,"./group":4,"./input":6,"./input_checkboxgroup":7,"./input_selectize":8,"./input_slider":9,"./selection":10}],6:[function(e,t,a){(function(t){"use strict";Object.defineProperty(a,"__esModule",{value:!0}),a.register=function(e){r[e.className]=e,t.document&&"complete"!==t.document.readyState?o(function(){n()}):t.document&&setTimeout(n,100)},a.bind=n;var o=t.jQuery,r={};function n(){Object.keys(r).forEach(function(e){var n=r[e];o("."+n.className).not(".crosstalk-input-bound").each(function(e,t){i(n,t)})})}function i(e,t){var n=o(t).find("script[type='application/json'][data-for='"+t.id.replace(/([!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~])/g,"\\$1")+"']"),r=JSON.parse(n[0].innerText),i=e.factory(t,r);o(t).data("crosstalk-instance",i),o(t).addClass("crosstalk-input-bound")}if(t.Shiny){var e=new t.Shiny.InputBinding,u=t.jQuery;u.extend(e,{find:function(e){return u(e).find(".crosstalk-input")},initialize:function(e){var t,n;u(e).hasClass("crosstalk-input-bound")||(n=o(t=e),Object.keys(r).forEach(function(e){n.hasClass(e)&&!n.hasClass("crosstalk-input-bound")&&i(r[e],t)}))},getId:function(e){return e.id},getValue:function(e){},setValue:function(e,t){},receiveMessage:function(e,t){},subscribe:function(e,t){u(e).data("crosstalk-instance").resume()},unsubscribe:function(e){u(e).data("crosstalk-instance").suspend()}}),t.Shiny.inputBindings.register(e,"crosstalk.inputBinding")}}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{}],7:[function(r,e,t){(function(e){"use strict";var t=function(e){{if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}}(r("./input")),n=r("./filter");var a=e.jQuery;t.register({className:"crosstalk-input-checkboxgroup",factory:function(e,r){var i=new n.FilterHandle(r.group),o=void 0,u=a(e);return u.on("change","input[type='checkbox']",function(){var e=u.find("input[type='checkbox']:checked");if(0===e.length)o=null,i.clear();else{var t={};e.each(function(){r.map[this.value].forEach(function(e){t[e]=!0})});var n=Object.keys(t);n.sort(),o=n,i.set(n)}}),{suspend:function(){i.clear()},resume:function(){o&&i.set(o)}}}})}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./filter":2,"./input":6}],8:[function(r,e,t){(function(e){"use strict";var t=n(r("./input")),l=n(r("./util")),s=r("./filter");function n(e){if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}var f=e.jQuery;t.register({className:"crosstalk-input-select",factory:function(e,n){var t=l.dataframeToD3(n.items),r={options:[{value:"",label:"(All)"}].concat(t),valueField:"value",labelField:"label",searchField:"label"},i=f(e).find("select")[0],o=f(i).selectize(r)[0].selectize,u=new s.FilterHandle(n.group),a=void 0;return o.on("change",function(){if(0===o.items.length)a=null,u.clear();else{var t={};o.items.forEach(function(e){n.map[e].forEach(function(e){t[e]=!0})});var e=Object.keys(t);e.sort(),a=e,u.set(e)}}),{suspend:function(){u.clear()},resume:function(){a&&u.set(a)}}}})}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./filter":2,"./input":6,"./util":11}],9:[function(n,e,t){(function(e){"use strict";var d=function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var u,a=e[Symbol.iterator]();!(r=(u=a.next()).done)&&(n.push(u.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&a.return&&a.return()}finally{if(i)throw o}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")},t=function(e){{if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}}(n("./input")),a=n("./filter");var v=e.jQuery,p=e.strftime;function y(e,t){for(var n=e.toString();n.length<t;)n="0"+n;return n}t.register({className:"crosstalk-input-slider",factory:function(e,l){var s=new a.FilterHandle(l.group),t={},f=v(e).find("input"),n=f.data("data-type"),r=f.data("time-format"),i=f.data("round"),o=void 0;if("date"===n)o=p.utc(),t.prettify=function(e){return o(r,new Date(e))};else if("datetime"===n){var u=f.data("timezone");o=u?p.timezone(u):p,t.prettify=function(e){return o(r,new Date(e))}}else"number"===n&&void 0!==i&&(t.prettify=function(e){var t=Math.pow(10,i);return Math.round(e*t)/t});function c(){var e=f.data("ionRangeSlider").result,t=void 0,n=f.data("data-type");return t="date"===n?function(e){return(t=new Date(+e))instanceof Date?t.getUTCFullYear()+"-"+y(t.getUTCMonth()+1,2)+"-"+y(t.getUTCDate(),2):null;var t}:"datetime"===n?function(e){return+e/1e3}:function(e){return+e},"double"===f.data("ionRangeSlider").options.type?[t(e.from),t(e.to)]:t(e.from)}f.ionRangeSlider(t);var h=null;return f.on("change.crosstalkSliderInput",function(e){if(!f.data("updating")&&!f.data("animating")){for(var t=c(),n=d(t,2),r=n[0],i=n[1],o=[],u=0;u<l.values.length;u++){var a=l.values[u];r<=a&&a<=i&&o.push(l.keys[u])}o.sort(),s.set(o),h=o}}),{suspend:function(){s.clear()},resume:function(){h&&s.set(h)}}}})}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./filter":2,"./input":6}],10:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0}),n.SelectionHandle=void 0;var r=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),i=a(e("./events")),o=a(e("./group")),u=function(e){{if(e&&e.__esModule)return e;var t={};if(null!=e)for(var n in e)Object.prototype.hasOwnProperty.call(e,n)&&(t[n]=e[n]);return t.default=e,t}}(e("./util"));function a(e){return e&&e.__esModule?e:{default:e}}n.SelectionHandle=function(){function n(){var e=0<arguments.length&&void 0!==arguments[0]?arguments[0]:null,t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:null;!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,n),this._eventRelay=new i.default,this._emitter=new u.SubscriptionTracker(this._eventRelay),this._group=null,this._var=null,this._varOnChangeSub=null,this._extraInfo=u.extend({sender:this},t),this.setGroup(e)}return r(n,[{key:"setGroup",value:function(e){var t=this;if(this._group!==e&&(this._group||e)&&(this._var&&(this._var.off("change",this._varOnChangeSub),this._var=null,this._varOnChangeSub=null),this._group=e)){this._var=(0,o.default)(e).var("selection");var n=this._var.on("change",function(e){t._eventRelay.trigger("change",e,t)});this._varOnChangeSub=n}}},{key:"_mergeExtraInfo",value:function(e){return u.extend({},this._extraInfo?this._extraInfo:null,e||null)}},{key:"set",value:function(e,t){this._var&&this._var.set(e,this._mergeExtraInfo(t))}},{key:"clear",value:function(e){this._var&&this.set(void 0,this._mergeExtraInfo(e))}},{key:"on",value:function(e,t){return this._emitter.on(e,t)}},{key:"off",value:function(e,t){return this._emitter.off(e,t)}},{key:"close",value:function(){this._emitter.removeAllListeners(),this.setGroup(null)}},{key:"value",get:function(){return this._var?this._var.get():null}}]),n}()},{"./events":1,"./group":4,"./util":11}],11:[function(e,t,n){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var r=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),l="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function u(e){for(var t=1;t<e.length;t++)if(e[t]<=e[t-1])throw new Error("List is not sorted or contains duplicate")}n.extend=function(e){for(var t=arguments.length,n=Array(1<t?t-1:0),r=1;r<t;r++)n[r-1]=arguments[r];for(var i=0;i<n.length;i++){var o=n[i];if(null!=o)for(var u in o)o.hasOwnProperty(u)&&(e[u]=o[u])}return e},n.checkSorted=u,n.diffSortedLists=function(e,t){var n=0,r=0;e||(e=[]);t||(t=[]);var i=[],o=[];u(e),u(t);for(;n<e.length&&r<t.length;)e[n]===t[r]?(n++,r++):e[n]<t[r]?i.push(e[n++]):o.push(t[r++]);n<e.length&&(i=i.concat(e.slice(n)));r<t.length&&(o=o.concat(t.slice(r)));return{removed:i,added:o}},n.dataframeToD3=function(e){var t=[],n=void 0;for(var r in e){if(e.hasOwnProperty(r)&&t.push(r),"object"!==l(e[r])||void 0===e[r].length)throw new Error("All fields must be arrays");if(void 0!==n&&n!==e[r].length)throw new Error("All fields must be arrays of the same length");n=e[r].length}for(var i=[],o=void 0,u=0;u<n;u++){o={};for(var a=0;a<t.length;a++)o[t[a]]=e[t[a]][u];i.push(o)}return i};n.SubscriptionTracker=function(){function t(e){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,t),this._emitter=e,this._subs={}}return r(t,[{key:"on",value:function(e,t){var n=this._emitter.on(e,t);return this._subs[n]=e,n}},{key:"off",value:function(e,t){var n=this._emitter.off(e,t);return n&&delete this._subs[n],n}},{key:"removeAllListeners",value:function(){var t=this,n=this._subs;this._subs={},Object.keys(n).forEach(function(e){t._emitter.off(n[e],e)})}}]),t}()},{}],12:[function(a,e,l){(function(o){"use strict";Object.defineProperty(l,"__esModule",{value:!0});var e,u="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},t=function(){function r(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(e,t,n){return t&&r(e.prototype,t),n&&r(e,n),e}}(),n=a("./events"),i=(e=n)&&e.__esModule?e:{default:e};var r=function(){function r(e,t,n){!function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,r),this._group=e,this._name=t,this._value=n,this._events=new i.default}return t(r,[{key:"get",value:function(){return this._value}},{key:"set",value:function(e,t){if(this._value!==e){var n=this._value;this._value=e;var r={};if(t&&"object"===(void 0===t?"undefined":u(t)))for(var i in t)t.hasOwnProperty(i)&&(r[i]=t[i]);r.oldValue=n,r.value=e,this._events.trigger("change",r,this),o.Shiny&&o.Shiny.onInputChange&&o.Shiny.onInputChange(".clientValue-"+(null!==this._group.name?this._group.name+"-":"")+this._name,void 0===e?null:e)}}},{key:"on",value:function(e,t){return this._events.on(e,t)}},{key:"off",value:function(e,t){return this._events.off(e,t)}}]),r}();l.default=r}).call(this,"undefined"!=typeof global?global:"undefined"!=typeof self?self:"undefined"!=typeof window?window:{})},{"./events":1}]},{},[5]);
 //# sourceMappingURL=crosstalk.min.js.map</script>
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+      </style>
+
 <style type="text/css">code{white-space: pre;}</style>
 <style type="text/css">
   pre:not([class]) {
@@ -2906,12 +3200,12 @@ gate
 </table>
 <pre class="r"><code>#vis the difference
 plot_diff(groups)</code></pre>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAACVBMVEUAAAC+vr7////xRzILAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAUI0lEQVR4nO3d0XYayRlGUTzv/9BZSca2gO4Gjoz6l2vvKwUh4bK+OpHlSebyDwDJ5exfAMB3JaAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKC83+Wns38h8GeZNO92+ejsXwz8SQbNe11ufOkrf92LsSYT470ElL+YifFOt/n8wqj5gQHvZ2K801U1v7SgfuLKFzAx3ug2mV9WNX9lxZcwMd7nPmNf0TV/58+XMTHe575ivx/58Mb1Oy83z757++dbe40UUL6MifE2hxX79123PyC9+pCjgO5HUkD5MibG2xxG7EMGfz/3pnwHAX1cSQHl/UyMt3kc0F/PuI3i9R/Wr9/efu7mC/zR48AdE+NtXg7o7UcdBvTRKwgo72divI2A8rczMd7mchfAu/Zddp/5662Pj949+aCgAsr7mRhv80RA95/5662Pj949WUA5lYnxNi8G9PoDbx++Cejdczdf/c+dBbaYGG/zOKBXz7z+wNuHBZSBTIy3+ZDL64d+vXX18PWzbh8WUAYyMd5HQPnLmRjvc/8t6FFA/SUS346J8T53AT38GehOQLf/6VABZQIT440ul/vabQX0YSovd4/6B+kZwMR4IwHl72ZivNFl26937T/x5Uc3X/vNx2N5JsY73cduO6C3T9z58P0Ht1/6jSeDfwSUt7uJ3U5Ab592++DdP8b0qJ8CyhcwMd7tuot7Af3n+ged1w9ePf/qkf0BCyjvZ2J8N8fdhC9kiHw3AsoYhsh3I6CMYYh8NwLKGIbIdyOgjGGIfDcCyhiGyHcjoIxhiHw3AsoYhggQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIK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JKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoADRfwBQ88A4Ejw0UwAAAABJRU5ErkJggg==" width="672" /><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABUAAAAPACAMAAADDuCPrAAAAD1BMVEX+/v4AAAC+vr7+/v7/AACbdKGgAAAABXRSTlP///8A/0WQHKwAAAAJcEhZcwAAHYcAAB2HAY/l8WUAABLwSURBVHic7d3reqLIAkDR43S//zOfr2cmE+UW3bEQ4lq/IhSgdGU3Gk3+9wuA5H+vvgMAZyWgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgjHf58Oo7As8loIx2ubbvMXc6Gm9LQBnrMrH3IXc4Hu9LQBlLQPnBBJSRpvnco2j7F5u3JaCMdFOxnYr2gmte3pWAMtA0YXsE7fOYAspoAso484LtkLT9L3l5XwLKOPN+fS65+uJ25WUyevb17QXm5kEFlLEElGE2LwD/XTW9WrzZZCugqy9xzjYSUIYRUIbZzNdVBj/HTqq4EdB5bX/NBgooowkow3wd0P9GTKN4+2T99uvlsRvHeN4jglsCyjAPB3S61WZAvzyCC1CGE1CGEVB+OgFlmMssgLP2Lf20fDLmeuls8D2NfvKjgk8CyjB3BHR95H9fXS+dDd5KpH4ynIAyzIMBvd1wungS0NnYlaPrJyMJKMN8HdCbkbcbThc/GFD5ZA8CyjALEdsroPrJLgSUcV4VUPlkJwLKOPOQbQX0aT9E0k/2IqCMMyvZZTmOmwFdfnfoRkD1k90IKANdLvPaLQX0y1ReZktX30ivn+xHQBlIQPnZBJSBLsv+W7U+8OGlG8fc6cHyhgSUkeYxWw7odODK5usLNw4poAwjoAw2adlKQKfDpgtnb2NazaOAsh8BZbTbkq0F9NfKq5cfi6YBXf0cvICyHwHlbESRwxBQzkZAOQwB5WwElMMQUM5GQDkMAeVsBJTDEFDORkA5DAHlbASUwxBQzkZAOQwBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgEFCASUIBIQAEiAQWIBBQgElCASEABIgEFiAQUIBJQgEhAASIBBYgE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Pg3wyWR+FQGNXn0aYM4k3tv5AgpwEAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRAIKEAkoQCSgAJGAAkQCChAJKEAkoACRgAJEAgoQCShAJKAAkYACRP8H203Ue8ZNKDkAAAAASUVORK5CYII=" width="672" /></p>
+<p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTA0cHQiIGhlaWdodD0iMzYwcHQiIHZpZXdCb3g9IjAgMCA1MDQgMzYwIiB2ZXJzaW9uPSIxLjEiPgo8ZGVmcz4KPGc+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxMC4yNSAwIEwgMTAuMjUgLTUuNjQwNjI1IEwgNi4wMzEyNSAtNS42NDA2MjUgTCA2LjAzMTI1IC0zLjg0Mzc1IEwgOC40MjE4NzUgLTMuODQzNzUgQyA4LjI4MTI1IC0yLjUzMTI1IDcuMDQ2ODc1IC0xLjY3MTg3NSA1Ljc2NTYyNSAtMS42NzE4NzUgQyA0LjAxNTYyNSAtMS42NzE4NzUgMi43NjU2MjUgLTMuMTI1IDIuNzY1NjI1IC01LjI4MTI1IEMgMi43NjU2MjUgLTcuNTQ2ODc1IDMuODc1IC04LjgyODEyNSA1LjcwMzEyNSAtOC44MjgxMjUgQyA2Ljg5MDYyNSAtOC44MjgxMjUgNy43OTY4NzUgLTguMzc1IDguMjE4NzUgLTcuMTQwNjI1IEwgMTAuMjUgLTcuMTQwNjI1IEMgOS45ODQzNzUgLTkuMzEyNSA4LjIxODc1IC0xMC42NzE4NzUgNS42ODc1IC0xMC42NzE4NzUgQyAyLjY3MTg3NSAtMTAuNjcxODc1IDAuNjA5Mzc1IC04LjUzMTI1IDAuNjA5Mzc1IC01LjI2NTYyNSBDIDAuNjA5Mzc1IC0yLjA3ODEyNSAyLjY3MTg3NSAwLjE3MTg3NSA1LjUxNTYyNSAwLjE3MTg3NSBDIDYuOTIxODc1IDAuMTcxODc1IDcuODc1IC0wLjMyODEyNSA4LjY4NzUgLTEuNDM3NSBMIDguOTUzMTI1IDAgWiBNIDEwLjI1IDAgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTIiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDUuMzI4MTI1IC01Ljg0Mzc1IEwgNS4zMjgxMjUgLTcuODkwNjI1IEMgNS4yMTg3NSAtNy45MDYyNSA1LjE0MDYyNSAtNy45MDYyNSA1LjA3ODEyNSAtNy45MDYyNSBDIDQuMTU2MjUgLTcuOTA2MjUgMy4zNTkzNzUgLTcuMjk2ODc1IDIuOTIxODc1IC02LjI1IEwgMi45MjE4NzUgLTcuNzgxMjUgTCAwLjkwNjI1IC03Ljc4MTI1IEwgMC45MDYyNSAwIEwgMi45MjE4NzUgMCBMIDIuOTIxODc1IC00LjE0MDYyNSBDIDIuOTIxODc1IC01LjMxMjUgMy41MTU2MjUgLTUuOTA2MjUgNC43MDMxMjUgLTUuOTA2MjUgQyA0LjkwNjI1IC01LjkwNjI1IDUuMDYyNSAtNS44OTA2MjUgNS4zMjgxMjUgLTUuODQzNzUgWiBNIDUuMzI4MTI1IC01Ljg0Mzc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0zIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA4LjIwMzEyNSAtMy44MjgxMjUgQyA4LjIwMzEyNSAtNi40Njg3NSA2Ljc2NTYyNSAtNy45MDYyNSA0LjM0Mzc1IC03LjkwNjI1IEMgMS45NTMxMjUgLTcuOTA2MjUgMC41IC02LjQzNzUgMC41IC0zLjg5MDYyNSBDIDAuNSAtMS4zMjgxMjUgMS45NTMxMjUgMC4xMjUgNC4zNDM3NSAwLjEyNSBDIDYuNzE4NzUgMC4xMjUgOC4yMDMxMjUgLTEuMzQzNzUgOC4yMDMxMjUgLTMuODI4MTI1IFogTSA2LjE4NzUgLTMuODU5Mzc1IEMgNi4xODc1IC0yLjQwNjI1IDUuNDM3NSAtMS41IDQuMzQzNzUgLTEuNSBDIDMuMjUgLTEuNSAyLjUxNTYyNSAtMi40MDYyNSAyLjUxNTYyNSAtMy44OTA2MjUgQyAyLjUxNTYyNSAtNS4zNzUgMy4yNSAtNi4yODEyNSA0LjM0Mzc1IC02LjI4MTI1IEMgNS40NTMxMjUgLTYuMjgxMjUgNi4xODc1IC01LjM5MDYyNSA2LjE4NzUgLTMuODU5Mzc1IFogTSA2LjE4NzUgLTMuODU5Mzc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC00Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA3Ljc5Njg3NSAwIEwgNy43OTY4NzUgLTcuNzgxMjUgTCA1Ljc4MTI1IC03Ljc4MTI1IEwgNS43ODEyNSAtMy4xMDkzNzUgQyA1Ljc4MTI1IC0yLjE4NzUgNS4xMjUgLTEuNTc4MTI1IDQuMTU2MjUgLTEuNTc4MTI1IEMgMy4yODEyNSAtMS41NzgxMjUgMi44NTkzNzUgLTIuMDQ2ODc1IDIuODU5Mzc1IC0yLjk4NDM3NSBMIDIuODU5Mzc1IC03Ljc4MTI1IEwgMC44MjgxMjUgLTcuNzgxMjUgTCAwLjgyODEyNSAtMi41NjI1IEMgMC44MjgxMjUgLTAuODQzNzUgMS43ODEyNSAwLjEyNSAzLjQzNzUgMC4xMjUgQyA0LjUgMC4xMjUgNS4yMDMxMjUgLTAuMjY1NjI1IDUuNzgxMjUgLTEuMDE1NjI1IEwgNS43ODEyNSAwIFogTSA3Ljc5Njg3NSAwICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC01Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA4LjI2NTYyNSAtMy44OTA2MjUgQyA4LjI2NTYyNSAtNi4xODc1IDcuMDQ2ODc1IC03LjkwNjI1IDUuMDE1NjI1IC03LjkwNjI1IEMgNC4wMzEyNSAtNy45MDYyNSAzLjM0Mzc1IC03LjQ4NDM3NSAyLjg1OTM3NSAtNi42MjUgTCAyLjg1OTM3NSAtNy43ODEyNSBMIDAuODI4MTI1IC03Ljc4MTI1IEwgMC44MjgxMjUgMy4xNDA2MjUgTCAyLjg1OTM3NSAzLjE0MDYyNSBMIDIuODU5Mzc1IC0xLjAzMTI1IEMgMy4zNDM3NSAtMC4xNzE4NzUgNC4wMzEyNSAwLjEyNSA1LjAxNTYyNSAwLjEyNSBDIDYuODkwNjI1IDAuMTI1IDguMjY1NjI1IC0xLjUzMTI1IDguMjY1NjI1IC0zLjg5MDYyNSBaIE0gNi4yNSAtMy44NTkzNzUgQyA2LjI1IC0yLjQ1MzEyNSA1LjU0Njg3NSAtMS41NjI1IDQuNTQ2ODc1IC0xLjU2MjUgQyAzLjU0Njg3NSAtMS41NjI1IDIuODU5Mzc1IC0yLjQzNzUgMi44NTkzNzUgLTMuODkwNjI1IEMgMi44NTkzNzUgLTUuMzQzNzUgMy41NDY4NzUgLTYuMjE4NzUgNC41NDY4NzUgLTYuMjE4NzUgQyA1LjU3ODEyNSAtNi4yMTg3NSA2LjI1IC01LjM0Mzc1IDYuMjUgLTMuODU5Mzc1IFogTSA2LjI1IC0zLjg1OTM3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtNiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC03Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA1LjQ1MzEyNSAwIEwgNS40NTMxMjUgLTEwLjIxODc1IEwgNC4xMDkzNzUgLTEwLjIxODc1IEMgMy43ODEyNSAtOSAyLjczNDM3NSAtOC4zOTA2MjUgMC45ODQzNzUgLTguMzkwNjI1IEwgMC45ODQzNzUgLTcuMDQ2ODc1IEwgMy40MjE4NzUgLTcuMDQ2ODc1IEwgMy40MjE4NzUgMCBaIE0gNS40NTMxMjUgMCAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA4LjQyMTg3NSAwIEwgOC40MjE4NzUgLTAuMjgxMjUgQyA3Ljk4NDM3NSAtMC41NzgxMjUgNy44OTA2MjUgLTAuOTA2MjUgNy44NzUgLTIuMTA5Mzc1IEMgNy44NTkzNzUgLTMuNTkzNzUgNy42MjUgLTQuMDQ2ODc1IDYuNjU2MjUgLTQuNDY4NzUgQyA3LjY3MTg3NSAtNC45Njg3NSA4LjA3ODEyNSAtNS41OTM3NSA4LjA3ODEyNSAtNi42MjUgQyA4LjA3ODEyNSAtOC4xODc1IDcuMDkzNzUgLTkuMDQ2ODc1IDUuMzI4MTI1IC05LjA0Njg3NSBMIDEuMTU2MjUgLTkuMDQ2ODc1IEwgMS4xNTYyNSAwIEwgMi4zMTI1IDAgTCAyLjMxMjUgLTMuODkwNjI1IEwgNS4yODEyNSAtMy44OTA2MjUgQyA2LjI5Njg3NSAtMy44OTA2MjUgNi43ODEyNSAtMy40MDYyNSA2Ljc4MTI1IC0yLjI4MTI1IEwgNi43NjU2MjUgLTEuNDY4NzUgQyA2Ljc1IC0wLjkyMTg3NSA2Ljg1OTM3NSAtMC4zNzUgNy4wMTU2MjUgMCBaIE0gNi44NzUgLTYuNDY4NzUgQyA2Ljg3NSAtNS4zOTA2MjUgNi4zMjgxMjUgLTQuOTA2MjUgNS4wOTM3NSAtNC45MDYyNSBMIDIuMzEyNSAtNC45MDYyNSBMIDIuMzEyNSAtOC4wMzEyNSBMIDUuMDkzNzUgLTguMDMxMjUgQyA2LjM5MDYyNSAtOC4wMzEyNSA2Ljg3NSAtNy40ODQzNzUgNi44NzUgLTYuNDY4NzUgWiBNIDYuODc1IC02LjQ2ODc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS0yIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA2LjMyODEyNSAtMy4yMDMxMjUgQyA2LjMyODEyNSAtNS40NTMxMjUgNS4yNSAtNi42ODc1IDMuMzc1IC02LjY4NzUgQyAxLjU0Njg3NSAtNi42ODc1IDAuNDUzMTI1IC01LjQzNzUgMC40NTMxMjUgLTMuMjUgQyAwLjQ1MzEyNSAtMS4wNjI1IDEuNTMxMjUgMC4xODc1IDMuMzkwNjI1IDAuMTg3NSBDIDUuMjAzMTI1IDAuMTg3NSA2LjMyODEyNSAtMS4wNjI1IDYuMzI4MTI1IC0zLjIwMzEyNSBaIE0gNS4yNSAtMy4yMTg3NSBDIDUuMjUgLTEuNjg3NSA0LjUzMTI1IC0wLjc2NTYyNSAzLjM5MDYyNSAtMC43NjU2MjUgQyAyLjIzNDM3NSAtMC43NjU2MjUgMS41MzEyNSAtMS42NzE4NzUgMS41MzEyNSAtMy4yNSBDIDEuNTMxMjUgLTQuODEyNSAyLjIzNDM3NSAtNS43MzQzNzUgMy4zOTA2MjUgLTUuNzM0Mzc1IEMgNC41NDY4NzUgLTUuNzM0Mzc1IDUuMjUgLTQuODI4MTI1IDUuMjUgLTMuMjE4NzUgWiBNIDUuMjUgLTMuMjE4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTMiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMuMTU2MjUgMCBMIDMuMTU2MjUgLTAuODc1IEMgMy4wMTU2MjUgLTAuODI4MTI1IDIuODU5Mzc1IC0wLjgxMjUgMi42NTYyNSAtMC44MTI1IEMgMi4yMDMxMjUgLTAuODEyNSAyLjA3ODEyNSAtMC45Mzc1IDIuMDc4MTI1IC0xLjQwNjI1IEwgMi4wNzgxMjUgLTUuNjU2MjUgTCAzLjE1NjI1IC01LjY1NjI1IEwgMy4xNTYyNSAtNi41IEwgMi4wNzgxMjUgLTYuNSBMIDIuMDc4MTI1IC04LjI4MTI1IEwgMS4wNDY4NzUgLTguMjgxMjUgTCAxLjA0Njg3NSAtNi41IEwgMC4xNzE4NzUgLTYuNSBMIDAuMTcxODc1IC01LjY1NjI1IEwgMS4wNDY4NzUgLTUuNjU2MjUgTCAxLjA0Njg3NSAtMC45Mzc1IEMgMS4wNDY4NzUgLTAuMjgxMjUgMS41IDAuMDkzNzUgMi4zMTI1IDAuMDkzNzUgQyAyLjU2MjUgMC4wOTM3NSAyLjc5Njg3NSAwLjA2MjUgMy4xNTYyNSAwIFogTSAzLjE1NjI1IDAgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTQiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDguNDA2MjUgLTMuMjk2ODc1IEwgNy4yMDMxMjUgLTMuMjk2ODc1IEMgNi45Mzc1IC0xLjU5Mzc1IDYuMjE4NzUgLTAuNzk2ODc1IDQuNjg3NSAtMC43OTY4NzUgQyAyLjg5MDYyNSAtMC43OTY4NzUgMS43NSAtMi4xNzE4NzUgMS43NSAtNC40MjE4NzUgQyAxLjc1IC02Ljc1IDIuODQzNzUgLTguMjUgNC41OTM3NSAtOC4yNSBDIDYgLTguMjUgNi43NSAtNy42MjUgNy4wMzEyNSAtNi4yMzQzNzUgTCA4LjIxODc1IC02LjIzNDM3NSBDIDcuODU5Mzc1IC04LjIxODc1IDYuNzE4NzUgLTkuMjY1NjI1IDQuNzM0Mzc1IC05LjI2NTYyNSBDIDEuOTg0Mzc1IC05LjI2NTYyNSAwLjU5Mzc1IC03LjA2MjUgMC41OTM3NSAtNC40MjE4NzUgQyAwLjU5Mzc1IC0xLjc4MTI1IDIuMDE1NjI1IDAuMjE4NzUgNC42NzE4NzUgMC4yMTg3NSBDIDYuODkwNjI1IDAuMjE4NzUgOC4xMjUgLTAuOTM3NSA4LjQwNjI1IC0zLjI5Njg3NSBaIE0gOC40MDYyNSAtMy4yOTY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTUiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDkuNDIxODc1IDAgTCA5LjQyMTg3NSAtNC44NzUgQyA5LjQyMTg3NSAtNi4wNDY4NzUgOC43ODEyNSAtNi42ODc1IDcuNTYyNSAtNi42ODc1IEMgNi43MDMxMjUgLTYuNjg3NSA2LjE3MTg3NSAtNi40MjE4NzUgNS41NzgxMjUgLTUuNjg3NSBDIDUuMTg3NSAtNi4zOTA2MjUgNC42NzE4NzUgLTYuNjg3NSAzLjgyODEyNSAtNi42ODc1IEMgMi45NTMxMjUgLTYuNjg3NSAyLjM3NSAtNi4zNTkzNzUgMS44MjgxMjUgLTUuNTc4MTI1IEwgMS44MjgxMjUgLTYuNSBMIDAuODc1IC02LjUgTCAwLjg3NSAwIEwgMS45MDYyNSAwIEwgMS45MDYyNSAtNC4wNzgxMjUgQyAxLjkwNjI1IC01LjAzMTI1IDIuNTkzNzUgLTUuNzgxMjUgMy40Mzc1IC01Ljc4MTI1IEMgNC4yMDMxMjUgLTUuNzgxMjUgNC42NDA2MjUgLTUuMzEyNSA0LjY0MDYyNSAtNC40ODQzNzUgTCA0LjY0MDYyNSAwIEwgNS42NzE4NzUgMCBMIDUuNjcxODc1IC00LjA3ODEyNSBDIDUuNjcxODc1IC01LjAzMTI1IDYuMzU5Mzc1IC01Ljc4MTI1IDcuMjAzMTI1IC01Ljc4MTI1IEMgNy45Njg3NSAtNS43ODEyNSA4LjQwNjI1IC01LjI5Njg3NSA4LjQwNjI1IC00LjQ4NDM3NSBMIDguNDA2MjUgMCBaIE0gOS40MjE4NzUgMCAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtNiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi4wNDY4NzUgMCBMIDYuMDQ2ODc1IC00LjkwNjI1IEMgNi4wNDY4NzUgLTYgNS4yMzQzNzUgLTYuNjg3NSAzLjk4NDM3NSAtNi42ODc1IEMgMy4wMTU2MjUgLTYuNjg3NSAyLjM5MDYyNSAtNi4zMTI1IDEuODI4MTI1IC01LjQwNjI1IEwgMS44MjgxMjUgLTYuNSBMIDAuODc1IC02LjUgTCAwLjg3NSAwIEwgMS44OTA2MjUgMCBMIDEuODkwNjI1IC0zLjU3ODEyNSBDIDEuODkwNjI1IC00LjkwNjI1IDIuNjI1IC01Ljc4MTI1IDMuNjcxODc1IC01Ljc4MTI1IEMgNC40ODQzNzUgLTUuNzgxMjUgNS4wMTU2MjUgLTUuMjgxMjUgNS4wMTU2MjUgLTQuNSBMIDUuMDE1NjI1IDAgWiBNIDYuMDQ2ODc1IDAgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTciPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSIiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtOCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNi4xNDA2MjUgMCBMIDYuMTQwNjI1IC05LjA0Njg3NSBMIDUuMTA5Mzc1IC05LjA0Njg3NSBMIDUuMTA5Mzc1IC01LjY4NzUgQyA0LjY3MTg3NSAtNi4zNDM3NSAzLjk4NDM3NSAtNi42ODc1IDMuMTA5Mzc1IC02LjY4NzUgQyAxLjQyMTg3NSAtNi42ODc1IDAuMzI4MTI1IC01LjM5MDYyNSAwLjMyODEyNSAtMy4zMTI1IEMgMC4zMjgxMjUgLTEuMTA5Mzc1IDEuNDA2MjUgMC4xODc1IDMuMTU2MjUgMC4xODc1IEMgNC4wNDY4NzUgMC4xODc1IDQuNjcxODc1IC0wLjE1NjI1IDUuMjE4NzUgLTAuOTUzMTI1IEwgNS4yMTg3NSAwIFogTSA1LjEwOTM3NSAtMy4yMTg3NSBDIDUuMTA5Mzc1IC0xLjcxODc1IDQuMzkwNjI1IC0wLjc4MTI1IDMuMjk2ODc1IC0wLjc4MTI1IEMgMi4xNTYyNSAtMC43ODEyNSAxLjQwNjI1IC0xLjczNDM3NSAxLjQwNjI1IC0zLjI1IEMgMS40MDYyNSAtNC43NjU2MjUgMi4xNTYyNSAtNS43MTg3NSAzLjI4MTI1IC01LjcxODc1IEMgNC40MDYyNSAtNS43MTg3NSA1LjEwOTM3NSAtNC43MzQzNzUgNS4xMDkzNzUgLTMuMjE4NzUgWiBNIDUuMTA5Mzc1IC0zLjIxODc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS05Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA2LjM1OTM3NSAtMi45NTMxMjUgQyA2LjM1OTM3NSAtMy44OTA2MjUgNi4yOTY4NzUgLTQuNDg0Mzc1IDYuMTA5Mzc1IC00Ljk2ODc1IEMgNS42ODc1IC02LjA0Njg3NSA0LjY4NzUgLTYuNjg3NSAzLjQ2ODc1IC02LjY4NzUgQyAxLjY1NjI1IC02LjY4NzUgMC41IC01LjM0Mzc1IDAuNSAtMy4yMTg3NSBDIDAuNSAtMS4wNzgxMjUgMS42MjUgMC4xODc1IDMuNDUzMTI1IDAuMTg3NSBDIDQuOTM3NSAwLjE4NzUgNS45Njg3NSAtMC42NTYyNSA2LjIzNDM3NSAtMS45Njg3NSBMIDUuMTg3NSAtMS45Njg3NSBDIDQuOTA2MjUgLTEuMTA5Mzc1IDQuMzEyNSAtMC43NjU2MjUgMy40ODQzNzUgLTAuNzY1NjI1IEMgMi40MDYyNSAtMC43NjU2MjUgMS41OTM3NSAtMS40Njg3NSAxLjU3ODEyNSAtMi45NTMxMjUgWiBNIDUuMjY1NjI1IC0zLjg3NSBDIDUuMjY1NjI1IC0zLjg3NSA1LjI2NTYyNSAtMy44MjgxMjUgNS4yNSAtMy43OTY4NzUgTCAxLjU5Mzc1IC0zLjc5Njg3NSBDIDEuNjg3NSAtNC45NTMxMjUgMi40MjE4NzUgLTUuNzM0Mzc1IDMuNDY4NzUgLTUuNzM0Mzc1IEMgNC40ODQzNzUgLTUuNzM0Mzc1IDUuMjY1NjI1IC00Ljg5MDYyNSA1LjI2NTYyNSAtMy44NzUgWiBNIDUuMjY1NjI1IC0zLjg3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtMTAiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDUuNjg3NSAtMS44MjgxMjUgQyA1LjY4NzUgLTIuNzk2ODc1IDUuMTU2MjUgLTMuMjgxMjUgMy44NTkzNzUgLTMuNTc4MTI1IEwgMi44NTkzNzUgLTMuODI4MTI1IEMgMi4wMTU2MjUgLTQuMDE1NjI1IDEuNjU2MjUgLTQuMjk2ODc1IDEuNjU2MjUgLTQuNzUgQyAxLjY1NjI1IC01LjM0Mzc1IDIuMjAzMTI1IC01LjczNDM3NSAzLjA0Njg3NSAtNS43MzQzNzUgQyAzLjg3NSAtNS43MzQzNzUgNC4zMTI1IC01LjM3NSA0LjM0Mzc1IC00LjY4NzUgTCA1LjQzNzUgLTQuNjg3NSBDIDUuNDIxODc1IC01Ljk2ODc1IDQuNTc4MTI1IC02LjY4NzUgMy4wNzgxMjUgLTYuNjg3NSBDIDEuNTYyNSAtNi42ODc1IDAuNTc4MTI1IC01LjkwNjI1IDAuNTc4MTI1IC00LjcwMzEyNSBDIDAuNTc4MTI1IC0zLjY4NzUgMS4xMDkzNzUgLTMuMjAzMTI1IDIuNjQwNjI1IC0yLjgyODEyNSBMIDMuNjA5Mzc1IC0yLjU5Mzc1IEMgNC4zMjgxMjUgLTIuNDIxODc1IDQuNjA5Mzc1IC0yLjIwMzEyNSA0LjYwOTM3NSAtMS43MzQzNzUgQyA0LjYwOTM3NSAtMS4xMjUgNCAtMC43NjU2MjUgMy4xMDkzNzUgLTAuNzY1NjI1IEMgMi4xNzE4NzUgLTAuNzY1NjI1IDEuNjU2MjUgLTEgMS41MTU2MjUgLTEuOTg0Mzc1IEwgMC40MjE4NzUgLTEuOTg0Mzc1IEMgMC40Njg3NSAtMC40ODQzNzUgMS4zMTI1IDAuMTg3NSAzLjAxNTYyNSAwLjE4NzUgQyA0LjY1NjI1IDAuMTg3NSA1LjY4NzUgLTAuNTc4MTI1IDUuNjg3NSAtMS44MjgxMjUgWiBNIDUuNjg3NSAtMS44MjgxMjUgIi8+Cjwvc3ltYm9sPgo8L2c+CjwvZGVmcz4KPGcgaWQ9InN1cmZhY2UyOSI+CjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI1MDQiIGhlaWdodD0iMzYwIiBzdHlsZT0iZmlsbDpyZ2IoMTAwJSwxMDAlLDEwMCUpO2ZpbGwtb3BhY2l0eToxO3N0cm9rZTpub25lOyIvPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTEiIHg9IjIyNC4zOTQ1MzEiIHk9IjIwLjQyMTg3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0yIiB4PSIyMzUuNTk3NzMxIiB5PSIyMC40MjE4NzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMyIgeD0iMjQxLjE5OTMzMSIgeT0iMjAuNDIxODc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTQiIHg9IjI0OS45OTc3MzEiIHk9IjIwLjQyMTg3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC01IiB4PSIyNTguNzk2MTMxIiB5PSIyMC40MjE4NzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNiIgeD0iMjY3LjU5NDUzMSIgeT0iMjAuNDIxODc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTciIHg9IjI3MS41OTc3MzEiIHk9IjIwLjQyMTg3NSIvPgo8L2c+CjxwYXRoIHN0eWxlPSJmaWxsLXJ1bGU6bm9uemVybztmaWxsOnJnYig3NC41MDk4MDQlLDc0LjUwOTgwNCUsNzQuNTA5ODA0JSk7ZmlsbC1vcGFjaXR5OjE7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDU4LjQ4MDQ2OSAyMDYuNTAzOTA2IEwgMTA4LjQ4MDQ2OSAyMDYuNTAzOTA2IEwgMTA4LjQ4MDQ2OSAxNzYuNjQ4NDM4IEwgNTguNDgwNDY5IDE3Ni42NDg0MzggWiBNIDU4LjQ4MDQ2OSAyMDYuNTAzOTA2ICIvPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTEiIHg9IjcwLjM4MjgxMiIgeT0iMTk2LjAwMzkwNiIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS0yIiB4PSI3OS4zMzc5NTQiIHk9IjE5Ni4wMDM5MDYiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtMiIgeD0iODYuMjM0MTU3IiB5PSIxOTYuMDAzOTA2Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTMiIHg9IjkzLjEzMDM2IiB5PSIxOTYuMDAzOTA2Ii8+CjwvZz4KPHBhdGggc3R5bGU9ImZpbGwtcnVsZTpub256ZXJvO2ZpbGw6cmdiKDc0LjUwOTgwNCUsNzQuNTA5ODA0JSw3NC41MDk4MDQlKTtmaWxsLW9wYWNpdHk6MTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMzEyLjE4MzU5NCAyMDYuNTAzOTA2IEwgNDA4LjQ4MDQ2OSAyMDYuNTAzOTA2IEwgNDA4LjQ4MDQ2OSAxNzYuNjQ4NDM4IEwgMzEyLjE4MzU5NCAxNzYuNjQ4NDM4IFogTSAzMTIuMTgzNTk0IDIwNi41MDM5MDYgIi8+CjxnIHN0eWxlPSJmaWxsOnJnYigwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7Ij4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtNCIgeD0iMzE2LjU2MjUiIHk9IjE5Ni4wOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS0yIiB4PSIzMjUuNTE3NjQxIiB5PSIxOTYuMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtNSIgeD0iMzMyLjQxMzg0NCIgeT0iMTk2LjA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTUiIHg9IjM0Mi43NDU3NDYiIHk9IjE5Ni4wOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS0yIiB4PSIzNTMuMDc3NjQ3IiB5PSIxOTYuMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtNiIgeD0iMzU5Ljk3Mzg1IiB5PSIxOTYuMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtNyIgeD0iMzY2Ljg3MDA1MyIgeT0iMTk2LjA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTYiIHg9IjM3MC4zMTgxNTQiIHk9IjE5Ni4wOTM3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS0yIiB4PSIzNzcuMjE0MzU3IiB5PSIxOTYuMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtOCIgeD0iMzg0LjExMDU2IiB5PSIxOTYuMDkzNzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtOSIgeD0iMzkxLjAwNjc2MyIgeT0iMTk2LjA5Mzc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTEwIiB4PSIzOTcuOTAyOTY2IiB5PSIxOTYuMDkzNzUiLz4KPC9nPgo8cGF0aCBzdHlsZT0iZmlsbDpub25lO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAxMDguNDgwNDY5IDE5MS41NzQyMTkgTCAzMDIgMTkxLjU3NDIxOSAiLz4KPHBhdGggc3R5bGU9ImZpbGw6bm9uZTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMjgzLjMzMjAzMSAxOTEuNTc0MjE5IEwgMzAyIDE5MS41NzQyMTkgIi8+CjxwYXRoIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDI5Mi44MTI1IDE5Ni44Nzg5MDYgTCAzMDIgMTkxLjU3NDIxOSBMIDI5Mi44MTI1IDE4Ni4yNjk1MzEgIi8+CjwvZz4KPC9zdmc+Cg==" width="672" /><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTA0cHQiIGhlaWdodD0iMzYwcHQiIHZpZXdCb3g9IjAgMCA1MDQgMzYwIiB2ZXJzaW9uPSIxLjEiPgo8ZGVmcz4KPGc+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxMC4yNSAwIEwgMTAuMjUgLTUuNjQwNjI1IEwgNi4wMzEyNSAtNS42NDA2MjUgTCA2LjAzMTI1IC0zLjg0Mzc1IEwgOC40MjE4NzUgLTMuODQzNzUgQyA4LjI4MTI1IC0yLjUzMTI1IDcuMDQ2ODc1IC0xLjY3MTg3NSA1Ljc2NTYyNSAtMS42NzE4NzUgQyA0LjAxNTYyNSAtMS42NzE4NzUgMi43NjU2MjUgLTMuMTI1IDIuNzY1NjI1IC01LjI4MTI1IEMgMi43NjU2MjUgLTcuNTQ2ODc1IDMuODc1IC04LjgyODEyNSA1LjcwMzEyNSAtOC44MjgxMjUgQyA2Ljg5MDYyNSAtOC44MjgxMjUgNy43OTY4NzUgLTguMzc1IDguMjE4NzUgLTcuMTQwNjI1IEwgMTAuMjUgLTcuMTQwNjI1IEMgOS45ODQzNzUgLTkuMzEyNSA4LjIxODc1IC0xMC42NzE4NzUgNS42ODc1IC0xMC42NzE4NzUgQyAyLjY3MTg3NSAtMTAuNjcxODc1IDAuNjA5Mzc1IC04LjUzMTI1IDAuNjA5Mzc1IC01LjI2NTYyNSBDIDAuNjA5Mzc1IC0yLjA3ODEyNSAyLjY3MTg3NSAwLjE3MTg3NSA1LjUxNTYyNSAwLjE3MTg3NSBDIDYuOTIxODc1IDAuMTcxODc1IDcuODc1IC0wLjMyODEyNSA4LjY4NzUgLTEuNDM3NSBMIDguOTUzMTI1IDAgWiBNIDEwLjI1IDAgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgwLTIiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDUuMzI4MTI1IC01Ljg0Mzc1IEwgNS4zMjgxMjUgLTcuODkwNjI1IEMgNS4yMTg3NSAtNy45MDYyNSA1LjE0MDYyNSAtNy45MDYyNSA1LjA3ODEyNSAtNy45MDYyNSBDIDQuMTU2MjUgLTcuOTA2MjUgMy4zNTkzNzUgLTcuMjk2ODc1IDIuOTIxODc1IC02LjI1IEwgMi45MjE4NzUgLTcuNzgxMjUgTCAwLjkwNjI1IC03Ljc4MTI1IEwgMC45MDYyNSAwIEwgMi45MjE4NzUgMCBMIDIuOTIxODc1IC00LjE0MDYyNSBDIDIuOTIxODc1IC01LjMxMjUgMy41MTU2MjUgLTUuOTA2MjUgNC43MDMxMjUgLTUuOTA2MjUgQyA0LjkwNjI1IC01LjkwNjI1IDUuMDYyNSAtNS44OTA2MjUgNS4zMjgxMjUgLTUuODQzNzUgWiBNIDUuMzI4MTI1IC01Ljg0Mzc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC0zIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA4LjIwMzEyNSAtMy44MjgxMjUgQyA4LjIwMzEyNSAtNi40Njg3NSA2Ljc2NTYyNSAtNy45MDYyNSA0LjM0Mzc1IC03LjkwNjI1IEMgMS45NTMxMjUgLTcuOTA2MjUgMC41IC02LjQzNzUgMC41IC0zLjg5MDYyNSBDIDAuNSAtMS4zMjgxMjUgMS45NTMxMjUgMC4xMjUgNC4zNDM3NSAwLjEyNSBDIDYuNzE4NzUgMC4xMjUgOC4yMDMxMjUgLTEuMzQzNzUgOC4yMDMxMjUgLTMuODI4MTI1IFogTSA2LjE4NzUgLTMuODU5Mzc1IEMgNi4xODc1IC0yLjQwNjI1IDUuNDM3NSAtMS41IDQuMzQzNzUgLTEuNSBDIDMuMjUgLTEuNSAyLjUxNTYyNSAtMi40MDYyNSAyLjUxNTYyNSAtMy44OTA2MjUgQyAyLjUxNTYyNSAtNS4zNzUgMy4yNSAtNi4yODEyNSA0LjM0Mzc1IC02LjI4MTI1IEMgNS40NTMxMjUgLTYuMjgxMjUgNi4xODc1IC01LjM5MDYyNSA2LjE4NzUgLTMuODU5Mzc1IFogTSA2LjE4NzUgLTMuODU5Mzc1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC00Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA3Ljc5Njg3NSAwIEwgNy43OTY4NzUgLTcuNzgxMjUgTCA1Ljc4MTI1IC03Ljc4MTI1IEwgNS43ODEyNSAtMy4xMDkzNzUgQyA1Ljc4MTI1IC0yLjE4NzUgNS4xMjUgLTEuNTc4MTI1IDQuMTU2MjUgLTEuNTc4MTI1IEMgMy4yODEyNSAtMS41NzgxMjUgMi44NTkzNzUgLTIuMDQ2ODc1IDIuODU5Mzc1IC0yLjk4NDM3NSBMIDIuODU5Mzc1IC03Ljc4MTI1IEwgMC44MjgxMjUgLTcuNzgxMjUgTCAwLjgyODEyNSAtMi41NjI1IEMgMC44MjgxMjUgLTAuODQzNzUgMS43ODEyNSAwLjEyNSAzLjQzNzUgMC4xMjUgQyA0LjUgMC4xMjUgNS4yMDMxMjUgLTAuMjY1NjI1IDUuNzgxMjUgLTEuMDE1NjI1IEwgNS43ODEyNSAwIFogTSA3Ljc5Njg3NSAwICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC01Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA4LjI2NTYyNSAtMy44OTA2MjUgQyA4LjI2NTYyNSAtNi4xODc1IDcuMDQ2ODc1IC03LjkwNjI1IDUuMDE1NjI1IC03LjkwNjI1IEMgNC4wMzEyNSAtNy45MDYyNSAzLjM0Mzc1IC03LjQ4NDM3NSAyLjg1OTM3NSAtNi42MjUgTCAyLjg1OTM3NSAtNy43ODEyNSBMIDAuODI4MTI1IC03Ljc4MTI1IEwgMC44MjgxMjUgMy4xNDA2MjUgTCAyLjg1OTM3NSAzLjE0MDYyNSBMIDIuODU5Mzc1IC0xLjAzMTI1IEMgMy4zNDM3NSAtMC4xNzE4NzUgNC4wMzEyNSAwLjEyNSA1LjAxNTYyNSAwLjEyNSBDIDYuODkwNjI1IDAuMTI1IDguMjY1NjI1IC0xLjUzMTI1IDguMjY1NjI1IC0zLjg5MDYyNSBaIE0gNi4yNSAtMy44NTkzNzUgQyA2LjI1IC0yLjQ1MzEyNSA1LjU0Njg3NSAtMS41NjI1IDQuNTQ2ODc1IC0xLjU2MjUgQyAzLjU0Njg3NSAtMS41NjI1IDIuODU5Mzc1IC0yLjQzNzUgMi44NTkzNzUgLTMuODkwNjI1IEMgMi44NTkzNzUgLTUuMzQzNzUgMy41NDY4NzUgLTYuMjE4NzUgNC41NDY4NzUgLTYuMjE4NzUgQyA1LjU3ODEyNSAtNi4yMTg3NSA2LjI1IC01LjM0Mzc1IDYuMjUgLTMuODU5Mzc1IFogTSA2LjI1IC0zLjg1OTM3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDAtNiI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMC03Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSA3LjQyMTg3NSAtNy4xODc1IEMgNy40MjE4NzUgLTkuMTU2MjUgNi4wNjI1IC0xMC40Mzc1IDMuOTIxODc1IC0xMC40Mzc1IEMgMS43OTY4NzUgLTEwLjQzNzUgMC41NjI1IC05LjE3MTg3NSAwLjU2MjUgLTcuMDE1NjI1IEMgMC41NjI1IC02LjkyMTg3NSAwLjU2MjUgLTYuODEyNSAwLjU3ODEyNSAtNi42NTYyNSBMIDIuNSAtNi42NTYyNSBMIDIuNSAtNi45ODQzNzUgQyAyLjUgLTguMTI1IDMuMDQ2ODc1IC04Ljc4MTI1IDMuOTY4NzUgLTguNzgxMjUgQyA0Ljg1OTM3NSAtOC43ODEyNSA1LjQwNjI1IC04LjE3MTg3NSA1LjQwNjI1IC03LjE0MDYyNSBDIDUuNDA2MjUgLTYuMDE1NjI1IDUuMDQ2ODc1IC01LjU3ODEyNSAyLjc5Njg3NSAtMy45Njg3NSBDIDEuMDYyNSAtMi43OTY4NzUgMC41MzEyNSAtMS44OTA2MjUgMC40Mzc1IDAgTCA3LjM3NSAwIEwgNy4zNzUgLTEuNzk2ODc1IEwgMy4wNDY4NzUgLTEuNzk2ODc1IEMgMy4zMTI1IC0yLjM0Mzc1IDMuNjI1IC0yLjY0MDYyNSA1LjEyNSAtMy43MzQzNzUgQyA2LjkwNjI1IC01LjAzMTI1IDcuNDIxODc1IC01LjgxMjUgNy40MjE4NzUgLTcuMTg3NSBaIE0gNy40MjE4NzUgLTcuMTg3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9IiIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS0xIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxMC41NzgxMjUgMCBMIDEwLjU3ODEyNSAtMS42MjUgTCAzLjQzNzUgLTEuNjI1IEwgMy40Mzc1IC0xNC40ODQzNzUgTCAxLjU5Mzc1IC0xNC40ODQzNzUgTCAxLjU5Mzc1IDAgWiBNIDEwLjU3ODEyNSAwICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS0yIj4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxMy4xMjUgLTE0LjQ4NDM3NSBMIDEwLjkyMTg3NSAtMTQuNDg0Mzc1IEwgNi43OTY4NzUgLTcuNDIxODc1IEwgMi41NDY4NzUgLTE0LjQ4NDM3NSBMIDAuMjY1NjI1IC0xNC40ODQzNzUgTCA1Ljg0Mzc1IC01LjY4NzUgTCA1Ljg0Mzc1IDAgTCA3LjY4NzUgMCBMIDcuNjg3NSAtNS42ODc1IFogTSAxMy4xMjUgLTE0LjQ4NDM3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtMyI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gMTUuMTA5Mzc1IDAgTCAxNS4xMDkzNzUgLTE0LjQ4NDM3NSBMIDEyLjU0Njg3NSAtMTQuNDg0Mzc1IEwgOC4zNDM3NSAtMS44NTkzNzUgTCA0LjA0Njg3NSAtMTQuNDg0Mzc1IEwgMS40ODQzNzUgLTE0LjQ4NDM3NSBMIDEuNDg0Mzc1IDAgTCAzLjIzNDM3NSAwIEwgMy4yMzQzNzUgLTEyLjE0MDYyNSBMIDcuMzQzNzUgMCBMIDkuMjk2ODc1IDAgTCAxMy4zNTkzNzUgLTEyLjE0MDYyNSBMIDEzLjM1OTM3NSAwIFogTSAxNS4xMDkzNzUgMCAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtNCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gOS4xMDkzNzUgLTIuOTIxODc1IEMgOS4xMDkzNzUgLTQuNDY4NzUgOC4yMzQzNzUgLTUuMjUgNi4xNzE4NzUgLTUuNzM0Mzc1IEwgNC41OTM3NSAtNi4xMDkzNzUgQyAzLjIzNDM3NSAtNi40Mzc1IDIuNjU2MjUgLTYuODc1IDIuNjU2MjUgLTcuNjA5Mzc1IEMgMi42NTYyNSAtOC41NjI1IDMuNTE1NjI1IC05LjE3MTg3NSA0Ljg1OTM3NSAtOS4xNzE4NzUgQyA2LjIwMzEyNSAtOS4xNzE4NzUgNi45MDYyNSAtOC41OTM3NSA2Ljk1MzEyNSAtNy41IEwgOC43MDMxMjUgLTcuNSBDIDguNjcxODc1IC05LjU0Njg3NSA3LjMyODEyNSAtMTAuNzAzMTI1IDQuOTIxODc1IC0xMC43MDMxMjUgQyAyLjUgLTEwLjcwMzEyNSAwLjkzNzUgLTkuNDUzMTI1IDAuOTM3NSAtNy41MzEyNSBDIDAuOTM3NSAtNS44OTA2MjUgMS43NjU2MjUgLTUuMTI1IDQuMjM0Mzc1IC00LjUzMTI1IEwgNS43ODEyNSAtNC4xNTYyNSBDIDYuOTM3NSAtMy44NzUgNy4zOTA2MjUgLTMuNTMxMjUgNy4zOTA2MjUgLTIuNzgxMjUgQyA3LjM5MDYyNSAtMS44MTI1IDYuNDIxODc1IC0xLjIzNDM3NSA0Ljk2ODc1IC0xLjIzNDM3NSBDIDMuNDY4NzUgLTEuMjM0Mzc1IDIuNjQwNjI1IC0xLjU5Mzc1IDIuNDIxODc1IC0zLjE3MTg3NSBMIDAuNjcxODc1IC0zLjE3MTg3NSBDIDAuNzUgLTAuNzgxMjUgMi4xMDkzNzUgMC4yOTY4NzUgNC44MjgxMjUgMC4yOTY4NzUgQyA3LjQ1MzEyNSAwLjI5Njg3NSA5LjEwOTM3NSAtMC45MDYyNSA5LjEwOTM3NSAtMi45MjE4NzUgWiBNIDkuMTA5Mzc1IC0yLjkyMTg3NSAiLz4KPC9zeW1ib2w+CjxzeW1ib2wgb3ZlcmZsb3c9InZpc2libGUiIGlkPSJnbHlwaDEtNSI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gMy4wMzEyNSAwIEwgMy4wMzEyNSAtMTAuNDA2MjUgTCAxLjM5MDYyNSAtMTAuNDA2MjUgTCAxLjM5MDYyNSAwIFogTSAzLjI1IC0xMS45Njg3NSBMIDMuMjUgLTE0LjA0Njg3NSBMIDEuMTg3NSAtMTQuMDQ2ODc1IEwgMS4xODc1IC0xMS45Njg3NSBaIE0gMy4yNSAtMTEuOTY4NzUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTYiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDkuNjcxODc1IDAgTCA5LjY3MTg3NSAtNy44NTkzNzUgQyA5LjY3MTg3NSAtOS41OTM3NSA4LjM3NSAtMTAuNzAzMTI1IDYuMzc1IC0xMC43MDMxMjUgQyA0LjgyODEyNSAtMTAuNzAzMTI1IDMuODI4MTI1IC0xMC4xMDkzNzUgMi45MjE4NzUgLTguNjU2MjUgTCAyLjkyMTg3NSAtMTAuNDA2MjUgTCAxLjM5MDYyNSAtMTAuNDA2MjUgTCAxLjM5MDYyNSAwIEwgMy4wMzEyNSAwIEwgMy4wMzEyNSAtNS43MzQzNzUgQyAzLjAzMTI1IC03Ljg1OTM3NSA0LjE4NzUgLTkuMjUgNS44NzUgLTkuMjUgQyA3LjE4NzUgLTkuMjUgOC4wMTU2MjUgLTguNDUzMTI1IDguMDE1NjI1IC03LjIwMzEyNSBMIDguMDE1NjI1IDAgWiBNIDkuNjcxODc1IDAgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTciPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDkuNzE4NzUgLTEuNzAzMTI1IEwgOS43MTg3NSAtMTAuNDA2MjUgTCA4LjE4NzUgLTEwLjQwNjI1IEwgOC4xODc1IC04Ljg5MDYyNSBDIDcuMzQzNzUgLTEwLjEyNSA2LjMyODEyNSAtMTAuNzAzMTI1IDUgLTEwLjcwMzEyNSBDIDIuMzU5Mzc1IC0xMC43MDMxMjUgMC41NzgxMjUgLTguNDg0Mzc1IDAuNTc4MTI1IC01LjEwOTM3NSBDIDAuNTc4MTI1IC0xLjgyODEyNSAyLjQyMTg3NSAwLjI5Njg3NSA0Ljg1OTM3NSAwLjI5Njg3NSBDIDYuMTcxODc1IDAuMjk2ODc1IDcuMDkzNzUgLTAuMjY1NjI1IDguMTg3NSAtMS41NjI1IEwgOC4xODc1IC0wLjg3NSBDIDguMTg3NSAxLjg5MDYyNSA3LjA0Njg3NSAyLjkzNzUgNS4xMjUgMi45Mzc1IEMgMy44MTI1IDIuOTM3NSAyLjc5Njg3NSAyLjQ2ODc1IDIuNjA5Mzc1IDEuMTg3NSBMIDAuOTA2MjUgMS4xODc1IEMgMS4wOTM3NSAzLjE1NjI1IDIuNjI1IDQuMzI4MTI1IDUuMDYyNSA0LjMyODEyNSBDIDguMzI4MTI1IDQuMzI4MTI1IDkuNzE4NzUgMi44NzUgOS43MTg3NSAtMS43MDMxMjUgWiBNIDguMDE1NjI1IC01LjE0MDYyNSBDIDguMDE1NjI1IC0yLjY1NjI1IDYuOTUzMTI1IC0xLjIzNDM3NSA1LjIwMzEyNSAtMS4yMzQzNzUgQyAzLjM5MDYyNSAtMS4yMzQzNzUgMi4yOTY4NzUgLTIuNjg3NSAyLjI5Njg3NSAtNS4yMDMxMjUgQyAyLjI5Njg3NSAtNy43MDMxMjUgMy40MjE4NzUgLTkuMTcxODc1IDUuMTg3NSAtOS4xNzE4NzUgQyA2Ljk2ODc1IC05LjE3MTg3NSA4LjAxNTYyNSAtNy42NzE4NzUgOC4wMTU2MjUgLTUuMTQwNjI1IFogTSA4LjAxNTYyNSAtNS4xNDA2MjUgIi8+Cjwvc3ltYm9sPgo8c3ltYm9sIG92ZXJmbG93PSJ2aXNpYmxlIiBpZD0iZ2x5cGgxLTgiPgo8cGF0aCBzdHlsZT0ic3Ryb2tlOm5vbmU7IiBkPSJNIDMgMCBMIDMgLTE0LjQ4NDM3NSBMIDEuMzQzNzUgLTE0LjQ4NDM3NSBMIDEuMzQzNzUgMCBaIE0gMyAwICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS05Ij4KPHBhdGggc3R5bGU9InN0cm9rZTpub25lOyIgZD0iTSAxMC4xODc1IC00LjcxODc1IEMgMTAuMTg3NSAtNi4yMzQzNzUgMTAuMDYyNSAtNy4xODc1IDkuNzY1NjI1IC03Ljk2ODc1IEMgOS4wOTM3NSAtOS42NzE4NzUgNy41IC0xMC43MDMxMjUgNS41NjI1IC0xMC43MDMxMjUgQyAyLjY1NjI1IC0xMC43MDMxMjUgMC43OTY4NzUgLTguNTYyNSAwLjc5Njg3NSAtNS4xNDA2MjUgQyAwLjc5Njg3NSAtMS43MzQzNzUgMi42MDkzNzUgMC4yOTY4NzUgNS41MTU2MjUgMC4yOTY4NzUgQyA3LjkwNjI1IDAuMjk2ODc1IDkuNTQ2ODc1IC0xLjA0Njg3NSA5Ljk2ODc1IC0zLjE1NjI1IEwgOC4yOTY4NzUgLTMuMTU2MjUgQyA3Ljg0Mzc1IC0xLjc4MTI1IDYuOTA2MjUgLTEuMjM0Mzc1IDUuNTc4MTI1IC0xLjIzNDM3NSBDIDMuODU5Mzc1IC0xLjIzNDM3NSAyLjU2MjUgLTIuMzQzNzUgMi41MTU2MjUgLTQuNzE4NzUgWiBNIDguNDIxODc1IC02LjIwMzEyNSBDIDguNDIxODc1IC02LjIwMzEyNSA4LjQyMTg3NSAtNi4xMDkzNzUgOC40MDYyNSAtNi4wNzgxMjUgTCAyLjU2MjUgLTYuMDc4MTI1IEMgMi43MDMxMjUgLTcuOTIxODc1IDMuODc1IC05LjE3MTg3NSA1LjU0Njg3NSAtOS4xNzE4NzUgQyA3LjE3MTg3NSAtOS4xNzE4NzUgOC40MjE4NzUgLTcuODI4MTI1IDguNDIxODc1IC02LjIwMzEyNSBaIE0gOC40MjE4NzUgLTYuMjAzMTI1ICIvPgo8L3N5bWJvbD4KPHN5bWJvbCBvdmVyZmxvdz0idmlzaWJsZSIgaWQ9ImdseXBoMS0xMCI+CjxwYXRoIHN0eWxlPSJzdHJva2U6bm9uZTsiIGQ9Ik0gNS4wNDY4NzUgMCBMIDUuMDQ2ODc1IC0xLjM5MDYyNSBDIDQuODI4MTI1IC0xLjMyODEyNSA0LjU2MjUgLTEuMzEyNSA0LjI1IC0xLjMxMjUgQyAzLjUzMTI1IC0xLjMxMjUgMy4zNDM3NSAtMS41MTU2MjUgMy4zNDM3NSAtMi4yNSBMIDMuMzQzNzUgLTkuMDYyNSBMIDUuMDQ2ODc1IC05LjA2MjUgTCA1LjA0Njg3NSAtMTAuNDA2MjUgTCAzLjM0Mzc1IC0xMC40MDYyNSBMIDMuMzQzNzUgLTEzLjI2NTYyNSBMIDEuNjg3NSAtMTMuMjY1NjI1IEwgMS42ODc1IC0xMC40MDYyNSBMIDAuMjgxMjUgLTEwLjQwNjI1IEwgMC4yODEyNSAtOS4wNjI1IEwgMS42ODc1IC05LjA2MjUgTCAxLjY4NzUgLTEuNTE1NjI1IEMgMS42ODc1IC0wLjQ1MzEyNSAyLjQwNjI1IDAuMTQwNjI1IDMuNjg3NSAwLjE0MDYyNSBDIDQuMDkzNzUgMC4xNDA2MjUgNC40ODQzNzUgMC4wOTM3NSA1LjA0Njg3NSAwIFogTSA1LjA0Njg3NSAwICIvPgo8L3N5bWJvbD4KPC9nPgo8L2RlZnM+CjxnIGlkPSJzdXJmYWNlMzQiPgo8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTA0IiBoZWlnaHQ9IjM2MCIgc3R5bGU9ImZpbGw6cmdiKDEwMCUsMTAwJSwxMDAlKTtmaWxsLW9wYWNpdHk6MTtzdHJva2U6bm9uZTsiLz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC0xIiB4PSIyMjQuMzk0NTMxIiB5PSIyMC40MjE4NzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtMiIgeD0iMjM1LjU5NzczMSIgeT0iMjAuNDIxODc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTMiIHg9IjI0MS4xOTkzMzEiIHk9IjIwLjQyMTg3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC00IiB4PSIyNDkuOTk3NzMxIiB5PSIyMC40MjE4NzUiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDAtNSIgeD0iMjU4Ljc5NjEzMSIgeT0iMjAuNDIxODc1Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgwLTYiIHg9IjI2Ny41OTQ1MzEiIHk9IjIwLjQyMTg3NSIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMC03IiB4PSIyNzEuNTk3NzMxIiB5PSIyMC40MjE4NzUiLz4KPC9nPgo8cGF0aCBzdHlsZT0iZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoNzQuNTA5ODA0JSw3NC41MDk4MDQlLDc0LjUwOTgwNCUpO2ZpbGwtb3BhY2l0eToxO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSA2Ni44MTY0MDYgMjA2LjUwMzkwNiBMIDExNi44MTY0MDYgMjA2LjUwMzkwNiBMIDExNi44MTY0MDYgMTc2LjY0ODQzOCBMIDY2LjgxNjQwNiAxNzYuNjQ4NDM4IFogTSA2Ni44MTY0MDYgMjA2LjUwMzkwNiAiLz4KPGcgc3R5bGU9ImZpbGw6cmdiKDAlLDAlLDAlKTtmaWxsLW9wYWNpdHk6MTsiPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS0xIiB4PSI3MS4zOTQ1MzEiIHk9IjE5OC44MTY0MDYiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtMiIgeD0iODIuNDM5MDk3IiB5PSIxOTguODE2NDA2Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTMiIHg9Ijk1LjY4ODYwMyIgeT0iMTk4LjgxNjQwNiIvPgo8L2c+CjxwYXRoIHN0eWxlPSIgc3Ryb2tlOm5vbmU7ZmlsbC1ydWxlOm5vbnplcm87ZmlsbDpyZ2IoMTAwJSwwJSwwJSk7ZmlsbC1vcGFjaXR5OjE7IiBkPSJNIDMzNy4xODM1OTQgMTkxLjU3NDIxOSBMIDMzNy45MzM1OTQgMTg4LjU4OTg0NCBMIDMzOC42Nzk2ODggMTg3LjM3NSBMIDMzOS40Mjk2ODggMTg2LjQ1NzAzMSBMIDM0MC4xNzk2ODggMTg1LjY5NTMxMiBMIDM0MC45MjU3ODEgMTg1LjAzNTE1NiBMIDM0MS42NzU3ODEgMTg0LjQ0OTIxOSBMIDM0Mi40MjE4NzUgMTgzLjkyMTg3NSBMIDM0My4xNzE4NzUgMTgzLjQzNzUgTCAzNDMuOTE3OTY5IDE4Mi45OTIxODggTCAzNDQuNjY3OTY5IDE4Mi41NzgxMjUgTCAzNDUuNDE0MDYyIDE4Mi4xOTE0MDYgTCAzNDYuMTY0MDYyIDE4MS44MjgxMjUgTCAzNDYuOTEwMTU2IDE4MS40ODgyODEgTCAzNDcuNjYwMTU2IDE4MS4xNzE4NzUgTCAzNDguNDEwMTU2IDE4MC44NjcxODggTCAzNDkuMTU2MjUgMTgwLjU4MjAzMSBMIDM0OS45MDYyNSAxODAuMzEyNSBMIDM1MC42NTIzNDQgMTgwLjA1ODU5NCBMIDM1MS40MDIzNDQgMTc5LjgxNjQwNiBMIDM1Mi4xNDg0MzggMTc5LjU4NTkzOCBMIDM1Mi44OTg0MzggMTc5LjM2NzE4OCBMIDM1My42NDQ1MzEgMTc5LjE2MDE1NiBMIDM1NC4zOTQ1MzEgMTc4Ljk2NDg0NCBMIDM1NS4xNDA2MjUgMTc4Ljc3NzM0NCBMIDM1NS44OTA2MjUgMTc4LjYwMTU2MiBMIDM1Ni42NDA2MjUgMTc4LjQzMzU5NCBMIDM1Ny4zODY3MTkgMTc4LjI3NzM0NCBMIDM1OC4xMzY3MTkgMTc4LjEyODkwNiBMIDM1OC44ODI4MTIgMTc3Ljk4NDM3NSBMIDM1OS42MzI4MTIgMTc3Ljg1MTU2MiBMIDM2MC4zNzg5MDYgMTc3LjcyNjU2MiBMIDM2MS4xMjg5MDYgMTc3LjYwOTM3NSBMIDM2MS44NzUgMTc3LjUgTCAzNjIuNjI1IDE3Ny4zOTQ1MzEgTCAzNjMuMzcxMDk0IDE3Ny4zMDA3ODEgTCAzNjQuMTIxMDk0IDE3Ny4yMTA5MzggTCAzNjQuODcxMDk0IDE3Ny4xMjg5MDYgTCAzNjUuNjE3MTg4IDE3Ny4wNTQ2ODggTCAzNjYuMzY3MTg4IDE3Ni45ODQzNzUgTCAzNjcuMTEzMjgxIDE3Ni45MjE4NzUgTCAzNjcuODYzMjgxIDE3Ni44NjcxODggTCAzNjguNjA5Mzc1IDE3Ni44MTY0MDYgTCAzNjkuMzU5Mzc1IDE3Ni43NzM0MzggTCAzNzAuMTA1NDY5IDE3Ni43MzgyODEgTCAzNzAuODU1NDY5IDE3Ni43MDcwMzEgTCAzNzEuNjAxNTYyIDE3Ni42ODM1OTQgTCAzNzIuMzUxNTYyIDE3Ni42NjQwNjIgTCAzNzMuMTAxNTYyIDE3Ni42NTIzNDQgTCAzNzMuODQ3NjU2IDE3Ni42NDQ1MzEgTCAzNzQuNTk3NjU2IDE3Ni42NDQ1MzEgTCAzNzUuMzQzNzUgMTc2LjY1MjM0NCBMIDM3Ni4wOTM3NSAxNzYuNjY0MDYyIEwgMzc2LjgzOTg0NCAxNzYuNjgzNTk0IEwgMzc3LjU4OTg0NCAxNzYuNzA3MDMxIEwgMzc4LjMzNTkzOCAxNzYuNzM4MjgxIEwgMzc5LjA4NTkzOCAxNzYuNzczNDM4IEwgMzc5LjgzMjAzMSAxNzYuODE2NDA2IEwgMzgwLjU4MjAzMSAxNzYuODY3MTg4IEwgMzgxLjMzMjAzMSAxNzYuOTIxODc1IEwgMzgyLjA3ODEyNSAxNzYuOTg0Mzc1IEwgMzgyLjgyODEyNSAxNzcuMDU0Njg4IEwgMzgzLjU3NDIxOSAxNzcuMTI4OTA2IEwgMzg0LjMyNDIxOSAxNzcuMjEwOTM4IEwgMzg1LjA3MDMxMiAxNzcuMzAwNzgxIEwgMzg1LjgyMDMxMiAxNzcuMzk0NTMxIEwgMzg2LjU2NjQwNiAxNzcuNSBMIDM4Ny4zMTY0MDYgMTc3LjYwOTM3NSBMIDM4OC4wNjI1IDE3Ny43MjY1NjIgTCAzODguODEyNSAxNzcuODUxNTYyIEwgMzg5LjU2MjUgMTc3Ljk4NDM3NSBMIDM5MC4zMDg1OTQgMTc4LjEyODkwNiBMIDM5MS4wNTg1OTQgMTc4LjI3NzM0NCBMIDM5MS44MDQ2ODggMTc4LjQzMzU5NCBMIDM5Mi41NTQ2ODggMTc4LjYwMTU2MiBMIDM5My4zMDA3ODEgMTc4Ljc3NzM0NCBMIDM5NC4wNTA3ODEgMTc4Ljk2NDg0NCBMIDM5NC43OTY4NzUgMTc5LjE2MDE1NiBMIDM5NS41NDY4NzUgMTc5LjM2NzE4OCBMIDM5Ni4yOTI5NjkgMTc5LjU4NTkzOCBMIDM5Ny4wNDI5NjkgMTc5LjgxNjQwNiBMIDM5Ny43OTI5NjkgMTgwLjA1ODU5NCBMIDM5OC41MzkwNjIgMTgwLjMxMjUgTCAzOTkuMjg5MDYyIDE4MC41ODIwMzEgTCA0MDAuMDM1MTU2IDE4MC44NjcxODggTCA0MDAuNzg1MTU2IDE4MS4xNzE4NzUgTCA0MDEuNTMxMjUgMTgxLjQ4ODI4MSBMIDQwMi4yODEyNSAxODEuODI4MTI1IEwgNDAzLjAyNzM0NCAxODIuMTkxNDA2IEwgNDAzLjc3NzM0NCAxODIuNTc4MTI1IEwgNDA0LjUyMzQzOCAxODIuOTkyMTg4IEwgNDA1LjI3MzQzOCAxODMuNDM3NSBMIDQwNi4wMjM0MzggMTgzLjkyMTg3NSBMIDQwNi43Njk1MzEgMTg0LjQ0OTIxOSBMIDQwNy41MTk1MzEgMTg1LjAzNTE1NiBMIDQwOC4yNjU2MjUgMTg1LjY5NTMxMiBMIDQwOS4wMTU2MjUgMTg2LjQ1NzAzMSBMIDQwOS43NjE3MTkgMTg3LjM3NSBMIDQxMC41MTE3MTkgMTg4LjU4OTg0NCBMIDQxMS4yNTc4MTIgMTkxLjU3NDIxOSBMIDQxMC41MTE3MTkgMTk0LjU1ODU5NCBMIDQwOS43NjE3MTkgMTk1Ljc3MzQzOCBMIDQwOS4wMTU2MjUgMTk2LjY5MTQwNiBMIDQwOC4yNjU2MjUgMTk3LjQ1MzEyNSBMIDQwNy41MTk1MzEgMTk4LjExMzI4MSBMIDQwNi43Njk1MzEgMTk4LjY5OTIxOSBMIDQwNi4wMjM0MzggMTk5LjIyNjU2MiBMIDQwNS4yNzM0MzggMTk5LjcxMDkzOCBMIDQwNC41MjM0MzggMjAwLjE1NjI1IEwgNDAzLjc3NzM0NCAyMDAuNTcwMzEyIEwgNDAzLjAyNzM0NCAyMDAuOTU3MDMxIEwgNDAyLjI4MTI1IDIwMS4zMjAzMTIgTCA0MDEuNTMxMjUgMjAxLjY1NjI1IEwgNDAwLjc4NTE1NiAyMDEuOTc2NTYyIEwgNDAwLjAzNTE1NiAyMDIuMjc3MzQ0IEwgMzk5LjI4OTA2MiAyMDIuNTYyNSBMIDM5OC41MzkwNjIgMjAyLjgzMjAzMSBMIDM5Ny43OTI5NjkgMjAzLjA4OTg0NCBMIDM5Ny4wNDI5NjkgMjAzLjMzMjAzMSBMIDM5Ni4yOTI5NjkgMjAzLjU2MjUgTCAzOTUuNTQ2ODc1IDIwMy43ODEyNSBMIDM5NC43OTY4NzUgMjAzLjk4ODI4MSBMIDM5NC4wNTA3ODEgMjA0LjE4MzU5NCBMIDM5My4zMDA3ODEgMjA0LjM2NzE4OCBMIDM5Mi41NTQ2ODggMjA0LjU0Njg3NSBMIDM5MS44MDQ2ODggMjA0LjcxMDkzOCBMIDM5MS4wNTg1OTQgMjA0Ljg3MTA5NCBMIDM5MC4zMDg1OTQgMjA1LjAxOTUzMSBMIDM4OS41NjI1IDIwNS4xNjAxNTYgTCAzODguODEyNSAyMDUuMjk2ODc1IEwgMzg4LjA2MjUgMjA1LjQyMTg3NSBMIDM4Ny4zMTY0MDYgMjA1LjUzOTA2MiBMIDM4Ni41NjY0MDYgMjA1LjY0ODQzOCBMIDM4NS44MjAzMTIgMjA1Ljc1IEwgMzg1LjA3MDMxMiAyMDUuODQ3NjU2IEwgMzg0LjMyNDIxOSAyMDUuOTM3NSBMIDM4My41NzQyMTkgMjA2LjAxOTUzMSBMIDM4Mi44MjgxMjUgMjA2LjA5Mzc1IEwgMzgyLjA3ODEyNSAyMDYuMTY0MDYyIEwgMzgxLjMzMjAzMSAyMDYuMjI2NTYyIEwgMzgwLjU4MjAzMSAyMDYuMjgxMjUgTCAzNzkuODMyMDMxIDIwNi4zMjgxMjUgTCAzNzkuMDg1OTM4IDIwNi4zNzUgTCAzNzguMzM1OTM4IDIwNi40MTAxNTYgTCAzNzcuNTg5ODQ0IDIwNi40NDE0MDYgTCAzNzYuODM5ODQ0IDIwNi40NjQ4NDQgTCAzNzYuMDkzNzUgMjA2LjQ4NDM3NSBMIDM3NS4zNDM3NSAyMDYuNDk2MDk0IEwgMzc0LjU5NzY1NiAyMDYuNSBMIDM3My44NDc2NTYgMjA2LjUgTCAzNzMuMTAxNTYyIDIwNi40OTYwOTQgTCAzNzIuMzUxNTYyIDIwNi40ODQzNzUgTCAzNzEuNjAxNTYyIDIwNi40NjQ4NDQgTCAzNzAuODU1NDY5IDIwNi40NDE0MDYgTCAzNzAuMTA1NDY5IDIwNi40MTAxNTYgTCAzNjkuMzU5Mzc1IDIwNi4zNzUgTCAzNjguNjA5Mzc1IDIwNi4zMjgxMjUgTCAzNjcuODYzMjgxIDIwNi4yODEyNSBMIDM2Ny4xMTMyODEgMjA2LjIyNjU2MiBMIDM2Ni4zNjcxODggMjA2LjE2NDA2MiBMIDM2NS42MTcxODggMjA2LjA5Mzc1IEwgMzY0Ljg3MTA5NCAyMDYuMDE5NTMxIEwgMzY0LjEyMTA5NCAyMDUuOTM3NSBMIDM2My4zNzEwOTQgMjA1Ljg0NzY1NiBMIDM2Mi42MjUgMjA1Ljc1IEwgMzYxLjg3NSAyMDUuNjQ4NDM4IEwgMzYxLjEyODkwNiAyMDUuNTM5MDYyIEwgMzYwLjM3ODkwNiAyMDUuNDIxODc1IEwgMzU5LjYzMjgxMiAyMDUuMjk2ODc1IEwgMzU4Ljg4MjgxMiAyMDUuMTYwMTU2IEwgMzU4LjEzNjcxOSAyMDUuMDE5NTMxIEwgMzU3LjM4NjcxOSAyMDQuODcxMDk0IEwgMzU2LjY0MDYyNSAyMDQuNzEwOTM4IEwgMzU1Ljg5MDYyNSAyMDQuNTQ2ODc1IEwgMzU1LjE0MDYyNSAyMDQuMzY3MTg4IEwgMzU0LjM5NDUzMSAyMDQuMTgzNTk0IEwgMzUzLjY0NDUzMSAyMDMuOTg4MjgxIEwgMzUyLjg5ODQzOCAyMDMuNzgxMjUgTCAzNTIuMTQ4NDM4IDIwMy41NjI1IEwgMzUxLjQwMjM0NCAyMDMuMzMyMDMxIEwgMzUwLjY1MjM0NCAyMDMuMDg5ODQ0IEwgMzQ5LjkwNjI1IDIwMi44MzIwMzEgTCAzNDkuMTU2MjUgMjAyLjU2MjUgTCAzNDguNDEwMTU2IDIwMi4yNzczNDQgTCAzNDcuNjYwMTU2IDIwMS45NzY1NjIgTCAzNDYuOTEwMTU2IDIwMS42NTYyNSBMIDM0Ni4xNjQwNjIgMjAxLjMyMDMxMiBMIDM0NS40MTQwNjIgMjAwLjk1NzAzMSBMIDM0NC42Njc5NjkgMjAwLjU3MDMxMiBMIDM0My45MTc5NjkgMjAwLjE1NjI1IEwgMzQzLjE3MTg3NSAxOTkuNzEwOTM4IEwgMzQyLjQyMTg3NSAxOTkuMjI2NTYyIEwgMzQxLjY3NTc4MSAxOTguNjk5MjE5IEwgMzQwLjkyNTc4MSAxOTguMTEzMjgxIEwgMzQwLjE3OTY4OCAxOTcuNDUzMTI1IEwgMzM5LjQyOTY4OCAxOTYuNjkxNDA2IEwgMzM4LjY3OTY4OCAxOTUuNzczNDM4IEwgMzM3LjkzMzU5NCAxOTQuNTU4NTk0IFogTSAzMzcuMTgzNTk0IDE5MS41NzQyMTkgIi8+CjxwYXRoIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDMzNy4xODM1OTQgMTkxLjU3NDIxOSBMIDMzNy45MzM1OTQgMTg4LjU4OTg0NCBMIDMzOC42Nzk2ODggMTg3LjM3NSBMIDMzOS40Mjk2ODggMTg2LjQ1NzAzMSBMIDM0MC4xNzk2ODggMTg1LjY5NTMxMiBMIDM0MC45MjU3ODEgMTg1LjAzNTE1NiBMIDM0MS42NzU3ODEgMTg0LjQ0OTIxOSBMIDM0Mi40MjE4NzUgMTgzLjkyMTg3NSBMIDM0My4xNzE4NzUgMTgzLjQzNzUgTCAzNDMuOTE3OTY5IDE4Mi45OTIxODggTCAzNDQuNjY3OTY5IDE4Mi41NzgxMjUgTCAzNDUuNDE0MDYyIDE4Mi4xOTE0MDYgTCAzNDYuMTY0MDYyIDE4MS44MjgxMjUgTCAzNDYuOTEwMTU2IDE4MS40ODgyODEgTCAzNDcuNjYwMTU2IDE4MS4xNzE4NzUgTCAzNDguNDEwMTU2IDE4MC44NjcxODggTCAzNDkuMTU2MjUgMTgwLjU4MjAzMSBMIDM0OS45MDYyNSAxODAuMzEyNSBMIDM1MC42NTIzNDQgMTgwLjA1ODU5NCBMIDM1MS40MDIzNDQgMTc5LjgxNjQwNiBMIDM1Mi4xNDg0MzggMTc5LjU4NTkzOCBMIDM1Mi44OTg0MzggMTc5LjM2NzE4OCBMIDM1My42NDQ1MzEgMTc5LjE2MDE1NiBMIDM1NC4zOTQ1MzEgMTc4Ljk2NDg0NCBMIDM1NS4xNDA2MjUgMTc4Ljc3NzM0NCBMIDM1NS44OTA2MjUgMTc4LjYwMTU2MiBMIDM1Ni42NDA2MjUgMTc4LjQzMzU5NCBMIDM1Ny4zODY3MTkgMTc4LjI3NzM0NCBMIDM1OC4xMzY3MTkgMTc4LjEyODkwNiBMIDM1OC44ODI4MTIgMTc3Ljk4NDM3NSBMIDM1OS42MzI4MTIgMTc3Ljg1MTU2MiBMIDM2MC4zNzg5MDYgMTc3LjcyNjU2MiBMIDM2MS4xMjg5MDYgMTc3LjYwOTM3NSBMIDM2MS44NzUgMTc3LjUgTCAzNjIuNjI1IDE3Ny4zOTQ1MzEgTCAzNjMuMzcxMDk0IDE3Ny4zMDA3ODEgTCAzNjQuMTIxMDk0IDE3Ny4yMTA5MzggTCAzNjQuODcxMDk0IDE3Ny4xMjg5MDYgTCAzNjUuNjE3MTg4IDE3Ny4wNTQ2ODggTCAzNjYuMzY3MTg4IDE3Ni45ODQzNzUgTCAzNjcuMTEzMjgxIDE3Ni45MjE4NzUgTCAzNjcuODYzMjgxIDE3Ni44NjcxODggTCAzNjguNjA5Mzc1IDE3Ni44MTY0MDYgTCAzNjkuMzU5Mzc1IDE3Ni43NzM0MzggTCAzNzAuMTA1NDY5IDE3Ni43MzgyODEgTCAzNzAuODU1NDY5IDE3Ni43MDcwMzEgTCAzNzEuNjAxNTYyIDE3Ni42ODM1OTQgTCAzNzIuMzUxNTYyIDE3Ni42NjQwNjIgTCAzNzMuMTAxNTYyIDE3Ni42NTIzNDQgTCAzNzMuODQ3NjU2IDE3Ni42NDQ1MzEgTCAzNzQuNTk3NjU2IDE3Ni42NDQ1MzEgTCAzNzUuMzQzNzUgMTc2LjY1MjM0NCBMIDM3Ni4wOTM3NSAxNzYuNjY0MDYyIEwgMzc2LjgzOTg0NCAxNzYuNjgzNTk0IEwgMzc3LjU4OTg0NCAxNzYuNzA3MDMxIEwgMzc4LjMzNTkzOCAxNzYuNzM4MjgxIEwgMzc5LjA4NTkzOCAxNzYuNzczNDM4IEwgMzc5LjgzMjAzMSAxNzYuODE2NDA2IEwgMzgwLjU4MjAzMSAxNzYuODY3MTg4IEwgMzgxLjMzMjAzMSAxNzYuOTIxODc1IEwgMzgyLjA3ODEyNSAxNzYuOTg0Mzc1IEwgMzgyLjgyODEyNSAxNzcuMDU0Njg4IEwgMzgzLjU3NDIxOSAxNzcuMTI4OTA2IEwgMzg0LjMyNDIxOSAxNzcuMjEwOTM4IEwgMzg1LjA3MDMxMiAxNzcuMzAwNzgxIEwgMzg1LjgyMDMxMiAxNzcuMzk0NTMxIEwgMzg2LjU2NjQwNiAxNzcuNSBMIDM4Ny4zMTY0MDYgMTc3LjYwOTM3NSBMIDM4OC4wNjI1IDE3Ny43MjY1NjIgTCAzODguODEyNSAxNzcuODUxNTYyIEwgMzg5LjU2MjUgMTc3Ljk4NDM3NSBMIDM5MC4zMDg1OTQgMTc4LjEyODkwNiBMIDM5MS4wNTg1OTQgMTc4LjI3NzM0NCBMIDM5MS44MDQ2ODggMTc4LjQzMzU5NCBMIDM5Mi41NTQ2ODggMTc4LjYwMTU2MiBMIDM5My4zMDA3ODEgMTc4Ljc3NzM0NCBMIDM5NC4wNTA3ODEgMTc4Ljk2NDg0NCBMIDM5NC43OTY4NzUgMTc5LjE2MDE1NiBMIDM5NS41NDY4NzUgMTc5LjM2NzE4OCBMIDM5Ni4yOTI5NjkgMTc5LjU4NTkzOCBMIDM5Ny4wNDI5NjkgMTc5LjgxNjQwNiBMIDM5Ny43OTI5NjkgMTgwLjA1ODU5NCBMIDM5OC41MzkwNjIgMTgwLjMxMjUgTCAzOTkuMjg5MDYyIDE4MC41ODIwMzEgTCA0MDAuMDM1MTU2IDE4MC44NjcxODggTCA0MDAuNzg1MTU2IDE4MS4xNzE4NzUgTCA0MDEuNTMxMjUgMTgxLjQ4ODI4MSBMIDQwMi4yODEyNSAxODEuODI4MTI1IEwgNDAzLjAyNzM0NCAxODIuMTkxNDA2IEwgNDAzLjc3NzM0NCAxODIuNTc4MTI1IEwgNDA0LjUyMzQzOCAxODIuOTkyMTg4IEwgNDA1LjI3MzQzOCAxODMuNDM3NSBMIDQwNi4wMjM0MzggMTgzLjkyMTg3NSBMIDQwNi43Njk1MzEgMTg0LjQ0OTIxOSBMIDQwNy41MTk1MzEgMTg1LjAzNTE1NiBMIDQwOC4yNjU2MjUgMTg1LjY5NTMxMiBMIDQwOS4wMTU2MjUgMTg2LjQ1NzAzMSBMIDQwOS43NjE3MTkgMTg3LjM3NSBMIDQxMC41MTE3MTkgMTg4LjU4OTg0NCBMIDQxMS4yNTc4MTIgMTkxLjU3NDIxOSBMIDQxMC41MTE3MTkgMTk0LjU1ODU5NCBMIDQwOS43NjE3MTkgMTk1Ljc3MzQzOCBMIDQwOS4wMTU2MjUgMTk2LjY5MTQwNiBMIDQwOC4yNjU2MjUgMTk3LjQ1MzEyNSBMIDQwNy41MTk1MzEgMTk4LjExMzI4MSBMIDQwNi43Njk1MzEgMTk4LjY5OTIxOSBMIDQwNi4wMjM0MzggMTk5LjIyNjU2MiBMIDQwNS4yNzM0MzggMTk5LjcxMDkzOCBMIDQwNC41MjM0MzggMjAwLjE1NjI1IEwgNDAzLjc3NzM0NCAyMDAuNTcwMzEyIEwgNDAzLjAyNzM0NCAyMDAuOTU3MDMxIEwgNDAyLjI4MTI1IDIwMS4zMjAzMTIgTCA0MDEuNTMxMjUgMjAxLjY1NjI1IEwgNDAwLjc4NTE1NiAyMDEuOTc2NTYyIEwgNDAwLjAzNTE1NiAyMDIuMjc3MzQ0IEwgMzk5LjI4OTA2MiAyMDIuNTYyNSBMIDM5OC41MzkwNjIgMjAyLjgzMjAzMSBMIDM5Ny43OTI5NjkgMjAzLjA4OTg0NCBMIDM5Ny4wNDI5NjkgMjAzLjMzMjAzMSBMIDM5Ni4yOTI5NjkgMjAzLjU2MjUgTCAzOTUuNTQ2ODc1IDIwMy43ODEyNSBMIDM5NC43OTY4NzUgMjAzLjk4ODI4MSBMIDM5NC4wNTA3ODEgMjA0LjE4MzU5NCBMIDM5My4zMDA3ODEgMjA0LjM2NzE4OCBMIDM5Mi41NTQ2ODggMjA0LjU0Njg3NSBMIDM5MS44MDQ2ODggMjA0LjcxMDkzOCBMIDM5MS4wNTg1OTQgMjA0Ljg3MTA5NCBMIDM5MC4zMDg1OTQgMjA1LjAxOTUzMSBMIDM4OS41NjI1IDIwNS4xNjAxNTYgTCAzODguODEyNSAyMDUuMjk2ODc1IEwgMzg4LjA2MjUgMjA1LjQyMTg3NSBMIDM4Ny4zMTY0MDYgMjA1LjUzOTA2MiBMIDM4Ni41NjY0MDYgMjA1LjY0ODQzOCBMIDM4NS44MjAzMTIgMjA1Ljc1IEwgMzg1LjA3MDMxMiAyMDUuODQ3NjU2IEwgMzg0LjMyNDIxOSAyMDUuOTM3NSBMIDM4My41NzQyMTkgMjA2LjAxOTUzMSBMIDM4Mi44MjgxMjUgMjA2LjA5Mzc1IEwgMzgyLjA3ODEyNSAyMDYuMTY0MDYyIEwgMzgxLjMzMjAzMSAyMDYuMjI2NTYyIEwgMzgwLjU4MjAzMSAyMDYuMjgxMjUgTCAzNzkuODMyMDMxIDIwNi4zMjgxMjUgTCAzNzkuMDg1OTM4IDIwNi4zNzUgTCAzNzguMzM1OTM4IDIwNi40MTAxNTYgTCAzNzcuNTg5ODQ0IDIwNi40NDE0MDYgTCAzNzYuODM5ODQ0IDIwNi40NjQ4NDQgTCAzNzYuMDkzNzUgMjA2LjQ4NDM3NSBMIDM3NS4zNDM3NSAyMDYuNDk2MDk0IEwgMzc0LjU5NzY1NiAyMDYuNSBMIDM3My44NDc2NTYgMjA2LjUgTCAzNzMuMTAxNTYyIDIwNi40OTYwOTQgTCAzNzIuMzUxNTYyIDIwNi40ODQzNzUgTCAzNzEuNjAxNTYyIDIwNi40NjQ4NDQgTCAzNzAuODU1NDY5IDIwNi40NDE0MDYgTCAzNzAuMTA1NDY5IDIwNi40MTAxNTYgTCAzNjkuMzU5Mzc1IDIwNi4zNzUgTCAzNjguNjA5Mzc1IDIwNi4zMjgxMjUgTCAzNjcuODYzMjgxIDIwNi4yODEyNSBMIDM2Ny4xMTMyODEgMjA2LjIyNjU2MiBMIDM2Ni4zNjcxODggMjA2LjE2NDA2MiBMIDM2NS42MTcxODggMjA2LjA5Mzc1IEwgMzY0Ljg3MTA5NCAyMDYuMDE5NTMxIEwgMzY0LjEyMTA5NCAyMDUuOTM3NSBMIDM2My4zNzEwOTQgMjA1Ljg0NzY1NiBMIDM2Mi42MjUgMjA1Ljc1IEwgMzYxLjg3NSAyMDUuNjQ4NDM4IEwgMzYxLjEyODkwNiAyMDUuNTM5MDYyIEwgMzYwLjM3ODkwNiAyMDUuNDIxODc1IEwgMzU5LjYzMjgxMiAyMDUuMjk2ODc1IEwgMzU4Ljg4MjgxMiAyMDUuMTYwMTU2IEwgMzU4LjEzNjcxOSAyMDUuMDE5NTMxIEwgMzU3LjM4NjcxOSAyMDQuODcxMDk0IEwgMzU2LjY0MDYyNSAyMDQuNzEwOTM4IEwgMzU1Ljg5MDYyNSAyMDQuNTQ2ODc1IEwgMzU1LjE0MDYyNSAyMDQuMzY3MTg4IEwgMzU0LjM5NDUzMSAyMDQuMTgzNTk0IEwgMzUzLjY0NDUzMSAyMDMuOTg4MjgxIEwgMzUyLjg5ODQzOCAyMDMuNzgxMjUgTCAzNTIuMTQ4NDM4IDIwMy41NjI1IEwgMzUxLjQwMjM0NCAyMDMuMzMyMDMxIEwgMzUwLjY1MjM0NCAyMDMuMDg5ODQ0IEwgMzQ5LjkwNjI1IDIwMi44MzIwMzEgTCAzNDkuMTU2MjUgMjAyLjU2MjUgTCAzNDguNDEwMTU2IDIwMi4yNzczNDQgTCAzNDcuNjYwMTU2IDIwMS45NzY1NjIgTCAzNDYuOTEwMTU2IDIwMS42NTYyNSBMIDM0Ni4xNjQwNjIgMjAxLjMyMDMxMiBMIDM0NS40MTQwNjIgMjAwLjk1NzAzMSBMIDM0NC42Njc5NjkgMjAwLjU3MDMxMiBMIDM0My45MTc5NjkgMjAwLjE1NjI1IEwgMzQzLjE3MTg3NSAxOTkuNzEwOTM4IEwgMzQyLjQyMTg3NSAxOTkuMjI2NTYyIEwgMzQxLjY3NTc4MSAxOTguNjk5MjE5IEwgMzQwLjkyNTc4MSAxOTguMTEzMjgxIEwgMzQwLjE3OTY4OCAxOTcuNDUzMTI1IEwgMzM5LjQyOTY4OCAxOTYuNjkxNDA2IEwgMzM4LjY3OTY4OCAxOTUuNzczNDM4IEwgMzM3LjkzMzU5NCAxOTQuNTU4NTk0IEwgMzM3LjE4MzU5NCAxOTEuNTc0MjE5ICIvPgo8ZyBzdHlsZT0iZmlsbDpyZ2IoMCUsMCUsMCUpO2ZpbGwtb3BhY2l0eToxOyI+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTQiIHg9IjM0MC41NTA3ODEiIHk9IjE5Ni42NDg0MzgiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtNSIgeD0iMzUwLjQ4Mjk0NSIgeT0iMTk2LjY0ODQzOCIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS02IiB4PSIzNTQuODkyODI1IiB5PSIxOTYuNjQ4NDM4Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTciIHg9IjM2NS45MzczOTEiIHk9IjE5Ni42NDg0MzgiLz4KICA8dXNlIHhsaW5rOmhyZWY9IiNnbHlwaDEtOCIgeD0iMzc2Ljk4MTk1NiIgeT0iMTk2LjY0ODQzOCIvPgogIDx1c2UgeGxpbms6aHJlZj0iI2dseXBoMS05IiB4PSIzODEuMzkxODM3IiB5PSIxOTYuNjQ4NDM4Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTEwIiB4PSIzOTIuNDM2NDAyIiB5PSIxOTYuNjQ4NDM4Ii8+CiAgPHVzZSB4bGluazpocmVmPSIjZ2x5cGgxLTQiIHg9IjM5Ny45NTg2ODUiIHk9IjE5Ni42NDg0MzgiLz4KPC9nPgo8cGF0aCBzdHlsZT0iZmlsbDpub25lO3N0cm9rZS13aWR0aDowLjc1O3N0cm9rZS1saW5lY2FwOnJvdW5kO3N0cm9rZS1saW5lam9pbjpyb3VuZDtzdHJva2U6cmdiKDAlLDAlLDAlKTtzdHJva2Utb3BhY2l0eToxO3N0cm9rZS1taXRlcmxpbWl0OjEwOyIgZD0iTSAxMTYuODE2NDA2IDE5MS41NzQyMTkgTCAzMjcgMTkxLjU3NDIxOSAiLz4KPHBhdGggc3R5bGU9ImZpbGw6bm9uZTtzdHJva2Utd2lkdGg6MC43NTtzdHJva2UtbGluZWNhcDpyb3VuZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlOnJnYigwJSwwJSwwJSk7c3Ryb2tlLW9wYWNpdHk6MTtzdHJva2UtbWl0ZXJsaW1pdDoxMDsiIGQ9Ik0gMzA3LjczODI4MSAxOTEuNTc0MjE5IEwgMzI3IDE5MS41NzQyMTkgIi8+CjxwYXRoIHN0eWxlPSJmaWxsOm5vbmU7c3Ryb2tlLXdpZHRoOjAuNzU7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO3N0cm9rZTpyZ2IoMCUsMCUsMCUpO3N0cm9rZS1vcGFjaXR5OjE7c3Ryb2tlLW1pdGVybGltaXQ6MTA7IiBkPSJNIDMxNy44MTI1IDE5Ni44Nzg5MDYgTCAzMjcgMTkxLjU3NDIxOSBMIDMxNy44MTI1IDE4Ni4yNjk1MzEgIi8+CjwvZz4KPC9zdmc+Cg==" width="672" /></p>
 <pre class="r"><code># match reference
 match_result &lt;- cqc_match(groups, ref = 1, select = c(2))
 match_result</code></pre>
-<div id="htmlwidget-0e00c31107ba29cf4aea" style="width:960px;height:500px;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-0e00c31107ba29cf4aea">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","16"],["","","","","","","","","","","","","","","To Delete"],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root",""],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root","singlets"],["white","white","white","white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n      <th>Var.4<\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[4,5,6],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[4]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[5]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[6]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-7b4c00e9e99934ac69a4" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7b4c00e9e99934ac69a4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13","14","16"],["","","","","","","","","","","","","","","To Delete"],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root",""],["24hi 38hi","27- IgD-","27- IgD+","27+ IgD-","27+ IgD+","27hi 38hi","CD19","CD19 AND CD20","CD19 AND NOT CD20","CD20","CD3","LYM","not dead","root","singlets"],["white","white","white","white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n      <th>Var.4<\/th>\n      <th>Ref<\/th>\n      <th>2<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[4,5,6],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[4]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[5]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[6]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 <pre class="r"><code>cqc_fix(match_result)
 
 cqc_check(cqc_data, &quot;gate&quot;)</code></pre>
@@ -3135,8 +3429,8 @@ CD19, CD20, CD24, CD27, CD3, CD38, IgD, Live/Dead
 <h2>Markers are more standardized and go ahead to further clean it</h2>
 <pre class="r"><code>res &lt;- cqc_match(groups, ref = 2) 
 res</code></pre>
-<div id="htmlwidget-c50655365eaf908dfaff" style="width:960px;height:500px;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-c50655365eaf908dfaff">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["","","","","","","",""],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE"],["CD19 PerCP-Cy55","CD20 APC-H7","CD24 PE","CD27 PE-Cy7","CD3 V450","CD38 APC","IgD V500","Live Dead FITC"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE DEAD"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live Green"],["CD19","CD20","CD24","CD27","CD3","CD38","IGD","LIVE_GREEN"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live/Dead"],["white","white","white","white","white","white","white","white"],["black","black","black","black","black","black","black","black"],["green","green","green","green","green","green","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n      <th>Var.8<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[8,9,10,11,12,13,14],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[8]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[9]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[10]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[11]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[12]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[13]; $(this.api().cell(row, 6).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\nvar value=data[14]; $(this.api().cell(row, 7).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-ae3e6b990f13a1d95cf4" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae3e6b990f13a1d95cf4">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8"],["","","","","","","",""],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE"],["CD19 PerCP-Cy55","CD20 APC-H7","CD24 PE","CD27 PE-Cy7","CD3 V450","CD38 APC","IgD V500","Live Dead FITC"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","LIVE DEAD"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live Green"],["CD19","CD20","CD24","CD27","CD3","CD38","IGD","LIVE_GREEN"],["CD19","CD20","CD24","CD27","CD3","CD38","IgD","Live/Dead"],["white","white","white","white","white","white","white","white"],["black","black","black","black","black","black","black","black"],["green","green","green","green","green","green","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","gray","green"],["gray","gray","gray","gray","gray","gray","green","green"],["gray","gray","gray","gray","gray","gray","gray","green"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n      <th>Var.8<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>3<\/th>\n      <th>4<\/th>\n      <th>5<\/th>\n      <th>6<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[8,9,10,11,12,13,14],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[8]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[9]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[10]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[11]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[12]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[13]; $(this.api().cell(row, 6).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\nvar value=data[14]; $(this.api().cell(row, 7).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"green\" ? \"green\" : value == \"gray\" ? \"gray\" : null});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 </div>
 <div id="apply-the-fix-and-update-checks" class="section level2">
 <h2>Apply the fix and update checks</h2>
@@ -3236,22 +3530,22 @@ CD19
 CD20
 </td>
 <td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
 &lt;APC-H7-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;APC-H7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;R780-A&gt;
@@ -3262,22 +3556,22 @@ CD20
 CD24
 </td>
 <td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;PE YG-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;G560-A&gt;
@@ -3288,7 +3582,13 @@ CD24
 CD27
 </td>
 <td style="text-align:left;">
-&lt;PE-Cy7 YG-A&gt;
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;PE-Cy7-A&gt;
@@ -3297,13 +3597,7 @@ CD27
 &lt;PE Cy7 YG-A&gt;
 </td>
 <td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
+&lt;PE-Cy7 YG-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;G780-A&gt;
@@ -3314,15 +3608,6 @@ CD27
 CD3
 </td>
 <td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
 &lt;V450-A&gt;
 </td>
 <td style="text-align:left;">
@@ -3330,6 +3615,15 @@ CD3
 </td>
 <td style="text-align:left;">
 &lt;V450-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;V450-A&gt;
@@ -3366,7 +3660,13 @@ CD38
 IgD
 </td>
 <td style="text-align:left;">
-&lt;AmCyan-A&gt;
+&lt;V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;BD Horizon V500-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;V500-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;Am Cyan-A&gt;
@@ -3375,13 +3675,7 @@ IgD
 &lt;AmCyan-A&gt;
 </td>
 <td style="text-align:left;">
-&lt;V500-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;BD Horizon V500-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;V500-A&gt;
+&lt;AmCyan-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;V545-A&gt;
@@ -3392,22 +3686,22 @@ IgD
 LIVE
 </td>
 <td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;Alexa Fluor 488-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;B515-A&gt;
@@ -3449,10 +3743,10 @@ group 7(n=1)
 <tbody>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD19
+<span style="color:green;">CD19</span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;PerCP-Cy5-5-A&gt;
+<span style="color:green;">&lt;PerCP-Cy5-5-A&gt;</span>
 </td>
 <td style="text-align:left;">
 &lt;PerCP-Cy5-5-A&gt;
@@ -3475,25 +3769,25 @@ CD19
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD20
+<span style="color:green;">CD20</span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
+<span style="color:green;">&lt;APC-H7-A&gt; </span>
 </td>
 <td style="text-align:left;">
 &lt;APC-H7-A&gt;
 </td>
 <td style="text-align:left;">
-&lt;APC-H7-A&gt;
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;APC-Cy7-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;R780-A&gt;
@@ -3501,25 +3795,25 @@ CD20
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD24
+<span style="color:green;">CD24</span>
 </td>
 <td style="text-align:left;color: green !important;">
+<span style="color:green;">&lt;PE-A&gt; </span>
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;PE YG-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;G560-A&gt;
@@ -3527,10 +3821,16 @@ CD24
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD27
+<span style="color:green;">CD27</span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;PE-Cy7 YG-A&gt;
+<span style="color:green;">&lt;PE-Cy7-A&gt; </span>
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;PE-Cy7-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;PE-Cy7-A&gt;
@@ -3539,13 +3839,7 @@ CD27
 &lt;PE Cy7 YG-A&gt;
 </td>
 <td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;PE-Cy7-A&gt;
+&lt;PE-Cy7 YG-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;G780-A&gt;
@@ -3553,19 +3847,10 @@ CD27
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD3
+<span style="color:green;">CD3 </span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;V450-A&gt;
+<span style="color:green;">&lt;V450-A&gt; </span>
 </td>
 <td style="text-align:left;">
 &lt;BD Horizon V450-A&gt;
@@ -3574,15 +3859,24 @@ CD3
 &lt;V450-A&gt;
 </td>
 <td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;Pacific Blue-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;V450-A&gt;
 </td>
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-CD38
+<span style="color:green;">CD38</span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;APC-A&gt;
+<span style="color:green;">&lt;APC-A&gt; </span>
 </td>
 <td style="text-align:left;">
 &lt;APC-A&gt;
@@ -3605,19 +3899,10 @@ CD38
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-IgD
+<span style="color:green;">IgD </span>
 </td>
 <td style="text-align:left;color: green !important;">
-&lt;AmCyan-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;Am Cyan-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;AmCyan-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;V500-A&gt;
+<span style="color:green;">&lt;V500-A&gt; </span>
 </td>
 <td style="text-align:left;">
 &lt;BD Horizon V500-A&gt;
@@ -3626,30 +3911,39 @@ IgD
 &lt;V500-A&gt;
 </td>
 <td style="text-align:left;">
+&lt;Am Cyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;AmCyan-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;V545-A&gt;
 </td>
 </tr>
 <tr>
 <td style="text-align:left;color: green !important;">
-LIVE
+<span style="color:green;">LIVE</span>
 </td>
 <td style="text-align:left;color: green !important;">
+<span style="color:green;">&lt;FITC-A&gt; </span>
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
+&lt;FITC-A&gt;
+</td>
+<td style="text-align:left;">
 &lt;Alexa Fluor 488-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
-</td>
-<td style="text-align:left;">
-&lt;FITC-A&gt;
 </td>
 <td style="text-align:left;">
 &lt;B515-A&gt;
@@ -3684,7 +3978,7 @@ CD19
 CD20
 </td>
 <td style="text-align:left;">
-&lt;APC-Cy7-A&gt;
+&lt;APC-H7-A&gt;
 </td>
 </tr>
 <tr>
@@ -3692,7 +3986,7 @@ CD20
 CD24
 </td>
 <td style="text-align:left;">
-&lt;PE YG-A&gt;
+&lt;PE-A&gt;
 </td>
 </tr>
 <tr>
@@ -3700,7 +3994,7 @@ CD24
 CD27
 </td>
 <td style="text-align:left;">
-&lt;PE-Cy7 YG-A&gt;
+&lt;PE-Cy7-A&gt;
 </td>
 </tr>
 <tr>
@@ -3708,7 +4002,7 @@ CD27
 CD3
 </td>
 <td style="text-align:left;">
-&lt;Pacific Blue-A&gt;
+&lt;V450-A&gt;
 </td>
 </tr>
 <tr>
@@ -3724,7 +4018,7 @@ CD38
 IgD
 </td>
 <td style="text-align:left;">
-&lt;AmCyan-A&gt;
+&lt;V500-A&gt;
 </td>
 </tr>
 <tr>
@@ -3732,7 +4026,7 @@ IgD
 LIVE
 </td>
 <td style="text-align:left;">
-&lt;Alexa Fluor 488-A&gt;
+&lt;FITC-A&gt;
 </td>
 </tr>
 </tbody>
@@ -3765,7 +4059,7 @@ channel
 4
 </td>
 <td style="text-align:left;">
-&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, FSC-H, FSC-W, SSC-A, SSC-H, SSC-W, Time
 </td>
 </tr>
 <tr>
@@ -3776,7 +4070,7 @@ channel
 1
 </td>
 <td style="text-align:left;">
-&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-H, SSC-A, SSC-H, Time
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, FSC-H, SSC-A, SSC-H, Time
 </td>
 </tr>
 <tr>
@@ -3787,7 +4081,7 @@ channel
 1
 </td>
 <td style="text-align:left;">
-&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, FSC-W, SSC-A, SSC-W, Time
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, FSC-W, SSC-A, SSC-W, Time
 </td>
 </tr>
 <tr>
@@ -3798,7 +4092,7 @@ channel
 1
 </td>
 <td style="text-align:left;">
-&lt;Alexa Fluor 488-A&gt;, &lt;AmCyan-A&gt;, &lt;APC-A&gt;, &lt;APC-Cy7-A&gt;, &lt;Pacific Blue-A&gt;, &lt;PE YG-A&gt;, &lt;PE-Cy7 YG-A&gt;, &lt;PerCP-Cy5-5-A&gt;, FSC-A, SSC-A, Time
+&lt;APC-A&gt;, &lt;APC-H7-A&gt;, &lt;FITC-A&gt;, &lt;PE-A&gt;, &lt;PE-Cy7-A&gt;, &lt;PerCP-Cy5-5-A&gt;, &lt;V450-A&gt;, &lt;V500-A&gt;, FSC-A, SSC-A, Time
 </td>
 </tr>
 </tbody>
@@ -3859,8 +4153,8 @@ FSC-W, SSC-W
 <h2>Remove <code>H/W</code> channels</h2>
 <pre class="r"><code>res &lt;- cqc_match(groups, ref = 4) 
 res</code></pre>
-<div id="htmlwidget-d114bd2fd766efd6ffea" style="width:960px;height:500px;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-d114bd2fd766efd6ffea">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","13"],["","","","","","","","","","","","To Delete"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time",""],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-H,FSC-W,SSC-H,SSC-W"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-H,SSC-H"],["&lt;Alexa Fluor 488-A&gt;","&lt;AmCyan-A&gt;","&lt;APC-A&gt;","&lt;APC-Cy7-A&gt;","&lt;Pacific Blue-A&gt;","&lt;PE YG-A&gt;","&lt;PE-Cy7 YG-A&gt;","&lt;PerCP-Cy5-5-A&gt;","FSC-A","SSC-A","Time","FSC-W,SSC-W"],["white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n      <th>Var.6<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[6,7,8,9,10],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[6]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[7]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[8]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[9]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\nvar value=data[10]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : value});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<div id="htmlwidget-f067db941f92745364f6" style="width:960px;height:500px;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f067db941f92745364f6">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","13"],["","","","","","","","","","","","To Delete"],["&lt;APC-A&gt;","&lt;APC-H7-A&gt;","&lt;FITC-A&gt;","&lt;PE-A&gt;","&lt;PE-Cy7-A&gt;","&lt;PerCP-Cy5-5-A&gt;","&lt;V450-A&gt;","&lt;V500-A&gt;","FSC-A","SSC-A","Time",""],["&lt;APC-A&gt;","&lt;APC-H7-A&gt;","&lt;FITC-A&gt;","&lt;PE-A&gt;","&lt;PE-Cy7-A&gt;","&lt;PerCP-Cy5-5-A&gt;","&lt;V450-A&gt;","&lt;V500-A&gt;","FSC-A","SSC-A","Time","FSC-H,FSC-W,SSC-H,SSC-W"],["&lt;APC-A&gt;","&lt;APC-H7-A&gt;","&lt;FITC-A&gt;","&lt;PE-A&gt;","&lt;PE-Cy7-A&gt;","&lt;PerCP-Cy5-5-A&gt;","&lt;V450-A&gt;","&lt;V500-A&gt;","FSC-A","SSC-A","Time","FSC-H,SSC-H"],["&lt;APC-A&gt;","&lt;APC-H7-A&gt;","&lt;FITC-A&gt;","&lt;PE-A&gt;","&lt;PE-Cy7-A&gt;","&lt;PerCP-Cy5-5-A&gt;","&lt;V450-A&gt;","&lt;V500-A&gt;","FSC-A","SSC-A","Time","FSC-W,SSC-W"],["white","white","white","white","white","white","white","white","white","white","white","black"],["black","black","black","black","black","black","black","black","black","black","black","white"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"],["gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","gray","brown"]],"container":"<table class=\"compact\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th><\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n      <th>Var.6<\/th>\n      <th>Ref<\/th>\n      <th>1<\/th>\n      <th>2<\/th>\n      <th>3<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"targets":[6,7,8,9,10],"visible":false},{"orderable":false,"targets":0}],"paging":false,"searching":false,"info":false,"ordering":false,"dom":"t","order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nvar value=data[6]; $(this.api().cell(row, 1).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[7]; $(this.api().cell(row, 2).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[8]; $(this.api().cell(row, 3).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[9]; $(this.api().cell(row, 4).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\nvar value=data[10]; $(this.api().cell(row, 5).node()).css({'color':value == \"white\" ? \"white\" : value == \"black\" ? \"black\" : value == \"gray\" ? \"gray\" : value == \"brown\" ? \"brown\" : null});\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
 <pre class="r"><code>cqc_fix(res)</code></pre>
 </div>
 <div id="coerce-it-directly-into-single-gatingset-zero-copying" class="section level2">

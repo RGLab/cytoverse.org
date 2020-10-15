@@ -34,7 +34,7 @@ p1 <- p + geom_path(data = lg, colour = "red")#can't use geom_gate since it is s
 p1
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-1.svg)<!-- -->
 
 ```r
 # add rectangleGate layer (2d)
@@ -43,7 +43,7 @@ p1 <- p1 + geom_polygon(data = rect.g, colour = "red", fill = "transparent")
 p1
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-2.svg)<!-- -->
 
 ```r
 # add 1d rectangleGate layer (no need for )
@@ -51,13 +51,13 @@ rect.g1d <- rectangleGate("FSC-H" =  c(550, Inf))
 p1 + geom_hvline(data = rect.g1d, colour = "red") # vline
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-3.svg)<!-- -->
 
 ```r
 p1 + geom_hvline(data = rectangleGate("SSC-H" = c(550, Inf)), colour = "red") #hline
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-4.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-4.svg)<!-- -->
 
 ```r
 # n samples + 1 gate
@@ -67,7 +67,7 @@ p <- ggplot(fs, aes(x = `FSC-H`, y =  `SSC-H`)) + myColor_scale_fill + stat_binh
 p + geom_path(data = lg, colour = "red")
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-5.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-5.svg)<!-- -->
 
 ```r
 # n samples + n gates
@@ -82,7 +82,7 @@ attr(lgs, "pd") <- pData(fs)
 p + geom_path(data = lgs, colour = "red")
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-6.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-6.svg)<!-- -->
 
 ```r
 # add stats
@@ -90,7 +90,7 @@ stats <- compute_stats(fs, lgs, type = "percent")# calculate cell % and ccentroi
 p + geom_path(data = lgs, colour = "red") + geom_label(data = stats , aes(label = value))
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-7.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-7.svg)<!-- -->
 
 ```r
 # a list of 1d gate
@@ -100,7 +100,7 @@ attr(den.gates, "pd") <- pData(fs)
 p + geom_hvline(data = den.gates, colour = "red")
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-8.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-8.svg)<!-- -->
 
 ```r
 # 1d gate on another dimesion
@@ -114,7 +114,7 @@ attr(den.gates, "pd") <- pData(fs)
 p + geom_hvline(data = den.gates, colour = "red")
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-9.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-9.svg)<!-- -->
 
 ```r
 # 1d gate on density plot
@@ -125,7 +125,7 @@ p1 <- p1 + geom_hvline(data = den.gates, colour = "red")
 p1
 ```
 
-![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-10.png)<!-- -->
+![](ggplot.flowSet.gate_files/figure-html/unnamed-chunk-3-10.svg)<!-- -->
 
 
 

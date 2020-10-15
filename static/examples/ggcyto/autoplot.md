@@ -28,7 +28,7 @@ fs <- GvHD[subset(pData(GvHD), Patient %in%5 & Visit %in% c(5:6))[["name"]]]
 autoplot(fs, x = 'FSC-H')
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-3-1.svg)<!-- -->
 
 `geom_hex` layer is added for 2d plot.
 
@@ -36,7 +36,7 @@ autoplot(fs, x = 'FSC-H')
 autoplot(fs, x = 'FSC-H', y = 'SSC-H', bins = 64)
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-4-1.svg)<!-- -->
 ## `flowFrame`
 For the `flowFrame`, it can display one-dimensional plots for all channels by not supplying the `x` argument.
 
@@ -44,7 +44,7 @@ For the `flowFrame`, it can display one-dimensional plots for all channels by no
 autoplot(fs[[1]]) + labs_cyto("marker")
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-5-1.svg)<!-- -->
 
 ## `GatingSet` 
 
@@ -52,7 +52,7 @@ autoplot(fs[[1]]) + labs_cyto("marker")
 autoplot(gs, "CD3", bins = 64)
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-6-1.svg)<!-- -->
 
 Here are some default settings applied:
 
@@ -67,7 +67,7 @@ Multiple gates that share the same parent can be plotted together.
 autoplot(gs, c("CD3", "CD19"), bins = 64)
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-7-1.svg)<!-- -->
 
 ## `GatingHierarchy`
 Multiple cell populations with their asssociated gates can be plotted in different panels of the same plot.
@@ -86,7 +86,7 @@ nodes
 autoplot(gh, nodes, bins = 64)
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-8-1.svg)<!-- -->
 
 ## `ggcyto_arrange`
 Optionally we can manually arrange it as a `gtable` object and manipulate the layout afterwards.
@@ -127,7 +127,7 @@ gt3 <- gridExtra::gtable_rbind(gt, gt2)
 plot(gt3)
 ```
 
-![](autoplot_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](autoplot_files/figure-html/unnamed-chunk-9-1.svg)<!-- -->
 
 
 

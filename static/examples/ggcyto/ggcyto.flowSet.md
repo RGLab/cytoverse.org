@@ -52,7 +52,7 @@ p1 <- p + geom_histogram()
 p1
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-4-1.svg)<!-- -->
 
 As shown, data is facetted by samples name automatically (i.e `facet_wrap(~name)`).
 
@@ -76,7 +76,7 @@ pData(fs)
 p1 + facet_grid(Patient~Visit)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-5-1.svg)<!-- -->
 
 To display 1d density
 
@@ -84,7 +84,7 @@ To display 1d density
 p + geom_density()
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-6-1.svg)<!-- -->
 
 Fill the same color
 
@@ -92,7 +92,7 @@ Fill the same color
 p + geom_density(fill = "black")
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-7-1.svg)<!-- -->
 
 Fill different colors
 
@@ -100,7 +100,7 @@ Fill different colors
 ggcyto(fs, aes(x = `FSC-H`, fill = name)) + geom_density(alpha = 0.2)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-8-1.svg)<!-- -->
 
 Or plot in the same panel by using `ggplot` directly (thus removing the default facetting effect)
 
@@ -108,7 +108,7 @@ Or plot in the same panel by using `ggplot` directly (thus removing the default 
 ggplot(fs, aes(x = `FSC-H`, fill = name)) + geom_density(alpha = 0.2)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-9-1.svg)<!-- -->
 
 ### stacked density plot
 
@@ -119,14 +119,14 @@ require(ggridges)
 p + geom_density_ridges(aes(y = name)) + facet_null() #facet_null is used to remove the default facet_wrap (by 'name' column)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-10-1.svg)<!-- -->
 
 ```r
 #or to stack by Visit and facet by patient
 p + geom_density_ridges(aes(y = Visit)) + facet_grid(~Patient)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-10-2.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-10-2.svg)<!-- -->
 
 
 ### 2d scatter/dot plot
@@ -138,7 +138,7 @@ p <- p + geom_hex(bins = 128)
 p
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-11-1.svg)<!-- -->
 
 A default `scale_fill_gradientn` is applied to 2d hexbin plot.
 
@@ -149,7 +149,7 @@ p <- p + ylim(c(10,9e2)) + xlim(c(10,9e2))
 p
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-12-1.svg)<!-- -->
 
 To overwrite the default fill gradien
 
@@ -157,13 +157,13 @@ To overwrite the default fill gradien
 p + scale_fill_gradientn(colours = rainbow(7), trans = "sqrt")
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-13-1.svg)<!-- -->
 
 ```r
 p + scale_fill_gradient(trans = "sqrt", low = "gray", high = "black")
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-13-2.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-13-2.svg)<!-- -->
 
 ### Add `geom_gate` and `geom_stats` layers
 
@@ -182,7 +182,7 @@ Then pass the gates to the gate layer
 p + geom_gate(lg)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-15-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-15-1.svg)<!-- -->
 
 We can also plot the `rectangleGate`, this time we simply replicate a static gate across samples:
 
@@ -197,7 +197,7 @@ Similarly, supply the list of gates to the `geom_gate` layer
 p + geom_gate(rect.gates)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-17-1.svg)<!-- -->
 
 Stats layer can be added on top of gate
 
@@ -205,7 +205,7 @@ Stats layer can be added on top of gate
 p + geom_gate(rect.gates) + geom_stats(size = 3)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-18-1.svg)<!-- -->
 
 The `percentage` of the gated population over its parent is displayed as `geom_label`. Alternatively cell `count` can be displayed by setting `type` argument in `geom_stats` function.
 
@@ -216,7 +216,7 @@ den.gates.x <- fsApply(fs, openCyto::gate_mindensity, channel = "FSC-H", gate_ra
 p + geom_gate(den.gates.x) + geom_stats()
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-19-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-19-1.svg)<!-- -->
 
 `geom_gate` layer supports the 1d gate on either dimension, which means it automatically determines between the vertical or horizontal lines based on the gate dimension and given `aes`.
 
@@ -226,7 +226,7 @@ den.gates.y <- fsApply(fs, openCyto::gate_mindensity, channel = "SSC-H", gate_ra
 p + geom_gate(den.gates.y) + geom_stats(value = lapply(rect.gates, function(g)0.1))
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-20-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-20-1.svg)<!-- -->
 
 Here we also demenstrated the option of passing the precalculated arbitary stats value to `geom_stats` lay instead of letting it compute on the fly, 
 
@@ -236,7 +236,7 @@ We can also put the 1d gate on density plot
 ggcyto(fs, aes(x = `FSC-H`)) + geom_density(fill = "black", aes(y = ..scaled..)) + geom_gate(den.gates.x)  + geom_stats(type = "count")
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-21-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-21-1.svg)<!-- -->
 
 Without supplying `data` for `geom_stats`, we add stats layer for all the gate layers implicitly
 
@@ -244,7 +244,7 @@ Without supplying `data` for `geom_stats`, we add stats layer for all the gate l
 p + geom_gate(lg) + geom_gate(rect.gates) + geom_stats(size = 3)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-22-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-22-1.svg)<!-- -->
 
 
 Or we can add stats layer specificly just for one of the gate layer
@@ -253,7 +253,7 @@ Or we can add stats layer specificly just for one of the gate layer
 p + geom_gate(lg) + geom_gate(rect.gates) + geom_stats(gate = lg, size = 3)
 ```
 
-![](ggcyto.flowSet_files/figure-html/unnamed-chunk-23-1.png)<!-- -->
+![](ggcyto.flowSet_files/figure-html/unnamed-chunk-23-1.svg)<!-- -->
 
 
 Although `ggcyto` object is fully ggplot-compatible in terms of adding layers and parameters, its data slot MAY NOT be fully fortified to data.frame before it is printed/plotted.

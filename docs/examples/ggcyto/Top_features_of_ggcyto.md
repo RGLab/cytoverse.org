@@ -38,7 +38,7 @@ attr(gs, "subset") <- "CD3+"
 ggplot(gs, aes(x = `<B710-A>`, y = `<R780-A>`)) + geom_hex(bins = 128) + scale_fill_gradientn(colours = gray.colors(9))
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-3-1.svg)<!-- -->
 
 #### `flowSet/ncdfFlowSet/flowFrame` 
 
@@ -47,7 +47,7 @@ fs <- gs_pop_get_data(gs, "CD3+")
 ggplot(fs, aes(x = `<B710-A>`)) + geom_density(fill = "blue", alpha= 0.5)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-4-1.svg)<!-- -->
 
 #### `gates`
 
@@ -56,7 +56,7 @@ gates <- filterList(gs_pop_get_gate(gs, "CD8"))
 ggplot(gs, aes(x = `<B710-A>`, y = `<R780-A>`)) + geom_hex(bins = 128) + geom_polygon(data = gates, fill = NA, col = "purple")
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-5-1.svg)<!-- -->
 
 ### medium level: `ggcyto`
 
@@ -67,7 +67,7 @@ ggplot(gs, aes(x = `<B710-A>`, y = `<R780-A>`)) + geom_hex(bins = 128) + geom_po
 ggcyto(gs, aes(x = CD4, y = CD8)) + geom_hex(bins = 128) + geom_gate("CD8")
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-6-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-6-1.svg)<!-- -->
 
 It simplies the plotting by:
 * add a default scale_fill_gradientn for you
@@ -87,20 +87,20 @@ Inheriting the spirit from ggplot's `Quick plot`, it further simply the plotting
 autoplot(fs, "CD4")
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-1.svg)<!-- -->
 
 ```r
 #2d
 autoplot(fs, "CD4", "CD8", bins = 64)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-2.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-2.svg)<!-- -->
 
 ```r
 autoplot(gs, c("CD4", "CD8"), bins = 64)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-3.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-7-3.svg)<!-- -->
 
 ## 2: in-line transformation 
 It is done by different `scales` layers speically designed for `cytometry`
@@ -112,25 +112,25 @@ p <- autoplot(fr, "FL1-H")
 p #raw scale
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-1.svg)<!-- -->
 
 ```r
 p + scale_x_logicle() #flowCore logicle scale
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-2.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-2.svg)<!-- -->
 
 ```r
 p + scale_x_flowJo_fasinh() # flowJo fasinh
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-3.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-3.svg)<!-- -->
 
 ```r
 p + scale_x_flowJo_biexp() # flowJo biexponential
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-4.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-8-4.svg)<!-- -->
 
 ## 3: generic `geom_gate` layer 
 It hides the complex details pf plotting different geometric shapes
@@ -144,7 +144,7 @@ gate_1d_v <- openCyto::gate_mindensity(fr, "<B710-A>")
 p + geom_gate(gate_1d_v)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-1.svg)<!-- -->
 
 ```r
 #1d gate horizontal
@@ -152,7 +152,7 @@ gate_1d_h <- openCyto::gate_mindensity(fr, "<R780-A>")
 p + geom_gate(gate_1d_h)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-2.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-2.svg)<!-- -->
 
 ```r
 #2d rectangle gate
@@ -160,7 +160,7 @@ gate_rect <- rectangleGate("<B710-A>" = c(gate_1d_v@min, 4e3), "<R780-A>" = c(ga
 p + geom_gate(gate_rect)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-3.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-3.svg)<!-- -->
 
 ```r
 #ellipsoid Gate
@@ -178,7 +178,7 @@ class(gate_ellip)
 p + geom_gate(gate_ellip)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-4.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-9-4.svg)<!-- -->
 
 
 
@@ -189,13 +189,13 @@ p <- ggcyto(gs, aes(x = "CD4", y = "CD8"), subset = "CD3+") + geom_hex()
 p + geom_gate("CD4") + geom_stats()
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-10-1.svg)<!-- -->
 
 ```r
 p + geom_gate("CD4") + geom_stats(type = "count") #display cell counts 
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-10-2.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-10-2.svg)<!-- -->
 
 
 ## 5: `axis_inverse_trans` 
@@ -205,13 +205,13 @@ It can display the `log` scaled data in the original value
 p # axis display the transformed values
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-11-1.svg)<!-- -->
 
 ```r
 p + axis_x_inverse_trans() # restore the x axis to the raw values
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-11-2.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-11-2.svg)<!-- -->
 
 It currently only works with `GatingSet`.
 
@@ -223,7 +223,7 @@ p <- p + ggcyto_par_set(limits = "instrument")
 p
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-12-1.svg)<!-- -->
 
 ## 7: labs_cyto
 You can choose between `marker` and `channel` names (or `both` by default)
@@ -232,7 +232,7 @@ You can choose between `marker` and `channel` names (or `both` by default)
 p + labs_cyto("markers")
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-13-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-13-1.svg)<!-- -->
 
 
 ## 8: `ggcyto_par_set` 
@@ -249,7 +249,7 @@ mySettings <- ggcyto_par_set(limits = "instrument"
 p + mySettings
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-14-1.svg)<!-- -->
 
 Currently we only support `4` settings, but will add more in future.
 
@@ -307,7 +307,7 @@ class(p)
 p
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-16-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-16-1.svg)<!-- -->
 
 As you see, this generates a special `ggcyto_GatingLayout` object which is a container storing multiple `ggcyto` objects.
 You can do more about the plot layout with the helper function `ggcyto_arrange`. 
@@ -326,7 +326,7 @@ class(gt)
 plot(gt)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-17-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-17-1.svg)<!-- -->
 
 or even combine it with other `ggcyto_GatingLayout` objects(or any `gtable` objects) and print it on the sampe page
 
@@ -339,5 +339,5 @@ gt3 <- gridExtra::gtable_rbind(gt, gt2)
 plot(gt3)
 ```
 
-![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-18-1.png)<!-- -->
+![](Top_features_of_ggcyto_files/figure-html/unnamed-chunk-18-1.svg)<!-- -->
 

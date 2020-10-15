@@ -40,7 +40,7 @@ p1 <- p1 + geom_point(data = overlay.fr, color = "red", cex = 0.5, pch = 19)
 p1
 ```
 
-![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-1.svg)<!-- -->
 
 ```r
 # another overlay 
@@ -49,7 +49,7 @@ overlay.fr2 <- Subset(fr, rect.g)
 p1 + geom_point(data = overlay.fr2, color = "black", cex = 0.5, pch = 19)
 ```
 
-![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-2.png)<!-- -->
+![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-2.svg)<!-- -->
 
 ```r
 # overlay for multiple samples
@@ -63,7 +63,7 @@ ggplot(fs, aes(x = `FSC-H`, y =  `SSC-H`)) +
           facet_grid(Patient ~ Visit)
 ```
 
-![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-3.png)<!-- -->
+![](ggplot.flowSet.overlay_files/figure-html/unnamed-chunk-3-3.svg)<!-- -->
 
 
 
