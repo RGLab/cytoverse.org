@@ -1,7 +1,7 @@
 baseurl = "/"
 relativeurls=true
 languageCode = "en-us"
-title = "Cytoverse"
+title = "Ozette Cytoverse"
 theme = "hugo-lithium"
 googleAnalytics = ""
 disqusShortname = ""
@@ -69,5 +69,8 @@ disablePathToLower = true
         [params.icons.github]
         url = "img/github_logo.png"
         alt = "RGLab GitHub"
+	[params.icons.ozette]
+	url = "img/ozette_logo.png"
+	alt = "Ozette Technologies"
     
 

@@ -3,18 +3,23 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
+    <loc>/2019/12/20/First-Cytoverse-Post/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/2019/12/20/First-Cytoverse-Post/</loc>
+    <loc>/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>/post/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/install/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
