@@ -4,7 +4,7 @@
   <head>
     <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Hugo 0.62.2" />
+<meta name="generator" content="Hugo 0.95.0" />
 
 
 <title>Installation Instructions - Ozette Cytoverse</title>
@@ -107,45 +107,45 @@
     <div class="article-content">
       <h2 id="versions">Versions</h2>
 <p>Both the latest stable releases of all Cytoverse packages and more up-to-date development builds can be installed from <a href="http://bioconductor.org/">Bioconductor</a>. If you have not already done so, you will need to install BiocManager by running the following in R:</p>
-<pre><code>if (!requireNamespace(&quot;BiocManager&quot;, quietly = TRUE))
-    install.packages(&quot;BiocManager&quot;)
+<pre tabindex="0"><code>if (!requireNamespace(&#34;BiocManager&#34;, quietly = TRUE))
+    install.packages(&#34;BiocManager&#34;)
 </code></pre><p>The most up-to-date development versions can also be built from sources available from <a href="https://github.com/RGLab">Github</a>. If you are building from source on Windows, you will need to install <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> and will need to follow some additional instructions for installing <a href="https://github.com/RGLab/RProtoBufLib/blob/master/INSTALL">RProtoBufLib</a>.</p>
 <h2 id="bundled-installation">Bundled Installation</h2>
 <p>The easiest way to install the <code>cytoverse</code> packages is by using the <a href="https://github.com/RGLab/cytoverse">cytoverse</a> installer package. It will show you all of the packages that will be installed before proceeding. This package can be used to later update <code>cytoverse</code> packages from either Bioconductor or GitHub.</p>
 <p>To install from the stable Bioconductor releases:</p>
-<pre><code>remotes::install_github(&quot;RGLab/cytoverse&quot;)
+<pre tabindex="0"><code>remotes::install_github(&#34;RGLab/cytoverse&#34;)
 cytoverse::cytoverse_update()
 </code></pre><p>To install from the development branches from GitHub:</p>
-<pre><code>remotes::install_github(&quot;RGLab/cytoverse&quot;)
-cytoverse::cytoverse_update(repo = &quot;github&quot;)
+<pre tabindex="0"><code>remotes::install_github(&#34;RGLab/cytoverse&#34;)
+cytoverse::cytoverse_update(repo = &#34;github&#34;)
 </code></pre><h2 id="individual-packages">Individual Packages</h2>
 <p>Installing or updating additional RGLab packages can be done in a similar manner, either by utilizing the <code>cytoverse</code> installer package:</p>
-<pre><code>cytoverse::cytoverse_update(pkgs = &quot;flowStats&quot;)
+<pre tabindex="0"><code>cytoverse::cytoverse_update(pkgs = &#34;flowStats&#34;)
 </code></pre><p>or manually from Bioconductor:</p>
-<pre><code>BiocManager::install(&quot;flowStats&quot;)
+<pre tabindex="0"><code>BiocManager::install(&#34;flowStats&#34;)
 </code></pre><p>or manually from GitHub:</p>
-<pre><code>devtools::install_github(&quot;RGLab/flowStats&quot;)
+<pre tabindex="0"><code>devtools::install_github(&#34;RGLab/flowStats&#34;)
 </code></pre><h2 id="cytoverse---flowjo">Cytoverse -&gt; FlowJo</h2>
 <p>The entire Cytoverse collection of packages is open-source and available from the repositiories listed above, with the
 sole exception of the functionality to convert Cytoverse <code>GatingSet</code> objects in to FlowJo workspaces. This functionality
 is provided in the form of a Docker image so it will work on any user operating system so long as Docker is installed.</p>
 <p>This is not required for using any other parts of the Cytoverse, but if it is functionality you require, please follow
-<a href="https://www.docker.com/get-started">Docker's installation instructions</a> and then follow these instructions to get the appropriate
+<a href="https://www.docker.com/get-started">Docker&rsquo;s installation instructions</a> and then follow these instructions to get the appropriate
 docker image from <a href="https://hub.docker.com/r/rglab/gs-to-flowjo">Docker Hub</a>:</p>
 <ul>
 <li>If you have installed the packages from a particular Bioconductor release:
 <ol>
 <li>Determine the major and minor version of your <code>cytolib</code> installation by using the following command in <code>R</code>:</li>
 </ol>
-<pre><code>packageVersion(&quot;cytolib&quot;)
+<pre tabindex="0"><code>packageVersion(&#34;cytolib&#34;)
 </code></pre><ol start="2">
 <li>Pull the docker image tagged with the corresponding major and minor <code>cytolib</code> version. For example, if the command above
 returns that your <code>cytolib</code> version is <code>2.0.2</code>, you should use:</li>
 </ol>
-<pre><code>docker pull rglab/gs-to-flowjo:2.0
+<pre tabindex="0"><code>docker pull rglab/gs-to-flowjo:2.0
 </code></pre></li>
 <li>If you have installed the packages from the current GitHub development branches, please pull the &ldquo;devel&rdquo; tagged image. For example:
-<pre><code>docker pull rglab/gs-to-flowjo:devel
+<pre tabindex="0"><code>docker pull rglab/gs-to-flowjo:devel
 </code></pre></li>
 </ul>
 <p>While you can use this tool directly from the command line following the usage instructions

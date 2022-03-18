@@ -5,10 +5,6 @@
     <link>/examples/cytoqc/</link>
     <description>Recent content in cytoqc on Ozette Cytoverse</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="/examples/cytoqc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="/examples/cytoqc/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

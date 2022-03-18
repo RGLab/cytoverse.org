@@ -5,10 +5,6 @@
     <link>/examples/openCyto/</link>
     <description>Recent content in openCyto on Ozette Cytoverse</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    
-	<atom:link href="/examples/openCyto/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language><atom:link href="/examples/openCyto/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

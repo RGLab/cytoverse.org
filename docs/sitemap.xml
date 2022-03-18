@@ -1,77 +1,40 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>/2019/12/20/First-Cytoverse-Post/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/post/</loc>
     <lastmod>2019-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/install/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/citation/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/CytoML/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/cytoqc/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/flowCore/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/flowWorkspace/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/help/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/ggcyto/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/install/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/learn/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/examples/openCyto/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>/tags/</loc>
   </url>
-  
 </urlset>

@@ -6,11 +6,7 @@
     <description>Recent content on Ozette Cytoverse</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 20 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First Cytoverse Post</title>
       <link>/2019/12/20/First-Cytoverse-Post/</link>
@@ -19,15 +15,6 @@
       <guid>/2019/12/20/First-Cytoverse-Post/</guid>
       <description>  This is just testing out how the blog is working. Here’s some code and stuff
 library(flowWorkspace) ## As part of improvements to flowWorkspace, some behavior of ## GatingSet objects has changed. For details, please read the section ## titled &amp;quot;The cytoframe and cytoset classes&amp;quot; in the package vignette: ## ## vignette(&amp;quot;flowWorkspace-Introduction&amp;quot;, &amp;quot;flowWorkspace&amp;quot;) </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/install/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/install/</guid>
-      <description>Installation // Pandoc 2.9 adds attributes on both header and div. We remove the former (to // be compatible with the behavior of Pandoc :first-child&#34;); var i, h, a; for (i = 0; i 0) h.removeAttribute(a[0].name); } });  /*! jQuery v1.11.3 | (c) 2005, 2015 jQuery Foundation, Inc. | jquery.org/license */ !function(a,b){&#34;object&#34;==typeof module&amp;&amp;&#34;object&#34;==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error(&#34;jQuery requires a window with a document&#34;);return b(a)}:b(a)}(&#34;undefined&#34;!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l=&#34;1.11.3&#34;,m=function(a,b){return new m.fn.init(a,b)},n=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,o=/^-ms-/,p=/-([\da-z])/gi,q=function(a,b){return b.</description>
     </item>
     
     <item>
@@ -57,7 +44,7 @@ If you are reporting a bug, please try to generate a reproducible example (or &a
       
       <guid>/install/</guid>
       <description>Versions Both the latest stable releases of all Cytoverse packages and more up-to-date development builds can be installed from Bioconductor. If you have not already done so, you will need to install BiocManager by running the following in R:
-if (!requireNamespace(&amp;quot;BiocManager&amp;quot;, quietly = TRUE)) install.packages(&amp;quot;BiocManager&amp;quot;) The most up-to-date development versions can also be built from sources available from Github. If you are building from source on Windows, you will need to install Rtools and will need to follow some additional instructions for installing RProtoBufLib.</description>
+if (!requireNamespace(&amp;#34;BiocManager&amp;#34;, quietly = TRUE)) install.packages(&amp;#34;BiocManager&amp;#34;) The most up-to-date development versions can also be built from sources available from Github. If you are building from source on Windows, you will need to install Rtools and will need to follow some additional instructions for installing RProtoBufLib.</description>
     </item>
     
     <item>
