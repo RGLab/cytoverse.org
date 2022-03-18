@@ -131,25 +131,10 @@ sole exception of the functionality to convert Cytoverse <code>GatingSet</code> 
 is provided in the form of a Docker image so it will work on any user operating system so long as Docker is installed.</p>
 <p>This is not required for using any other parts of the Cytoverse, but if it is functionality you require, please follow
 <a href="https://www.docker.com/get-started">Docker&rsquo;s installation instructions</a> and then follow these instructions to get the appropriate
-docker image from <a href="https://hub.docker.com/r/rglab/gs-to-flowjo">Docker Hub</a>:</p>
-<ul>
-<li>If you have installed the packages from a particular Bioconductor release:
-<ol>
-<li>Determine the major and minor version of your <code>cytolib</code> installation by using the following command in <code>R</code>:</li>
-</ol>
-<pre tabindex="0"><code>packageVersion(&#34;cytolib&#34;)
-</code></pre><ol start="2">
-<li>Pull the docker image tagged with the corresponding major and minor <code>cytolib</code> version. For example, if the command above
-returns that your <code>cytolib</code> version is <code>2.0.2</code>, you should use:</li>
-</ol>
-<pre tabindex="0"><code>docker pull rglab/gs-to-flowjo:2.0
-</code></pre></li>
-<li>If you have installed the packages from the current GitHub development branches, please pull the &ldquo;devel&rdquo; tagged image. For example:
-<pre tabindex="0"><code>docker pull rglab/gs-to-flowjo:devel
-</code></pre></li>
-</ul>
-<p>While you can use this tool directly from the command line following the usage instructions
-<a href="https://hub.docker.com/r/rglab/gs-to-flowjo">here</a>, you can also simply use the <code>gatingset_to_flowjo</code> method from
+docker image from <a href="https://gallery.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp">Amazon ECR Public Gallery</a>:</p>
+<pre tabindex="0"><code>docker pull public.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp:latest
+</code></pre><p>While you can use this tool directly from the command line following the usage instructions
+<a href="https://gallery.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp">here</a>, you can also simply use the <code>gatingset_to_flowjo</code> method from
 the <code>CytoML</code> package after you have obtained the Docker image using the above <code>docker pull</code> command.</p>
 <h2 id="cytoverse-docker-image">Cytoverse Docker Image</h2>
 <p>Docker images are also provided based on the <a href="https://www.bioconductor.org/help/docker/">Docker images available from Bioconductor</a>, with the Cytoverse packages pre-installed. These Cytoverse Docker images are also available from the <a href="https://hub.docker.com/r/rglab/cytoverse">RGLab Docker Hub page</a>.</p>

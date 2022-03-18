@@ -56,24 +56,14 @@ is provided in the form of a Docker image so it will work on any user operating 
 
 This is not required for using any other parts of the Cytoverse, but if it is functionality you require, please follow
 [Docker's installation instructions](https://www.docker.com/get-started) and then follow these instructions to get the appropriate
-docker image from [Docker Hub](https://hub.docker.com/r/rglab/gs-to-flowjo):
+docker image from [Amazon ECR Public Gallery](https://gallery.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp):
 
-* If you have installed the packages from a particular Bioconductor release:
-    1. Determine the major and minor version of your `cytolib` installation by using the following command in `R`:
-    ```
-    packageVersion("cytolib")
-    ```
-    2. Pull the docker image tagged with the corresponding major and minor `cytolib` version. For example, if the command above
-    returns that your `cytolib` version is `2.0.2`, you should use:
-    ```
-    docker pull rglab/gs-to-flowjo:2.0
-    ```
-* If you have installed the packages from the current GitHub development branches, please pull the "devel" tagged image. For example:
-    ```
-    docker pull rglab/gs-to-flowjo:devel
-    ```
+```
+docker pull public.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp:latest
+```
+
 While you can use this tool directly from the command line following the usage instructions
-[here](https://hub.docker.com/r/rglab/gs-to-flowjo), you can also simply use the `gatingset_to_flowjo` method from
+[here](https://gallery.ecr.aws/x4k5d9i7/cytoverse/gs-to-wsp), you can also simply use the `gatingset_to_flowjo` method from
 the `CytoML` package after you have obtained the Docker image using the above `docker pull` command.
 
 ## Cytoverse Docker Image
